@@ -1,0 +1,102 @@
+html, body {
+	font-size: 15px;
+	font-family: 'Jura', sans-serif;
+	margin: 0;
+}
+
+
+/*  HEADER and MAIN MENU  */
+
+.header {
+	position: fixed;
+	z-index: 100;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.main-menu {
+	width: 90%;
+	max-height: 200px;
+	margin: 0 auto;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.logo {
+	height: 150px;
+	vertical-align: middle;
+
+	transition: .5s all;
+}
+
+.main-menu-item {
+	display: inline-block;
+	width: 150px;
+	height: 150px;
+	line-height: 150px;
+	text-decoration: none;
+	font-size: 2em;
+	color: white !important;
+	padding: 0 1.5em;
+
+	transition: all .5s;
+	letter-spacing: .1em;
+}
+
+.main-menu-item:hover {
+	letter-spacing: .2em;
+	text-decoration: underline;
+}
+
+
+
+
+/*  PAGE SLIDES/SECTIONS  */
+
+.page-slide, .slide1 div {
+	background-size: 100%;
+	width: 100vw;
+	height: 100vh;
+}
+
+
+.slide1 div {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.slide1-1 {
+	background: url(images/back1.png) 110% center no-repeat;
+	z-index: 10;
+}
+
+.slide1-2 {
+	background: url(images/back2.png) 110% center no-repeat;
+	z-index: 9;	
+}
+
+.slide1-3 {
+	background: url(images/back3.png) 110% no-repeat;
+	z-index: 8;
+}
+
+.slide1-4 {
+	background: url(images/back4.jpg) 130% center no-repeat;
+	z-index: 7;	
+}
+
+
+
+
+.slide2 {
+	background-color: black;
+}
+
+.slide3 {
+	background-color: green;
+}
+
+.slide4 {
+	background-color: blue;
+}
