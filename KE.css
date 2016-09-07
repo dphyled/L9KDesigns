@@ -55,8 +55,9 @@ html, body {
 
 .page-slide, .slide1 div {
 	background-size: 100%;
-	width: 100vw;
-	height: 100vh;
+	width: 110%;
+	height: 100%;
+	overflow: hidden;
 }
 
 
@@ -67,22 +68,23 @@ html, body {
 }
 
 .slide1-1 {
-	background: url(images/back1.png) 110% center no-repeat;
+	background: url(images/back1.png) center no-repeat;
 	z-index: 10;
 }
 
 .slide1-2 {
-	background: url(images/back2.png) 110% center no-repeat;
+	background: url(images/back2.gif) center no-repeat;
+	background-size: 120% 100%;
 	z-index: 9;	
 }
 
 .slide1-3 {
-	background: url(images/back3.png) 110% no-repeat;
+	background: url(images/back3.png) no-repeat;
 	z-index: 8;
 }
 
 .slide1-4 {
-	background: url(images/back4.jpg) 130% center no-repeat;
+	background: url(images/back4.jpg) center no-repeat;
 	z-index: 7;	
 }
 
