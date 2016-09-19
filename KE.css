@@ -9,12 +9,16 @@ html, body {
 
 .header {
 	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
 	z-index: 100;
 	width: 100%;
 	background-color: rgba(0, 0, 0, 0.5);
 }
 
 .main-menu {
+	top: 0;
 	width: 90%;
 	max-height: 200px;
 	margin: 0 auto;
@@ -23,7 +27,7 @@ html, body {
 }
 
 .logo {
-	height: 150px;
+	height: 125px;
 	vertical-align: middle;
 
 	transition: .5s all;
@@ -31,9 +35,9 @@ html, body {
 
 .main-menu-item {
 	display: inline-block;
-	width: 150px;
-	height: 150px;
-	line-height: 150px;
+	width: 170px;
+	height: 125px;
+	line-height: 125px;
 	text-decoration: none;
 	font-size: 2em;
 	color: white !important;
@@ -44,8 +48,9 @@ html, body {
 }
 
 .main-menu-item:hover {
-	letter-spacing: .2em;
+	letter-spacing: .25em;
 	text-decoration: underline;
+	color: #428cb2 !important;
 }
 
 
@@ -54,10 +59,11 @@ html, body {
 /*  PAGE SLIDES/SECTIONS  */
 
 .page-slide, .slide1 div {
-	background-size: 100%;
-	width: 110%;
-	height: 100%;
+	width: 100vw;
+	height: 100vh;
 	overflow: hidden;
+
+	transition: .3s background-position ease-out;
 }
 
 
@@ -69,26 +75,36 @@ html, body {
 
 .slide1-1 {
 	background: url(images/back1.png) center no-repeat;
+	background-size: 80vw;
 	z-index: 10;
 }
 
 .slide1-2 {
-	background: url(images/back2.gif) center no-repeat;
-	background-size: 120% 100%;
+	background: url(images/back2.gif) no-repeat;
 	z-index: 9;	
 }
 
 .slide1-3 {
-	background: url(images/back3.png) no-repeat;
+	background: url(images/back3.png) center no-repeat;
 	z-index: 8;
 }
 
 .slide1-4 {
-	background: url(images/back4.jpg) center no-repeat;
+	background: url(images/back4.jpg) top;
+	background-size: 100vw auto;
 	z-index: 7;	
 }
 
+.slide1-5 {
+	background: url(images/back5.png) center no-repeat;
+	background-size: 100vw 100vh;
+	z-index: 11;	
+}
 
+.moving-slide {
+	background-position: -50px 46px;
+	background-size: 110vw auto;	
+}
 
 
 .slide2 {
