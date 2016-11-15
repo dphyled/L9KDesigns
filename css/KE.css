@@ -12,7 +12,7 @@ html, body {
 	top: 0;
 	left: 0;
 	right: 0;
-	z-index: 100;
+	z-index: 1000;
 	width: 100%;
 	background-color: rgba(0,0,0,.7);
 
@@ -29,7 +29,8 @@ html, body {
 }
 
 .logo {
-	height: 125px;
+	max-width: 100%;
+	max-height: 100%;
 	vertical-align: middle;
 	transform: scale(1);
 	transition: .5s height;
@@ -57,10 +58,29 @@ html, body {
 	color: #428cb2 !important;
 }
 
+@media screen and (max-width: 1350px) {
+    .main-menu-item {
+    	width: 155px;
+    	font-size: 1.9em;
+    	padding: 0 1em;
+    }
+}
+
 
 
 
 /*  PAGE SLIDES/SECTIONS  */
+
+.dark-border {
+	width: 100%;
+	height: 100%;
+	background: url(../images/back-border.png) center no-repeat;
+	background-size: 100vw 100vh;
+	z-index: 100;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
 
 .slide1 div {
 	position: absolute;
@@ -78,9 +98,7 @@ html, body {
 }
 
 .slide1-0 {
-	background: url(../images/back-border.png) center no-repeat;
-	background-size: 100vw 100vh;
-	z-index: 11;	
+
 }
 
 .slide1-1 {
@@ -124,12 +142,17 @@ html, body {
 }
 
 .slide3 {
-	background-color: black;
+	background-color: white;
 }
 
 .slide4 {
 	background-color: blue;
 }
+
+.slide4 {
+	background-color: red;
+}
+
 
 
 /*  PAGE ELEMENTS  */
@@ -143,26 +166,41 @@ html, body {
 
 .profile-image-holder {
 	width: 100%;
-	height: 100%;
 	position: relative;
+	text-align: center;
+	vertical-align: middle;
 }
 
 .profile-image {
-	position: absolute;
-	width: 200px;
-	height: 200px;
-	border-radius: 50%;
-	border: 5px solid white;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.profile-image img {
+	position: relative;
+	vertical-align: middle;
+	width: 25vw;
 }
 
 .profile-image.kelly {
-	background-color: blue;
-	top: 45%;
-	left: 40%;
+	margin-right: -6%;
 }
 
 .profile-image.eriya {
-	background-color: red;
-	bottom: 45%;
-	right: 40%;
+	margin-left: -6%;
+}
+
+.name-label {
+	display: inline-block;
+	position: absolute;
+	font-size: 3em;
+}
+
+.name-label.kelly {
+	left: 0;
+	bottom: 0;
+}
+
+.name-label.eriya {
+	right: 0;
 }

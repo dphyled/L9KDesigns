@@ -1,6 +1,7 @@
 $(document).ready(function() {
     $('#fullpage').fullpage({
-    	scrollBar: true
+    	scrollBar: true,
+    	anchors: ['home', 'work', 'about', 'feed', 'contact']
     });
 });
 
@@ -58,23 +59,28 @@ $(document).ready(function() {
 
 
 
-
 $(function () {
-	TweenMax.from(".logo", .5, {opacity: 0, scale: 0, ease:Bounce.easeOut, delay: 1});
-	TweenMax.from($(".slide1 div:not(#slide1-1), .header"), 4, {opacity: 0, delay: .3});
-	TweenMax.to($(".main-menu-item"), .4, {opacity:1, delay: 2.4, transition: "all .5s"});
+	TweenMax.from(".logo", .5, {opacity: 0, scale: 0, ease:Bounce.easeOut, delay: .5});
+	TweenMax.from($(".slide1 div:not(#slide1-1), .header"), 2.5, {opacity: 0, delay: .3});
+	TweenMax.to($(".main-menu-item"), .3, {opacity:1, delay: 1.25, transition: "all .5s"});
 
 
 
 	var controller = new ScrollMagic.Controller();
 
 	var profileTL = new TimelineMax();
-	profileTL.from("#kelly-image", 1, {left: 30, top: 30, scale: 0, ease:Bounce.easeOut})
-			 .from("#eriya-image", 1, {right: 30, bottom: 30, scale: 0, ease:Bounce.easeOut}, 0); //target, duration, props, startTime
+	profileTL.from("#kelly-image", .75, {transform: "translateX(-2000px)", scale: 0, ease:Bounce.easeOut})
+			 .from("#eriya-image", .75, {transform: "translateX(2000px)", scale: 0, ease:Bounce.easeOut}, 0)
+			 .from(".name-label.kelly", .2, {transform: "translateX(-2000px)"})
+			 .from(".name-label.eriya", .2, {transform: "translateX(2000px)"}); //target, duration, props, startTime
 
 	var profileScene = new ScrollMagic.Scene({triggerElement: "#profile-trigger", duration: 0})
 								.setTween(profileTL)
 								.addTo(controller);
+
+
+
+
 
 	// var tweenKelly = TweenMax.from("#kelly-image", .5, {left: "-100%"});
 
@@ -87,4 +93,16 @@ $(function () {
 	// var sceneEriya = new ScrollMagic.Scene({triggerElement: "#profile-trigger", duration: 0})
 	// 							.setTween(tweenEriya)
 	// 							.addTo(controller);								
+});
+
+
+
+$(document).ready(function() {
+	// $("#kelly-image").one("load", function() {
+	// 	$("#kelly-image").css("left", $(this).width() * .5);
+	// }).each(function() {
+	// 	if(this.complete) $(this).load;
+	// });
+	
+
 });
