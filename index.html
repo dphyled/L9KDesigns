@@ -3,12 +3,19 @@
 <head>
 	<title>KE Web Design</title>
 	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="KE.js"></script>
-	
-	<script type="text/javascript" src="jparallax/js/jquery.parallax.min.js"></script>
-	<script type="text/javascript" src="jparallax/js/jquery.event.frame.js"></script>
+	<script type="text/javascript" src="js/lodash.min.js"></script>
 
-	<link rel="stylesheet" type="text/css" href="KE.css" media="all" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.min.js"></script>
+	<script type="text/javascript" src="js/jquery.fullPage.min.js"></script>
+	<!-- <script type="text/javascript" src="js/jquery.parallax.min.js"></script> -->
+	<script type="text/javascript" src="js/parallax.min.js"></script>
+	<script type="text/javascript" src="js/KE.js"></script>
+	
+
+	<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="css/KE.css" media="all" />
 	<link href="https://fonts.googleapis.com/css?family=Jura:300" rel="stylesheet">
 </head>
 <body>
@@ -22,24 +29,35 @@
 		</nav>
 	</header>
 
-	<section id="slide1" class="page-slide slide1">
-		<div id="slide1-1" class="slide1-1"></div>
-		<div id="slide1-2" class="slide1-2 moving-slide"></div>
-		<div id="slide1-3" class="slide1-3 moving-slide"></div>
-		<div id="slide1-4" class="slide1-4"></div>
-		<div id="slide1-5" class="slide1-5"></div>
-	</section>
+	<div id="fullpage">
+		<section id="slide1" class="section page-slide slide1">
+			<ul id="main-scene" class="main-scene">
+				<li class="layer slide1-0" data-depth="0.00"></li>			
+				<li class="layer slide1-1" data-depth="0.00"></li>
+				<li class="layer slide1-2" data-depth="0.04"></li>
+				<li class="layer slide1-3" data-depth="0.02"></li>
+				<li class="layer slide1-4" data-depth="0.00"></li>
 
-	<section id="slide2" class="page-slide slide2">
-		
-	</section>
+			</ul>
+		</section>
 
-	<section id="slide3" class="page-slide slide3">
-		
-	</section>
+		<section id="slide2" class="section page-slide slide2">
+			<div class="profile-image-holder">
+				<div id="profile-trigger" class="trigger"></div>
+				<div id="kelly-image" class="profile-image kelly"></div>
+				<div id="eriya-image" class="profile-image eriya"></div>
+			</div>
+		</section>
 
-	<section id="slide4" class="page-slide slide4">
+		<section id="slide3" class="section page-slide slide3">
 		
-	</section>
+		</section>
+
+		<section id="slide4" class="section page-slide slide4">
+		
+		</section>
+	</div>
+
+
 </body>
 </html>
