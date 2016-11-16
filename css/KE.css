@@ -136,7 +136,6 @@ html, body {
 
 
 
-
 .slide2 {
 	background-color: green;
 }
@@ -152,6 +151,16 @@ html, body {
 .slide4 {
 	background-color: red;
 }
+
+
+@media screen and (max-width: 1200px) {
+	.slide1-4 {
+		background-size: auto 100vh;
+		background-position: center;
+		max-width: 1200px;
+	}
+}
+
 
 
 

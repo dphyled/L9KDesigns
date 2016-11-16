@@ -1,7 +1,18 @@
 $(document).ready(function() {
     $('#fullpage').fullpage({
     	scrollBar: true,
-    	anchors: ['home', 'work', 'about', 'feed', 'contact']
+    	anchors: ['home', 'work', 'about', 'feed', 'contact'],
+    	fitToSectionDelay: 300,
+
+        // onLeave: function(index, nextIndex, direction){
+        //     var leavingSection = $(this);
+        //     if(nextIndex == 1){
+        //         alert("Going to section 1!");
+        //     }
+        //     else{
+        //     	alert("Going somewhere other than 1!");
+        //     }
+        // }    	
     });
 });
 
