@@ -1,0 +1,19 @@
+{
+  "name": "ke-web-design",
+  "version": "1.0.0",
+  "description": "Kelly and Eric web design",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dphyled/KE-web-design.git"
+  },
+  "author": "Kelly and Eric",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dphyled/KE-web-design/issues"
+  },
+  "homepage": "https://github.com/dphyled/KE-web-design#readme"
+}
