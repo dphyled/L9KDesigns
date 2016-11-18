@@ -44,12 +44,15 @@ $(document).ready(function() {
 	    if(scroll > 10) {
 	    	$(".main-menu-item, .logo").css("height" , 100);
 	    	$(".main-menu-item").css("lineHeight", "100px");
-	    	$(".header").css("backgroundColor", "rgba(0,0,0,1)");
+	    	$(".header").css("background", "rgba(0,0,0,1)");
 	    }
 	    else {
 			$(".main-menu-item, .logo").css("height", 125);
 			$(".main-menu-item").css("lineHeight", "125px");
-	    	$(".header").css("backgroundColor", "rgba(0,0,0,.7)");
+	    	// $(".header").css("backgroundColor", "rgba(0,0,0,.7)");
+	    	$(".header").css({background: "-moz-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0) 100%);",
+	    					  background: "-webkit-linear-gradient(top, rgba(0,0,0,1) 0%,rgba(0,0,0,0.6) 60%,rgba(0,0,0,0) 100%)",
+	    					  background: "linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(0,0,0,0.6) 60%,rgba(0,0,0,0) 100%)"});
 	    }
 	});
 
@@ -62,8 +65,8 @@ $(document).ready(function() {
 	TweenMax.to($("#fullpage"), .05, {opacity: 1, delay: .1});
 	TweenMax.from(".logo", .5, {opacity: 0, scale: 0, ease:Bounce.easeOut, delay: .5});
 	TweenMax.from($(".slide1 div:not(#slide1-1), .header"), 2.5, {opacity: 0, delay: .3});
-	TweenMax.to($(".main-menu-item"), .75, {opacity:1, delay: 1.25, transition: "all .5s"});
-
+	TweenMax.to($(".main-menu-item"), 1.0, {opacity:1, delay: 1.25});
+	TweenMax.to($(".main-menu-item"), .5, {delay: 3.5, transition: "all .5s"});
 
 
 	var controller = new ScrollMagic.Controller();
@@ -101,8 +104,6 @@ $(document).ready(function() {
 	// }).each(function() {
 	// 	if(this.complete) $(this).load;
 	// });
-	
-
 
 });
 
