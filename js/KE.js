@@ -93,8 +93,59 @@ $(document).ready(function() {
 
 
 
-	var bird1XScalar = 1;
-	var bird1YScalar = 1;
+	// var bird1XScalar = 1;
+	// var bird1YScalar = 1;
+
+	// var bird1Flightpath = {
+	// 	soar : {
+	// 		curviness: 1.25,
+	// 		autoRotate: true,
+	// 		values: [
+	// 				{x: bird1XScalar * 0,	y: bird1YScalar * 0},
+	// 				{x: bird1XScalar * 40,	y: bird1YScalar * 0},
+	// 				{x: bird1XScalar * 90,	y: bird1YScalar * 10},
+	// 				{x: bird1XScalar * 150,	y: bird1YScalar * 30},
+	// 				{x: bird1XScalar * 250,	y: bird1YScalar * 60},
+	// 				{x: bird1XScalar * 350,	y: bird1YScalar * 75},
+	// 				{x: bird1XScalar * 450,	y: bird1YScalar * 80}
+	// 			]
+	// 	},
+	// 	// looping : {
+	// 	// 	curviness: 1.25,
+	// 	// 	autoRotate: true,
+	// 	// 	values: [
+	// 	// 			{x: bird1XScalar * 550,	y: bird1YScalar * 80},
+	// 	// 			{x: bird1XScalar * 650,	y: bird1YScalar * 0},
+	// 	// 			{x: bird1XScalar * 550,	y: bird1YScalar * -80},
+	// 	// 			{x: bird1XScalar * 450,	y: bird1YScalar * 0},
+	// 	// 			{x: bird1XScalar * 550,	y: bird1YScalar * 30},
+	// 	// 			{x: bird1XScalar * 625,	y: bird1YScalar * 25}
+	// 	// 		]
+	// 	// },
+	// 	return : {
+	// 		curviness: 1.25,
+	// 		autoRotate: true,
+	// 		values: [
+	// 				{x: bird1XScalar * 665,	y: bird1YScalar * 20},
+	// 				{x: bird1XScalar * 680,	y: bird1YScalar * 25},
+	// 				{x: bird1XScalar * 690,	y: bird1YScalar * 20},
+	// 				{x: bird1XScalar * 670,	y: bird1YScalar * 18},
+	// 				{x: bird1XScalar * 630,	y: bird1YScalar * 16},
+	// 				{x: bird1XScalar * 500,	y: bird1YScalar * 15},
+	// 				{x: bird1XScalar * 350,	y: bird1YScalar * 10},
+	// 				{x: bird1XScalar * 200,	y: bird1YScalar * 6},
+	// 				{x: bird1XScalar * 100,	y: bird1YScalar * 0},
+	// 				{x: bird1XScalar * -50,	y: bird1YScalar * 5},
+	// 				{x: bird1XScalar * -25,	y: bird1YScalar * 5},
+	// 				{x: bird1XScalar * -0,	y: bird1YScalar * 0}
+
+	// 			]
+	// 	}
+	// };
+
+	//set these to window width/height divided by 100 to make flight path values into percentages
+	var bird1XScalar = 19; //set to width of window
+	var bird1YScalar = 8; //set to height of window
 
 	var bird1Flightpath = {
 		soar : {
@@ -102,61 +153,53 @@ $(document).ready(function() {
 			autoRotate: true,
 			values: [
 					{x: bird1XScalar * 0,	y: bird1YScalar * 0},
-					{x: bird1XScalar * 40,	y: bird1YScalar * 0},
-					{x: bird1XScalar * 90,	y: bird1YScalar * 10},
-					{x: bird1XScalar * 150,	y: bird1YScalar * 30},
-					{x: bird1XScalar * 250,	y: bird1YScalar * 60},
-					{x: bird1XScalar * 350,	y: bird1YScalar * 75},
-					{x: bird1XScalar * 450,	y: bird1YScalar * 80}
-				]
-		},
-		looping : {
-			curviness: 1.25,
-			autoRotate: true,
-			values: [
-					{x: bird1XScalar * 550,	y: bird1YScalar * 80},
-					{x: bird1XScalar * 650,	y: bird1YScalar * 0},
-					{x: bird1XScalar * 550,	y: bird1YScalar * -80},
-					{x: bird1XScalar * 450,	y: bird1YScalar * 0},
-					{x: bird1XScalar * 550,	y: bird1YScalar * 30},
-					{x: bird1XScalar * 625,	y: bird1YScalar * 25}
+					{x: bird1XScalar * 1,	y: bird1YScalar * 0},
+					{x: bird1XScalar * 4,	y: bird1YScalar * 2},
+					{x: bird1XScalar * 8,	y: bird1YScalar * 3},
+					{x: bird1XScalar * 12,	y: bird1YScalar * 3},
+					{x: bird1XScalar * 16,	y: bird1YScalar * 3},
+					{x: bird1XScalar * 20,	y: bird1YScalar * 5},
+					{x: bird1XScalar * 25,	y: bird1YScalar * 9},
+					{x: bird1XScalar * 30,	y: bird1YScalar * 12},
+					{x: bird1XScalar * 35,	y: bird1YScalar * 9},
+					{x: bird1XScalar * 40,	y: bird1YScalar * 5}
 				]
 		},
 		return : {
 			curviness: 1.25,
 			autoRotate: true,
 			values: [
-					{x: bird1XScalar * 665,	y: bird1YScalar * 20},
-					{x: bird1XScalar * 680,	y: bird1YScalar * 25},
-					{x: bird1XScalar * 690,	y: bird1YScalar * 20},
-					{x: bird1XScalar * 670,	y: bird1YScalar * 18},
-					{x: bird1XScalar * 630,	y: bird1YScalar * 16},
-					{x: bird1XScalar * 500,	y: bird1YScalar * 15},
-					{x: bird1XScalar * 350,	y: bird1YScalar * 10},
-					{x: bird1XScalar * 200,	y: bird1YScalar * 6},
-					{x: bird1XScalar * 100,	y: bird1YScalar * 0},
-					{x: bird1XScalar * -50,	y: bird1YScalar * 5},
-					{x: bird1XScalar * -25,	y: bird1YScalar * 5},
-					{x: bird1XScalar * -0,	y: bird1YScalar * 0}
+					{x: bird1XScalar * 35,	y: bird1YScalar * 5},
+					{x: bird1XScalar * 32,	y: bird1YScalar * 4},
+					{x: bird1XScalar * 29,	y: bird1YScalar * 3},
+					{x: bird1XScalar * 26,	y: bird1YScalar * 2},
+					{x: bird1XScalar * 23,	y: bird1YScalar * 1},
+					{x: bird1XScalar * 20,	y: bird1YScalar * 0},
+					{x: bird1XScalar * 17,	y: bird1YScalar * -1},
+					{x: bird1XScalar * 12,	y: bird1YScalar * -2},
+					{x: bird1XScalar * 8,	y: bird1YScalar * -3},
+					{x: bird1XScalar * 5,	y: bird1YScalar * -3},
+					{x: bird1XScalar * 2,	y: bird1YScalar * -1},
+					{x: bird1XScalar * 0,	y: bird1YScalar * 0}
 
 				]
 		}
 	};
 
-
-
 	var bird1Flight = new TimelineMax({repeat:-1})
-		.add(TweenMax.to($("#bird1"), 9, {css:{bezier:bird1Flightpath.soar, scale: .9}, ease:Power1.easeIn}))
-		.add(TweenMax.to($("#bird1"), 5, {css:{bezier:bird1Flightpath.looping, scale: .7}}))
-		.add(TweenMax.to($("#bird1"), 20, {css:{bezier:bird1Flightpath.return, scale: 1}}));
+		.add(TweenMax.to($("#bird1"), 25, {css:{bezier:bird1Flightpath.soar, scale: .6}, ease:Power1.easeInOut}))
+		.add(TweenMax.to($("#bird1"), .01, {rotationX: 180}))
+		.add(TweenMax.to($("#bird1"), 30, {css:{bezier:bird1Flightpath.return, scale: 1}, ease:Power1.easeInOut}))
+		.add(TweenMax.to($("#bird1"), .01, {rotationX: 0}));
 	bird1Flight.play(2);
 
 	var bird2Flight = new TimelineMax({repeat:-1})
-		.add(TweenMax.to($("#bird2"), 12, {css:{bezier:bird1Flightpath.soar, scale: 1.1}, ease:Power1.easeIn}))
-		.add(TweenMax.to($("#bird2"), 9, {css:{bezier:bird1Flightpath.looping, scale: 1.2}}))
-		.add(TweenMax.to($("#bird2"), 28, {css:{bezier:bird1Flightpath.return, scale: 1}}));
+		.add(TweenMax.to($("#bird2"), 30, {css:{bezier:bird1Flightpath.soar, scale: 1.3}, ease:Power1.easeInOut}))
+		.add(TweenMax.to($("#bird2"), .01, {rotationX: 180}))
+		.add(TweenMax.to($("#bird2"), 35, {css:{bezier:bird1Flightpath.return, scale: 1}, ease:Power1.easeInOut}))
+		.add(TweenMax.to($("#bird2"), .01, {rotationX: 0}));
 	//bird2Flight.play(28);
-	bird2Flight.play(8);
+	bird2Flight.play(35);
 
 	// ----------Initialize ScrollMagic Controller----------
 	var controller = new ScrollMagic.Controller();
