@@ -9,7 +9,10 @@ var gulp = require('gulp'),
 	gulpif = require('gulp-if'),
 	uglify = require('gulp-uglify'),
 	minifyHTML = require('gulp-minify-html'),
-	concat = require('gulp-concat');
+	concat = require('gulp-concat')
+	imagemin = require('gulp-imagemin')
+	autoprefixer = require('gulp-autoprefixer')
+	minifyCSS = require('gulp-minify-css');
 
 var env,
 	coffeeSources,
@@ -19,7 +22,7 @@ var env,
 	outputDir,
 	sassStyle;
 
-env = process.env.NODE_ENV || 'development';
+env = process.env.NODE_ENV || 'production';
 
 if (env==='development') {
 	outputDir = 'builds/development/';
@@ -38,7 +41,8 @@ if (env==='development') {
 jsSources = ['components/scripts/*.js'];
 sassSources = ['components/styles/*.scss'];
 cssSources = ['components/styles/*.css'];
-htmlSources = ['*.html'];
+htmlSources = ['components/*.html'];
+imageSources = ['components/images/*'];
 
 // gulp.task('coffee', function() {
 // 	gulp.src(coffeeSources)
@@ -72,6 +76,8 @@ gulp.task('js', function() {		//  2nd param = dependencies, optional
 gulp.task('css', function() {		//  2nd param = dependencies, optional
 	gulp.src(cssSources)
 		.pipe(concat('style.css'))
+		.pipe(autoprefixer('last 10 versions', 'ie 9'))
+		.pipe(gulpif(env === 'production', minifyCSS({keepBreaks: false})))
 		.pipe(gulp.dest(outputDir + 'styles'))
 		.pipe(connect.reload())
 });
@@ -79,10 +85,16 @@ gulp.task('css', function() {		//  2nd param = dependencies, optional
 gulp.task('html', function() {
 	gulp.src(htmlSources)
 		.pipe(gulpif(env === 'production', minifyHTML()))
-		.pipe(gulpif(env === 'production', gulp.dest(outputDir)))
-		.pipe(gulpif(env === 'development', gulp.dest(outputDir)))
+		.pipe(gulp.dest(outputDir))
 		.pipe(connect.reload())
 });
+
+gulp.task('images', () =>
+    gulp.src(imageSources)
+        .pipe(imagemin())
+        .pipe(gulp.dest(outputDir + 'images'))
+        .pipe(connect.reload())
+);
 
 gulp.task('watch', function() {					// in terminal "gulp watch"
 	// gulp.watch(coffeeSources, ['coffee']);
@@ -90,6 +102,7 @@ gulp.task('watch', function() {					// in terminal "gulp watch"
 	gulp.watch(cssSources, ['css']);
 	// gulp.watch('components/sass/*.scss', ['compass']);
 	gulp.watch(htmlSources, ['html']);
+	gulp.watch(imageSources, ['images']);
 });
 
 gulp.task('connect', function() {
@@ -99,4 +112,4 @@ gulp.task('connect', function() {
 	});
 });
 
-gulp.task('default', ['html', 'js', 'css', 'connect', 'watch']);			// in terminal----  just "gulp"
+gulp.task('default', ['html', 'js', 'css', 'images', 'connect', 'watch']);			// in terminal----  just "gulp"
