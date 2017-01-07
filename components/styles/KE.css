@@ -5,9 +5,6 @@ header-filler: 999;
 
 */
 
-
-
-
 html, body {
 	font-size: 15px;
 	font-family: 'Jura', sans-serif;
@@ -154,10 +151,6 @@ html, body {
 	background-color: red;
 }
 
-.page-slide:not(.slide1) {
-
-}
-
 .dark-border {
 	width: 100vw;
 	height: 100vh;
@@ -168,6 +161,17 @@ html, body {
 	top: 0;
 	left: 0;
 	pointer-events: none;
+}
+
+.in-slide-container {
+	width: 80%;
+	margin: 0 auto;
+}
+
+@media screen and (max-width: 800px) {
+	.in-slide-container {
+		width: 98%;
+	}
 }
 
 
@@ -276,9 +280,41 @@ html, body {
 }
 
 
+/*  ---------------SLIDE2 -- PAST WORK/PROJECTS---------------  */
+.project-list {
+	display: block;
+	width: 90%;
+	margin: 2em auto;
+	padding: 0;
+	list-style: none;
+	text-align: center;
+}
 
+.project-li {
+	display: inline-block;
+	width: 20%;
+	max-width: 15em;
+	min-width: 8em;
+	height: 8em;
+	border: 4px solid black;
+	border-radius: 8px;
+	box-shadow: 4px 4px 5px 0px black;
+	margin: 8px;
+
+	transition: .3s all;
+}
+
+.project-li:hover {
+	transform: scale(1.05);
+}
 
 /*  ---------------SLIDE3 -- ABOUT---------------  */
+.slide3 h1 {
+	position: relative;
+	top: -2em;
+	font-size: 3em;
+}
+
 .trigger {
 	width: 100%;
 	height: 0px;
@@ -337,6 +373,8 @@ html, body {
 	display: inline-block;
 	position: absolute;
 	font-size: 3em;
+
+	transition: .3s all;
 }
 
 .name-label.kelly {
@@ -348,7 +386,86 @@ html, body {
 	right: 0;
 }
 
+.profile-image.kelly img:hover + .name-label {
+	font-size: 3.5em;
+	text-shadow: 5px 0px 2px rgba(150, 150, 150, 1);
+	left: -.5em;
+}
 
+.profile-image.eriya img:hover + .name-label {
+	font-size: 3.5em;
+	text-shadow: -5px 0px 2px rgba(150, 150, 150, 1);
+	right: -.5em;
+}
+
+@media screen and (max-width: 1400px) {
+	.profile-image img {
+		width: 30vw;
+	}
+}
+
+@media screen and (max-width: 1300px) {
+	.profile-image img {
+		width: 35vw;
+	}
+
+	.name-label.kelly {
+		top: -1.2em;
+	}
+
+	.name-label.eriya {
+		bottom: -1.2em;
+	}
+
+	.profile-image.kelly img:hover + .name-label {
+		text-shadow: 0 -5px 2px rgba(150, 150, 150, 1);
+		top: -1.5em;
+		left: -.5em;
+	}
+
+	.profile-image.eriya img:hover + .name-label {
+		text-shadow: 0 5px 2px rgba(150, 150, 150, 1);
+		bottom: -1.5em;
+		right: -.5em;
+	}	
+}
+
+@media screen and (max-width: 800px) {
+	.profile-image.kelly {
+		margin-right: -10%;
+	}
+
+	.profile-image.eriya {
+		margin-left: -10%;
+	}
+
+	.profile-image img {
+		width: 45vw;
+	}
+}
+
+
+
+/*  ---------------SLIDE4 -- FEED---------------  */
+.feed {
+	box-sizing: border-box;
+	border: 3px solid black;
+	height: 50vh;
+	font-size: 4em;
+}
+
+.fb-placeholder {
+	float: left;
+	width: 55%;
+	margin-right: 5%;
+	background-color: #3b5998;
+}
+
+.twitter-placeholder {
+	float: left;
+	width: 40%;
+	background-color: #1da1f2;
+}
 
 /*  ---------------OTHER ELEMENTS---------------  */
 #fp-nav ul li .fp-tooltip {
@@ -363,9 +480,14 @@ html, body {
 	#fp-nav {
 		top: 15%;
 	}
-	
+
 	#fp-nav ul li .active + .fp-tooltip {
 		opacity: 1;
 		width: auto;
 	}
+}
+
+.placeholder {
+	text-align: center;
+	font-size: 3em;
 }

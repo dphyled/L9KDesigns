@@ -1,7 +1,7 @@
 var jQuery = require('jquery');
+
+// Making jQuery safe?
 (function($){
-
-
 $(document).ready(function() {
 
 	// ----------Initilization for fullPage.js------------
@@ -15,7 +15,6 @@ $(document).ready(function() {
         showActiveTooltip: false,
 
         onLeave: function(index, nextIndex, direction){
-            var leavingSection = $(this);
             if(nextIndex == 1){
 		    	TweenMax.to($(".main-menu-item"), .5, {height: "4em", lineHeight: "4em", fontSize: "2em"});
 		    	TweenMax.to($(".logo"), .5, {height: "6.5em"});
@@ -132,8 +131,8 @@ $(document).ready(function() {
 	var profileTL = new TimelineMax();
 	profileTL.from("#kelly-image", .55, {scale: 0, ease:Bounce.easeOut})
 			 .from("#eriya-image", .55, {scale: 0, ease:Bounce.easeOut}, 0)
-			 .from(".name-label.kelly", .2, {transform: "translateX(-2000px)"}, .85)
-			 .from(".name-label.eriya", .2, {transform: "translateX(2000px)"}, .85); //target, duration, props, startTime
+			 .from(".name-label.kelly", .2, {transform: "translateX(-2000px)"}, .55)
+			 .from(".name-label.eriya", .2, {transform: "translateX(2000px)"}, .55); //target, duration, props, startTime
 
 	var profileScene = new ScrollMagic.Scene({triggerElement: "#profile-trigger", duration: 0})
 								.setTween(profileTL)
@@ -141,4 +140,4 @@ $(document).ready(function() {
 
 
 }); 
-})(jQuery);
+})(jQuery); // End of making jQuery safe?
