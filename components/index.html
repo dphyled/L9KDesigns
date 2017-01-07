@@ -10,6 +10,8 @@
 	
 	<link rel="stylesheet" type="text/css" href="styles/style.css" media="all" />
 	<link href="https://fonts.googleapis.com/css?family=Jura:300" rel="stylesheet">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
 	<header id="header" class="header">
@@ -17,7 +19,9 @@
 		<nav id="main-menu" class="main-menu">
 			<a href="#work" class="main-menu-item">WORK</a>
 			<a href="#about" class="main-menu-item">ABOUT</a>
-			<a href="#home"><img class="logo" src="images/logowb.png" /></a>
+			<div class="main-menu-item logo-container">
+				<a href="#home"><img class="logo" src="images/logowb.png" /></a>
+			</div>
 			<a href="#feed" class="main-menu-item">FEED</a>
 			<a href="#contact" class="main-menu-item">CONTACT</a>
 		</nav>
@@ -32,6 +36,7 @@
 				<li class="layer slide1-2-birds" data-depth="0.1">
 					<img id="bird1" src="images/bird.svg" alt="A bird!" class="bird1">
 					<img id="bird2" src="images/bird.svg" alt="Another bird!" class="bird2">
+					<img id="bird3" src="images/bird.svg" alt="So many birds!" class="bird3">
 				</li>
 				<li class="layer slide1-3" data-depth="0.03"></li>
 				<li class="layer slide1-4" data-depth="0.00"></li>

@@ -58,8 +58,8 @@ $(document).ready(function() {
 
 	// ----------Birds Flying----------
 	//set these to window width/height divided by 100 to make flight path values into percentages
-	var bird1XScalar = 19; //set to width of window
-	var bird1YScalar = 8; //set to height of window
+	var bird1XScalar = $(window).width() / 100;
+	var bird1YScalar = $(window).height() / 100;
 
 	var bird1Flightpath = {
 		soar : {
@@ -114,6 +114,12 @@ $(document).ready(function() {
 		.add(TweenMax.to($("#bird2"), .01, {rotationX: 0}));
 	bird2Flight.play(35);
 
+	var bird3Flight = new TimelineMax({repeat:-1})
+		.add(TweenMax.to($("#bird3"), 22, {css:{bezier:bird1Flightpath.soar, scale: 1.1}, ease:Power1.easeInOut}))
+		.add(TweenMax.to($("#bird3"), .01, {rotationX: 180}))
+		.add(TweenMax.to($("#bird3"), 29, {css:{bezier:bird1Flightpath.return, scale: 1}, ease:Power1.easeInOut}))
+		.add(TweenMax.to($("#bird3"), .01, {rotationX: 0}));
+	bird3Flight.play(37);
 
 
 
@@ -121,12 +127,13 @@ $(document).ready(function() {
 	// ----------Initialize ScrollMagic Controller----------
 	var controller = new ScrollMagic.Controller();
 
-	// ----------Profile Page animations----------
+
+	// ---------- About/Profile Page animations----------
 	var profileTL = new TimelineMax();
-	profileTL.from("#kelly-image", .75, {transform: "translateX(-2000px)", scale: 0, ease:Bounce.easeOut})
-			 .from("#eriya-image", .75, {transform: "translateX(2000px)", scale: 0, ease:Bounce.easeOut}, 0)
-			 .from(".name-label.kelly", .2, {transform: "translateX(-2000px)"})
-			 .from(".name-label.eriya", .2, {transform: "translateX(2000px)"}); //target, duration, props, startTime
+	profileTL.from("#kelly-image", .55, {scale: 0, ease:Bounce.easeOut})
+			 .from("#eriya-image", .55, {scale: 0, ease:Bounce.easeOut}, 0)
+			 .from(".name-label.kelly", .2, {transform: "translateX(-2000px)"}, .85)
+			 .from(".name-label.eriya", .2, {transform: "translateX(2000px)"}, .85); //target, duration, props, startTime
 
 	var profileScene = new ScrollMagic.Scene({triggerElement: "#profile-trigger", duration: 0})
 								.setTween(profileTL)

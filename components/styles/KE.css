@@ -15,7 +15,7 @@ html, body {
 }
 
 
-/*  HEADER and MAIN MENU  */
+/*  ---------------HEADER and MAIN MENU---------------  */
 
 .header {
 	position: fixed;
@@ -58,7 +58,7 @@ html, body {
 	max-width: 90%;
 	max-height: 90%;
 	height: 7em;
-	padding: 0 1.5em;
+	padding: 0;
 	vertical-align: middle;
 	opacity: 1;
 	transform: scale(1);
@@ -70,7 +70,7 @@ html, body {
 
 .main-menu-item {
 	display: inline-block;
-	width: 5.5em;
+	width: 5.4em;
 	height: 4em;
 	line-height: 4em;
 	text-decoration: none;
@@ -84,13 +84,18 @@ html, body {
 	letter-spacing: .1em;
 }
 
+.logo-container {
+	width: auto;
+	padding: 0 !important;
+}
+
 .main-menu-item:hover {
 	letter-spacing: .2em;
 	text-decoration: underline;
 	color: #a8c9d7 !important;
 }
 
-@media screen and (max-width: 1350px) {
+@media screen and (max-width: 1450px) {
 	.main-menu {
 		font-size: .9em;
 	}
@@ -101,10 +106,32 @@ html, body {
     }
 }
 
+@media screen and (max-width: 1120px) {
+	.main-menu {
+		font-size: .75em;
+	}
+
+	.main-menu-item {
+    	width: 4.7em;
+    	padding: 0 .8em;
+    }
+}
+
+@media screen and (max-width: 790px) {
+	.main-menu-item {
+    	width: 3.7em;
+    	padding: 0 .5em;
+    }
+}
+
+@media screen and (max-width: 600px) {
+	.header {
+		display: none;
+	}
+}
 
 
-
-/*  PAGE SLIDES/SECTIONS  */
+/*  ---------------PAGE SLIDES/SECTIONS---------------  */
 
 #fullpage {
 	opacity: 0;
@@ -144,7 +171,7 @@ html, body {
 }
 
 
-/*  SLIDE1 -- TOP  */
+/*  ---------------SLIDE1 -- TOP---------------  */
 
 .slide1 div {
 	position: absolute;
@@ -166,7 +193,13 @@ html, body {
 	background: url(../images/back-logo.png) center no-repeat;
 	background-size: 70vw;
 	z-index: 11;
+}
 
+
+@media screen and (max-width: 1000px) {
+	.slide1-1 {
+		background-size: 120vw;
+	}
 }
 
 .slide1-2 {
@@ -199,6 +232,14 @@ html, body {
 	z-index: 7;	
 }
 
+@media screen and (max-width: 1200px) {
+	.slide1-4 {
+		background-size: auto 100vh;
+		background-position: center;
+		max-width: 1200px;
+	}
+}
+
 .bird1 {
 	width: 1.5vw;
 	position: absolute;
@@ -213,18 +254,31 @@ html, body {
 	right: 55%;
 }
 
-@media screen and (max-width: 1200px) {
-	.slide1-4 {
-		background-size: auto 100vh;
-		background-position: center;
-		max-width: 1200px;
+.bird3 {
+	width: 1.1vw;
+	position: absolute;
+	bottom: 65%;
+	left: 25%;
+}
+
+@media screen and (max-width: 1000px) {
+	.bird1 {
+		width: 2.4vw;
+	}
+
+	.bird2 {
+		width: 2.1vw;
+	}
+
+	.bird3 {
+		width: 2.3vw;
 	}
 }
 
 
 
 
-/*  PAGE ELEMENTS  */
+/*  ---------------SLIDE3 -- ABOUT---------------  */
 .trigger {
 	width: 100%;
 	height: 0px;
@@ -292,4 +346,26 @@ html, body {
 
 .name-label.eriya {
 	right: 0;
+}
+
+
+
+/*  ---------------OTHER ELEMENTS---------------  */
+#fp-nav ul li .fp-tooltip {
+	color: black;
+	font-size: 1.3em;
+	font-weight: bolder;
+	font-family: 'Jura', sans-serif;
+	top: -0.3em;
+}
+
+@media screen and (max-width: 600px) {
+	#fp-nav {
+		top: 15%;
+	}
+	
+	#fp-nav ul li .active + .fp-tooltip {
+		opacity: 1;
+		width: auto;
+	}
 }
