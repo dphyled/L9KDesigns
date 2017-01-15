@@ -8,11 +8,14 @@ $(document).ready(function() {
     $('#fullpage').fullpage({
     	scrollBar: true,
     	anchors: ['home', 'work', 'about', 'feed', 'contact'],
-    	fitToSectionDelay: 300,
+    	fitToSectionDelay: 500,
     	navigation: true,
         navigationPosition: 'right',
         navigationTooltips: ['Top', 'Work', 'About', 'Feed', 'Contact'],
         showActiveTooltip: false,
+        bigSectionsDestination: 'top',
+        responsiveWidth: 600,
+        responsiveHeight: 500,
 
         onLeave: function(index, nextIndex, direction){
         	// Set header/logo sizes depending on whether next slide is top slide or not
@@ -27,6 +30,7 @@ $(document).ready(function() {
 		    	TweenMax.to($(".header-filler"), .8, {opacity: 1});	    
             }
 
+            // Reset the slow zoom effect when scrolling to slide 3
             if(nextIndex == 3) {
 				slowZoomScene = new ScrollMagic.Scene({triggerElement: "#profile-trigger", duration: 0})
 											.setTween(slowZoomIn)
@@ -45,10 +49,6 @@ $(document).ready(function() {
 		frictionX: 0.05,
 		frictionY: 0.05,
 	});
-
-
-
-
 
 
 
@@ -85,13 +85,15 @@ $(document).ready(function() {
 					{x: bird1XScalar * 25,	y: bird1YScalar * 9},
 					{x: bird1XScalar * 30,	y: bird1YScalar * 12},
 					{x: bird1XScalar * 35,	y: bird1YScalar * 9},
-					{x: bird1XScalar * 40,	y: bird1YScalar * 5}
+					{x: bird1XScalar * 40,	y: bird1YScalar * 5},
+					{x: bird1XScalar * 43,	y: bird1YScalar * 3}
 				]
 		},
 		return : {
 			curviness: 1.25,
 			autoRotate: true,
 			values: [
+					{x: bird1XScalar * 39,	y: bird1YScalar * 4},
 					{x: bird1XScalar * 35,	y: bird1YScalar * 5},
 					{x: bird1XScalar * 32,	y: bird1YScalar * 4},
 					{x: bird1XScalar * 29,	y: bird1YScalar * 3},
@@ -159,6 +161,19 @@ $(document).ready(function() {
 								.setTween(slowZoomIn)
 								.addTo(controller);
 
+
+	// Setup other page elements
+	$(".more-arrow").click(function() {
+		$.fn.fullpage.moveSectionDown();
+	});
+
+	$("#mobile-menu-trigger").click(function() {
+		$("#mobile-menu").addClass("active");
+	});
+
+	$("#close-mobile-menu, .mobile-menu-item").click(function() {
+		$("#mobile-menu").removeClass("active");
+	});
 
 }); 
 })(jQuery); // End of making jQuery safe?

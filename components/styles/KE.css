@@ -70,7 +70,7 @@ html, body {
 }
 
 .logo path.circle {
-	animation: logo-animation 10s linear infinite;
+	animation: logo-animation 6s linear infinite;
 	/*stroke-dasharray: 300, 10;*/
 }
 
@@ -95,10 +95,11 @@ html, body {
 }
 
 @keyframes logo-animation {
-	0% { stroke: white; }
-	33% { stroke: gray; }
-	66% { stroke: blue; }
-	100% { stroke: white; }
+	0% { stroke: red; }
+	25% { stroke: gray; }
+	50% { stroke: blue; }
+	75% { stroke: gray; }
+	100% { stroke: red; }
 }
 
 .main-menu-item {
@@ -164,11 +165,100 @@ html, body {
 }
 
 
+/*  ---------------MOBILE MENU---------------  */
+.mobile-menu {
+	display: none;
+	opacity: 0;
+	pointer-events: none;
+	position: fixed;
+	top: -100%;
+	right: 0;
+	z-index: 10000;
+	width: 100%;
+	
+	background-color: gray;
+	background-image:
+		linear-gradient(
+			to bottom right,
+			gray, #313131
+		);
+
+	transition: .5s all;
+}
+
+.mobile-menu.active {
+	top: 0;
+	opacity: 1;
+	pointer-events: initial;
+}
+
+.mobile-menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.mobile-menu-item {
+	font-size: 3em;
+	text-align: center;
+	padding: .3em;
+	font-weight: bold;
+	cursor: pointer !important;
+
+	transition: .3s all;
+}
+
+.mobile-menu-item:not(:last-of-type) {
+	border-bottom: 2px solid black;
+}
+
+.mobile-menu-item:hover {
+	transform: scale(1.1);
+}
+
+.mobile-menu-item.close {
+}
+
+.mobile-menu-item.close svg {
+	width: .9em;
+	position: relative;
+	top: .16em;
+}
+
+.mobile-menu-item a {
+	display: inline-block;
+	width: 100%;
+	color: black !important;
+	text-decoration: none !important;
+}
+
+.mobile-menu-trigger {
+	display: none;
+	position: fixed;
+	top: 1em;
+	right: 1em;
+	z-index: 9999;
+	width: 20vw;
+	height: 20vw;
+	cursor: pointer;
+	background-color: gray;
+}
+
+@media screen and (max-width: 600px) {
+	.mobile-menu, .mobile-menu-trigger {
+		display: block;
+	}
+}
+
 /*  ---------------PAGE SLIDES/SECTIONS---------------  */
 
 #fullpage {
 	opacity: 0;
 	overflow: hidden;
+}
+
+.page-slide {
+	min-height: 100vh;
 }
 
 .slide2 {
@@ -214,6 +304,7 @@ html, body {
 
 /*  ---------------SLIDE1 -- TOP---------------  */
 
+/*Although there are no divs in slide 1 in the HTML, the Fullpage.js is making one, so this actually does something*/
 .slide1 div {
 	position: absolute;
 	top: 0;
@@ -229,6 +320,9 @@ html, body {
 	overflow: hidden;
 }
 
+.main-scene {
+	z-index: 1;
+}
 
 .slide1-1 {
 	background: url(../images/back-logo.png) center no-repeat;
@@ -315,6 +409,33 @@ html, body {
 		width: 2.3vw;
 	}
 }
+
+.more-arrow {
+	display: block;
+	width: 100%;
+	z-index: 101;
+	position: absolute;
+	bottom: 25px;
+	text-align: center;
+	cursor: pointer;
+
+	animation: bounce .4s infinite alternate;
+}
+
+.more-arrow svg {
+	width: 20vw;
+	max-width: 100px;
+}
+
+@keyframes bounce {
+	from {
+		transform: translateY(10px);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+
 
 
 /*  ---------------SLIDE2 -- PAST WORK/PROJECTS---------------  */
@@ -436,6 +557,37 @@ html, body {
 	right: -.5em;
 }
 
+.profile-bio {
+	position: absolute;
+	opacity: 0;
+	font-size: 1.3em;
+	font-weight: 900;
+	transform: rotateX(90deg);
+
+	transition: .3s all;
+}
+
+.profile-bio.kelly {
+	left: 0;
+}
+
+.profile-bio.eriya {
+	right: -1em;
+	top: 2.75em;
+}
+
+.profile-image.kelly img:hover ~ .profile-bio {
+	left: -1.15em;
+	opacity: 1;
+	transform: rotateX(0deg);
+}
+
+.profile-image.eriya img:hover ~ .profile-bio {
+	right: -2.5em;
+	opacity: 1;
+	transform: rotateX(0deg);
+}
+
 @media screen and (max-width: 1400px) {
 	.profile-image img {
 		width: 30vw;
@@ -465,7 +617,31 @@ html, body {
 		text-shadow: 0 5px 2px rgba(150, 150, 150, 1);
 		bottom: -1.5em;
 		right: -.5em;
-	}	
+	}
+
+	.profile-bio.kelly {
+		left: 0;
+		top: 0;
+	}
+
+	.profile-bio.eriya {
+		right: 0;
+		bottom: -4.95em;
+		top: initial;
+	}
+
+	.profile-image.kelly img:hover ~ .profile-bio {
+		left: -1em;
+		top: -1.5em;
+		opacity: 1;
+		transform: rotateX(0deg);
+	}
+
+	.profile-image.eriya img:hover ~ .profile-bio {
+		right: -1.4em;
+		opacity: 1;
+		transform: rotateX(0deg);
+	}
 }
 
 @media screen and (max-width: 800px) {
@@ -481,7 +657,6 @@ html, body {
 		width: 45vw;
 	}
 }
-
 
 
 /*  ---------------SLIDE4 -- FEED---------------  */
@@ -518,7 +693,7 @@ html, body {
 	top: -0.3em;
 }
 
-@media screen and (max-width: 600px) {
+/*@media screen and (max-width: 600px) {
 	#fp-nav {
 		top: 15%;
 	}
@@ -527,6 +702,11 @@ html, body {
 		opacity: 1;
 		width: auto;
 	}
+}*/
+
+#fp-nav ul li .active + .fp-tooltip {
+	opacity: 1;
+	width: auto;
 }
 
 .placeholder {
