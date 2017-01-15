@@ -57,12 +57,48 @@ html, body {
 	height: 7em;
 	padding: 0;
 	vertical-align: middle;
-	opacity: 1;
 	transform: scale(1);
 }
 
 .logo:hover {
 	transform: scale(1.1) !important;
+}
+
+.logo path {
+	stroke: white;
+	transition: .5s all;
+}
+
+.logo path.circle {
+	animation: logo-animation 10s linear infinite;
+	/*stroke-dasharray: 300, 10;*/
+}
+
+.logo path:not(.circle) {
+	fill: white;
+}
+
+.logo:hover path {
+	/* stroke: #a8c9d7; */
+	stroke: #920000;
+}
+
+.logo:hover path:not(.circle) {
+	/* fill: #a8c9d7; */
+	fill: #920000;
+}
+
+.logo:hover path.circle {
+	/* fill: #a8c9d7; */
+	stroke: white !important;
+	animation: none;
+}
+
+@keyframes logo-animation {
+	0% { stroke: white; }
+	33% { stroke: gray; }
+	66% { stroke: blue; }
+	100% { stroke: white; }
 }
 
 .main-menu-item {
@@ -164,13 +200,14 @@ html, body {
 }
 
 .in-slide-container {
-	width: 80%;
+	width: 80vw;
+	max-width: 1200px;
 	margin: 0 auto;
 }
 
 @media screen and (max-width: 800px) {
 	.in-slide-container {
-		width: 98%;
+		width: 95vw;
 	}
 }
 
@@ -311,7 +348,8 @@ html, body {
 /*  ---------------SLIDE3 -- ABOUT---------------  */
 .slide3 h1 {
 	position: relative;
-	top: -2em;
+	top: -1.5em;
+	left: 10vw;
 	font-size: 3em;
 }
 
@@ -447,6 +485,10 @@ html, body {
 
 
 /*  ---------------SLIDE4 -- FEED---------------  */
+.slide4 .in-slide-container {
+	max-width: 1100px;
+}
+
 .feed {
 	box-sizing: border-box;
 	border: 3px solid black;

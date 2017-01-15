@@ -15,6 +15,7 @@ $(document).ready(function() {
         showActiveTooltip: false,
 
         onLeave: function(index, nextIndex, direction){
+        	// Set header/logo sizes depending on whether next slide is top slide or not
             if(nextIndex == 1){
 		    	TweenMax.to($(".main-menu-item"), .5, {height: "4em", lineHeight: "4em", fontSize: "2em"});
 		    	TweenMax.to($(".logo"), .5, {height: "6.5em"});
@@ -24,6 +25,12 @@ $(document).ready(function() {
 		    	TweenMax.to($(".main-menu-item"), .5, {height: "3.25em", lineHeight: "3.25em", fontSize: "1.6em"});
 		    	TweenMax.to($(".logo"), .5, {height: "5.5em"});
 		    	TweenMax.to($(".header-filler"), .8, {opacity: 1});	    
+            }
+
+            if(nextIndex == 3) {
+				slowZoomScene = new ScrollMagic.Scene({triggerElement: "#profile-trigger", duration: 0})
+											.setTween(slowZoomIn)
+											.addTo(controller);
             }
         }    	
     });
@@ -57,6 +64,9 @@ $(document).ready(function() {
 
 	// ----------Birds Flying----------
 	//set these to window width/height divided by 100 to make flight path values into percentages
+	var bird1 = $("#bird1");
+	var bird2 = $("#bird2");
+	var bird3 = $("#bird3");
 	var bird1XScalar = $(window).width() / 100;
 	var bird1YScalar = $(window).height() / 100;
 
@@ -100,25 +110,26 @@ $(document).ready(function() {
 	};
 
 	var bird1Flight = new TimelineMax({repeat:-1})
-		.add(TweenMax.to($("#bird1"), 25, {css:{bezier:bird1Flightpath.soar, scale: .6}, ease:Power1.easeInOut}))
-		.add(TweenMax.to($("#bird1"), .01, {rotationX: 180}))
-		.add(TweenMax.to($("#bird1"), 30, {css:{bezier:bird1Flightpath.return, scale: 1}, ease:Power1.easeInOut}))
-		.add(TweenMax.to($("#bird1"), .01, {rotationX: 0}));
+		.add(TweenMax.to(bird1, 25, {css:{bezier:bird1Flightpath.soar, scale: .6}, ease:Power1.easeInOut}))
+		.add(TweenMax.to(bird1, .01, {rotationX: 180}))
+		.add(TweenMax.to(bird1, 30, {css:{bezier:bird1Flightpath.return, scale: 1}, ease:Power1.easeInOut}))
+		.add(TweenMax.to(bird1, .01, {rotationX: 0}));
 	bird1Flight.play(3);
 
 	var bird2Flight = new TimelineMax({repeat:-1})
-		.add(TweenMax.to($("#bird2"), 30, {css:{bezier:bird1Flightpath.soar, scale: 1.3}, ease:Power1.easeInOut}))
-		.add(TweenMax.to($("#bird2"), .01, {rotationX: 180}))
-		.add(TweenMax.to($("#bird2"), 35, {css:{bezier:bird1Flightpath.return, scale: 1}, ease:Power1.easeInOut}))
-		.add(TweenMax.to($("#bird2"), .01, {rotationX: 0}));
+		.add(TweenMax.to(bird2, 30, {css:{bezier:bird1Flightpath.soar, scale: 1.3}, ease:Power1.easeInOut}))
+		.add(TweenMax.to(bird2, .01, {rotationX: 180}))
+		.add(TweenMax.to(bird2, 35, {css:{bezier:bird1Flightpath.return, scale: 1}, ease:Power1.easeInOut}))
+		.add(TweenMax.to(bird2, .01, {rotationX: 0}));
 	bird2Flight.play(35);
 
 	var bird3Flight = new TimelineMax({repeat:-1})
-		.add(TweenMax.to($("#bird3"), 22, {css:{bezier:bird1Flightpath.soar, scale: 1.1}, ease:Power1.easeInOut}))
-		.add(TweenMax.to($("#bird3"), .01, {rotationX: 180}))
-		.add(TweenMax.to($("#bird3"), 29, {css:{bezier:bird1Flightpath.return, scale: 1}, ease:Power1.easeInOut}))
-		.add(TweenMax.to($("#bird3"), .01, {rotationX: 0}));
+		.add(TweenMax.to(bird3, 22, {css:{bezier:bird1Flightpath.soar, scale: 1.1}, ease:Power1.easeInOut}))
+		.add(TweenMax.to(bird3, .01, {rotationX: 180}))
+		.add(TweenMax.to(bird3, 29, {css:{bezier:bird1Flightpath.return, scale: 1}, ease:Power1.easeInOut}))
+		.add(TweenMax.to(bird3, .01, {rotationX: 0}));
 	bird3Flight.play(37);
+
 
 
 
@@ -128,14 +139,24 @@ $(document).ready(function() {
 
 
 	// ---------- About/Profile Page animations----------
+	// ---------- Pictures and names fly in----------
 	var profileTL = new TimelineMax();
 	profileTL.from("#kelly-image", .55, {scale: 0, ease:Bounce.easeOut})
 			 .from("#eriya-image", .55, {scale: 0, ease:Bounce.easeOut}, 0)
 			 .from(".name-label.kelly", .2, {transform: "translateX(-2000px)"}, .55)
 			 .from(".name-label.eriya", .2, {transform: "translateX(2000px)"}, .55); //target, duration, props, startTime
 
+	// ---------- Zoom Effect----------
+	var slowZoomIn = new TimelineMax()
+		.add(TweenMax.to($("#slide3 .in-slide-container"), 15, {scale: 1.1}));
+
 	var profileScene = new ScrollMagic.Scene({triggerElement: "#profile-trigger", duration: 0})
 								.setTween(profileTL)
+								.addTo(controller);
+
+	// Slow zoom scene also added in onLeave event of FullPage init, so that it resets when entering slide 3
+	var slowZoomScene = new ScrollMagic.Scene({triggerElement: "#profile-trigger", duration: 0})
+								.setTween(slowZoomIn)
 								.addTo(controller);
 
 
