@@ -16,6 +16,7 @@ $(document).ready(function() {
         bigSectionsDestination: 'top',
         responsiveWidth: 600,
         responsiveHeight: 500,
+        normalScrollElements: '#profile-bio-kelly, #profile-bio-eriya',
 
         onLeave: function(index, nextIndex, direction){
         	// Set header/logo sizes depending on whether next slide is top slide or not
@@ -173,6 +174,21 @@ $(document).ready(function() {
 
 	$("#close-mobile-menu, .mobile-menu-item").click(function() {
 		$("#mobile-menu").removeClass("active");
+	});
+
+	$("#kelly-image img").click(function() {
+		$("#profile-bio-kelly").addClass("active");
+		$("body").addClass("noScroll");
+	});
+
+	$("#eriya-image img").click(function() {
+		$("#profile-bio-eriya").addClass("active");
+		$("body").addClass("noScroll");
+	});
+
+	$(".profile-bio .close-x").click(function() {
+		$(".profile-bio").removeClass("active");
+		$("body").removeClass("noScroll");
 	});
 
 }); 

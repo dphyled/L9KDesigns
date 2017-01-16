@@ -345,7 +345,19 @@ html, body {
 	top: .5% !important;
 	width: 110% !important;
 	z-index: 9;
+
+	/*animation: bobbing 5s infinite alternate;*/
 }
+
+@keyframes bobbing {
+	from {
+		background-position: 0 1vh;
+	}
+	to {
+		background-position: 0 0;
+	}
+}
+
 
 .slide1-2-birds {
 	z-index: 10;
@@ -557,7 +569,7 @@ html, body {
 	right: -.5em;
 }
 
-.profile-bio {
+.profile-detail {
 	position: absolute;
 	opacity: 0;
 	font-size: 1.3em;
@@ -567,22 +579,22 @@ html, body {
 	transition: .3s all;
 }
 
-.profile-bio.kelly {
+.profile-detail.kelly {
 	left: 0;
 }
 
-.profile-bio.eriya {
+.profile-detail.eriya {
 	right: -1em;
 	top: 2.75em;
 }
 
-.profile-image.kelly img:hover ~ .profile-bio {
+.profile-image.kelly img:hover ~ .profile-detail {
 	left: -1.15em;
 	opacity: 1;
 	transform: rotateX(0deg);
 }
 
-.profile-image.eriya img:hover ~ .profile-bio {
+.profile-image.eriya img:hover ~ .profile-detail {
 	right: -2.5em;
 	opacity: 1;
 	transform: rotateX(0deg);
@@ -619,25 +631,25 @@ html, body {
 		right: -.5em;
 	}
 
-	.profile-bio.kelly {
+	.profile-detail.kelly {
 		left: 0;
 		top: 0;
 	}
 
-	.profile-bio.eriya {
+	.profile-detail.eriya {
 		right: 0;
 		bottom: -4.95em;
 		top: initial;
 	}
 
-	.profile-image.kelly img:hover ~ .profile-bio {
+	.profile-image.kelly img:hover ~ .profile-detail {
 		left: -1em;
 		top: -1.5em;
 		opacity: 1;
 		transform: rotateX(0deg);
 	}
 
-	.profile-image.eriya img:hover ~ .profile-bio {
+	.profile-image.eriya img:hover ~ .profile-detail {
 		right: -1.4em;
 		opacity: 1;
 		transform: rotateX(0deg);
@@ -658,6 +670,44 @@ html, body {
 	}
 }
 
+.profile-bio {
+	position: fixed;
+	box-sizing: border-box;
+	top: 11.5vh;
+	width: 98vw;
+	height: calc(98vh - 80px);
+	
+	left: 1vw;
+	top: calc(80px + 1vh);
+
+	margin: 0 auto;
+	background-color: rgba( 0, 0, 0, .95 );
+	border: .4em solid black;
+	border-radius: 1em;
+
+	z-index: 100001;
+	opacity: 0;
+	pointer-events: none;
+
+	transition: .3s all;
+}
+
+.profile-bio.active {
+	opacity: 1;
+	pointer-events: initial;
+}
+
+.profile-bio .close-x {
+	width: 4vw;
+	position: absolute;
+	top: .1em;
+	right: .1em;
+	transition: .3s all;
+}
+
+.profile-bio .close-x:hover {
+	transform: scale(1.1);
+}
 
 /*  ---------------SLIDE4 -- FEED---------------  */
 .slide4 .in-slide-container {
@@ -712,4 +762,8 @@ html, body {
 .placeholder {
 	text-align: center;
 	font-size: 3em;
+}
+
+body.noScroll {
+	overflow: hidden !important;
 }
