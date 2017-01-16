@@ -709,6 +709,26 @@ html, body {
 	transform: scale(1.1);
 }
 
+@media screen and (max-width: 1200px) {
+	.profile-bio .close-x {
+		width: 7vw;
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.profile-bio .close-x {
+		width: 12vw;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.profile-bio {
+		top: 1vh;
+		height: 98vh;
+	}
+}
+
+
 /*  ---------------SLIDE4 -- FEED---------------  */
 .slide4 .in-slide-container {
 	max-width: 1100px;

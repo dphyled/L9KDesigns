@@ -146,8 +146,8 @@ $(document).ready(function() {
 	var profileTL = new TimelineMax();
 	profileTL.from("#kelly-image", .55, {scale: 0, ease:Bounce.easeOut})
 			 .from("#eriya-image", .55, {scale: 0, ease:Bounce.easeOut}, 0)
-			 .from(".name-label.kelly", .2, {transform: "translateX(-2000px)"}, .55)
-			 .from(".name-label.eriya", .2, {transform: "translateX(2000px)"}, .55); //target, duration, props, startTime
+			 .from(".name-label.kelly", .2, {transform: "translateX(-2000px)"}, .40)
+			 .from(".name-label.eriya", .2, {transform: "translateX(2000px)"}, .40); //target, duration, props, startTime
 
 	// ---------- Zoom Effect----------
 	var slowZoomIn = new TimelineMax()
