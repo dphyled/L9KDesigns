@@ -169,11 +169,12 @@ $(document).ready(function() {
 	});
 
 	$("#mobile-menu-trigger").click(function() {
-		$("#mobile-menu").addClass("active");
+		$("#mobile-menu").toggleClass("active");
 	});
 
 	$("#close-mobile-menu, .mobile-menu-item").click(function() {
-		$("#mobile-menu").removeClass("active");
+		$("#mobile-menu").toggleClass("active");
+		$('#burger-icon').toggleClass('open');		
 	});
 
 	$("#kelly-image img").click(function() {
@@ -189,6 +190,10 @@ $(document).ready(function() {
 	$(".profile-bio .close-x").click(function() {
 		$(".profile-bio").removeClass("active");
 		$("body").removeClass("noScroll");
+	});
+
+	$('#mobile-menu-trigger').click(function(){
+		$('#burger-icon').toggleClass('open');
 	});
 
 }); 

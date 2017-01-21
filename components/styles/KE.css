@@ -176,14 +176,14 @@ html, body {
 	z-index: 10000;
 	width: 100%;
 	
-	background-color: gray;
-	background-image:
+	background-color: black;
+/*	background-image:
 		linear-gradient(
 			to bottom right,
 			gray, #313131
-		);
+		);*/
 
-	transition: .5s all;
+	transition: .7s all;
 }
 
 .mobile-menu.active {
@@ -199,17 +199,19 @@ html, body {
 }
 
 .mobile-menu-item {
-	font-size: 3em;
+	font-size: 2.5em;
 	text-align: center;
-	padding: .3em;
-	font-weight: bold;
+	padding: .7em;
+	font-weight: 100;
+	letter-spacing: .2em;
 	cursor: pointer !important;
 
+	color: white;
 	transition: .3s all;
 }
 
 .mobile-menu-item:not(:last-of-type) {
-	border-bottom: 2px solid black;
+	border-bottom: 2px double gray;
 }
 
 .mobile-menu-item:hover {
@@ -228,7 +230,7 @@ html, body {
 .mobile-menu-item a {
 	display: inline-block;
 	width: 100%;
-	color: black !important;
+	color: white !important;
 	text-decoration: none !important;
 }
 
@@ -238,16 +240,90 @@ html, body {
 	top: 1em;
 	right: 1em;
 	z-index: 9999;
-	width: 20vw;
-	height: 20vw;
+	width: 5em;
+	height: 5em;
 	cursor: pointer;
-	background-color: gray;
+	background-color: rgba(0,0,30,.5);
+	border-radius: .5em;
 }
 
 @media screen and (max-width: 600px) {
 	.mobile-menu, .mobile-menu-trigger {
 		display: block;
 	}
+}
+
+@media screen and (max-width: 400px) {
+	.mobile-menu-trigger {
+		width: 4.5em;
+		height: 4.5em;
+	}
+}
+
+/* Burger Icon */
+#burger-icon {
+	width: 70%;
+	height: 20vw;
+	position: relative;
+	top: 1em;
+	margin: 0 auto;
+	transform: rotate(0deg);
+	transition: .5s ease-in-out;
+	cursor: pointer;
+}
+
+#burger-icon span {
+	display: block;
+	position: absolute;
+	height: .5em;
+	width: 100%;
+	background: black;
+	border-radius: 1em;
+	opacity: 1;
+	left: 0;
+	transform: rotate(0deg);
+	transition: .25s ease-in-out;
+}
+
+@media screen and (max-width: 400px) {
+	#burger-icon {
+		top: .8em;
+	}
+	#burger-icon span {
+		height: .4em;
+	}
+}
+
+#burger-icon span:nth-child(1) {
+  top: 0px;
+}
+
+#burger-icon span:nth-child(2),#burger-icon span:nth-child(3) {
+  top: 18px;
+}
+
+#burger-icon span:nth-child(4) {
+  top: 36px;
+}
+
+#burger-icon.open span:nth-child(1) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
+}
+
+#burger-icon.open span:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+#burger-icon.open span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+#burger-icon.open span:nth-child(4) {
+  top: 18px;
+  width: 0%;
+  left: 50%;
 }
 
 /*  ---------------PAGE SLIDES/SECTIONS---------------  */
@@ -725,6 +801,31 @@ html, body {
 	.profile-bio {
 		top: 1vh;
 		height: 98vh;
+	}
+}
+
+.profile-bio-inner {
+	width: 90%;
+	max-width: 1000px;
+	margin: 2em auto;
+
+	color: white;
+}
+
+.profile-bio h2 {
+	font-size: 2em;
+}
+
+.profile-bio-list > li {
+	font-size: 1.4em;
+	padding: .4em;
+}
+
+@media screen and (max-width: 600px) {
+	.profile-bio-list > li {
+		font-size: 1.2em;
+		line-height: 1.3em;
+		padding: .3em;
 	}
 }
 
