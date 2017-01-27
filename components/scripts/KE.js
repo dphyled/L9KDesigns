@@ -7,11 +7,11 @@ $(document).ready(function() {
 	// ----------Initilization for fullPage.js------------
     $('#fullpage').fullpage({
     	scrollBar: true,
-    	anchors: ['home', 'work', 'about', 'feed', 'contact'],
+    	anchors: ['home', 'about', 'work', 'feed', 'contact'],
     	fitToSectionDelay: 500,
     	navigation: true,
         navigationPosition: 'right',
-        navigationTooltips: ['Top', 'Work', 'About', 'Feed', 'Contact'],
+        navigationTooltips: ['Top', 'About', 'Work', 'Feed', 'Contact'],
         showActiveTooltip: false,
         bigSectionsDestination: 'top',
         responsiveWidth: 600,
@@ -22,25 +22,62 @@ $(document).ready(function() {
         	// Set header/logo sizes depending on whether next slide is top slide or not
             if(nextIndex == 1){
 		    	TweenMax.to($(".main-menu-item"), .5, {height: "4em", lineHeight: "4em", fontSize: "2em"});
-		    	TweenMax.to($(".logo"), .5, {height: "6.5em"});
-		    	TweenMax.to($(".header-filler"), .8, {opacity: 0});                
+		    	TweenMax.to($("#main-menu-logo"), .5, {height: "6.5em"});
+		    	TweenMax.to($(".header-filler"), .8, {opacity: 0});
             }
             else{
 		    	TweenMax.to($(".main-menu-item"), .5, {height: "3.25em", lineHeight: "3.25em", fontSize: "1.6em"});
-		    	TweenMax.to($(".logo"), .5, {height: "5.5em"});
+		    	TweenMax.to($("#main-menu-logo"), .5, {height: "5.5em"});
 		    	TweenMax.to($(".header-filler"), .8, {opacity: 1});	    
             }
 
-            // Reset the slow zoom effect when scrolling to slide 3
-            if(nextIndex == 3) {
+            // Reset the slow zoom effect when scrolling to slide 2
+            if(index == 2) {
 				slowZoomScene = new ScrollMagic.Scene({triggerElement: "#profile-trigger", duration: 0})
 											.setTween(slowZoomIn)
 											.addTo(controller);
+				//disableFullPage();
             }
-        }    	
+            else {
+            	//enableFullPage();
+            }
+        },
+
+    //     afterLoad: function(anchorLink, index){
+    //     	// Set header/logo sizes depending on whether this slide is top slide or not
+    //         if(index == 1){
+		  //   	TweenMax.to($(".main-menu-item"), .5, {height: "4em", lineHeight: "4em", fontSize: "2em"});
+		  //   	TweenMax.to($("#main-menu-logo"), .5, {height: "6.5em"});
+		  //   	TweenMax.to($(".header-filler"), .8, {opacity: 0});
+    //         }
+    //         else{
+		  //   	TweenMax.to($(".main-menu-item"), .5, {height: "3.25em", lineHeight: "3.25em", fontSize: "1.6em"});
+		  //   	TweenMax.to($("#main-menu-logo"), .5, {height: "5.5em"});
+		  //   	TweenMax.to($(".header-filler"), .8, {opacity: 1});	    
+    //         }
+
+    //         // Reset the slow zoom effect when scrolling to slide 2
+    //         if(index == 2) {
+				// slowZoomScene = new ScrollMagic.Scene({triggerElement: "#profile-trigger", duration: 0})
+				// 							.setTween(slowZoomIn)
+				// 							.addTo(controller);
+				// //disableFullPage();
+    //         }
+    //         else {
+    //         	//enableFullPage();
+    //         }
+    //     }        
     });
 
+    function enableFullPage() {
+		$.fn.fullpage.setAutoScrolling(true);
+		$.fn.fullpage.setFitToSection(true);
+    }
 
+    function disableFullPage() {
+		$.fn.fullpage.setAutoScrolling(false);
+		$.fn.fullpage.setFitToSection(false);
+    }
 
     // ----------Initilization for parallax.js------------
 	var scene = document.getElementById('main-scene');
@@ -151,7 +188,7 @@ $(document).ready(function() {
 
 	// ---------- Zoom Effect----------
 	var slowZoomIn = new TimelineMax()
-		.add(TweenMax.to($("#slide3 .in-slide-container"), 15, {scale: 1.1}));
+		.add(TweenMax.to($("#slide2 .in-slide-container"), 15, {scale: 1.1}));
 
 	var profileScene = new ScrollMagic.Scene({triggerElement: "#profile-trigger", duration: 0})
 								.setTween(profileTL)
@@ -170,11 +207,13 @@ $(document).ready(function() {
 
 	$("#mobile-menu-trigger").click(function() {
 		$("#mobile-menu").toggleClass("active");
+		$("body").addClass("noScroll");		
 	});
 
 	$("#close-mobile-menu, .mobile-menu-item").click(function() {
 		$("#mobile-menu").toggleClass("active");
-		$('#burger-icon').toggleClass('open');		
+		$('#burger-icon').toggleClass('open');
+		$("body").removeClass("noScroll");		
 	});
 
 	$("#kelly-image img").click(function() {

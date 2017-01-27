@@ -69,8 +69,8 @@ html, body {
 	transition: .5s all;
 }
 
-.logo path.circle {
-	animation: logo-animation 6s linear infinite;
+.logo .circle {
+	animation: logo-animation 4s linear infinite;
 	/*stroke-dasharray: 300, 10;*/
 }
 
@@ -88,22 +88,21 @@ html, body {
 	fill: #920000;
 }
 
-.logo:hover path.circle {
+.logo:hover .circle {
 	/* fill: #a8c9d7; */
 	stroke: white !important;
 	animation: none;
 }
 
 @keyframes logo-animation {
-	0% { stroke: red; }
-	25% { stroke: gray; }
-	50% { stroke: blue; }
-	75% { stroke: gray; }
-	100% { stroke: red; }
+	0% { stroke:  #920000; }
+	50% { stroke: black; }
+	100% { stroke:  #920000; }
 }
 
 .main-menu-item {
 	display: inline-block;
+	position: relative;
 	width: 5.4em;
 	height: 4em;
 	line-height: 4em;
@@ -118,15 +117,36 @@ html, body {
 	letter-spacing: .1em;
 }
 
-.logo-container {
-	width: auto;
-	padding: 0 !important;
+.main-menu-item:not(.logo-container)::after {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	opacity: 0;
+	left: 0;
+	right: 0;
+	bottom: .5em;
+	width: 0;
+	height: 2px;
+	background-color: #a8c9d7;
+	transition: .2s all ease;
+	margin: 0 auto;
 }
 
 .main-menu-item:hover {
 	letter-spacing: .2em;
-	text-decoration: underline;
+	/*text-decoration: underline;*/
 	color: #a8c9d7 !important;
+}
+
+.main-menu-item:not(.logo-container):hover::after {
+	bottom: .85em;
+	opacity: 1;
+	width: 40%;
+}
+
+.logo-container {
+	width: auto;
+	padding: 0 !important;
 }
 
 @media screen and (max-width: 1450px) {
@@ -174,15 +194,10 @@ html, body {
 	top: -100%;
 	right: 0;
 	z-index: 10000;
-	width: 100%;
+	width: 100vw;
+	height: 100vh;
 	
 	background-color: black;
-/*	background-image:
-		linear-gradient(
-			to bottom right,
-			gray, #313131
-		);*/
-
 	transition: .7s all;
 }
 
@@ -199,32 +214,59 @@ html, body {
 }
 
 .mobile-menu-item {
+	box-sizing: border-box;
+	height: 16.666vh;
+	line-height: 16.666vh;
 	font-size: 2.5em;
 	text-align: center;
-	padding: .7em;
 	font-weight: 100;
-	letter-spacing: .2em;
+	letter-spacing: .06em;
 	cursor: pointer !important;
-
 	color: white;
+	box-shadow: 0px 5px 15px 0px rgba(207,229,255,0.3);
+
 	transition: .3s all;
 }
 
+.mobile-menu-item::before {
+	content: "";
+	display: block;
+	position: absolute;
+	left: 2vw;
+	margin-top: 4.5vh;
+	width: 1.25vw;
+	height: 8vh;
+	background-color: #250000;
+}
+
 .mobile-menu-item:not(:last-of-type) {
-	border-bottom: 2px double gray;
+	/*border-bottom: 2px double gray;*/
 }
 
 .mobile-menu-item:hover {
 	transform: scale(1.1);
 }
 
+.mobile-menu-item.home {
+	margin-left: -2em;
+}
+
+.mobile-menu-logo {
+	display: inline-block;
+	width: 1.5em;
+	height: 1.5em;
+	padding-right: .5em;
+}
+
 .mobile-menu-item.close {
+	margin-left: -1em;
 }
 
 .mobile-menu-item.close svg {
-	width: .9em;
+	width: 1em;
 	position: relative;
 	top: .16em;
+	left: -.5em;
 }
 
 .mobile-menu-item a {
@@ -243,7 +285,7 @@ html, body {
 	width: 5em;
 	height: 5em;
 	cursor: pointer;
-	background-color: rgba(0,0,30,.5);
+	background-color: rgba(0,0,30,.3);
 	border-radius: .5em;
 }
 
@@ -338,11 +380,11 @@ html, body {
 }
 
 .slide2 {
-	background-color: green;
+	background-color: white;
 }
 
 .slide3 {
-	background-color: white;
+	background-color: green;
 }
 
 .slide4 {
@@ -525,40 +567,11 @@ html, body {
 }
 
 
-
-/*  ---------------SLIDE2 -- PAST WORK/PROJECTS---------------  */
-.project-list {
-	display: block;
-	width: 90%;
-	margin: 2em auto;
-	padding: 0;
-	list-style: none;
-	text-align: center;
-}
-
-.project-li {
-	display: inline-block;
-	width: 20%;
-	max-width: 15em;
-	min-width: 8em;
-	height: 8em;
-	border: 4px solid black;
-	border-radius: 8px;
-	box-shadow: 4px 4px 5px 0px black;
-	margin: 8px;
-
-	transition: .3s all;
-}
-
-.project-li:hover {
-	transform: scale(1.05);
-}
-
-/*  ---------------SLIDE3 -- ABOUT---------------  */
-.slide3 h1 {
+/*  ---------------SLIDE2 -- ABOUT---------------  */
+.slide2 h1 {
 	position: relative;
 	top: -1.5em;
-	left: 10vw;
+	padding: 0 10vw;
 	font-size: 3em;
 }
 
@@ -827,6 +840,36 @@ html, body {
 		line-height: 1.3em;
 		padding: .3em;
 	}
+}
+
+
+
+/*  ---------------SLIDE3 -- PAST WORK/PROJECTS---------------  */
+.project-list {
+	display: block;
+	width: 90%;
+	margin: 2em auto;
+	padding: 0;
+	list-style: none;
+	text-align: center;
+}
+
+.project-li {
+	display: inline-block;
+	width: 20%;
+	max-width: 15em;
+	min-width: 8em;
+	height: 8em;
+	border: 4px solid black;
+	border-radius: 8px;
+	box-shadow: 4px 4px 5px 0px black;
+	margin: 8px;
+
+	transition: .3s all;
+}
+
+.project-li:hover {
+	transform: scale(1.05);
 }
 
 
