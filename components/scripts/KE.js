@@ -18,11 +18,21 @@ $(document).ready(function() {
         responsiveHeight: 500,
         normalScrollElements: '#profile-bio-kelly, #profile-bio-eriya',
 
+
+        afterLoad: function(anchorLink, index){
+        	// Set header/logo for first slide transitions
+            if(index == 1){
+		    	TweenMax.to($(".main-menu-item"), .5, {height: "4em", lineHeight: "4em", fontSize: "2em"});
+		    	TweenMax.to($("#main-menu-logo"), .5, {height: "6em"});
+		    	TweenMax.to($(".header-filler"), .8, {opacity: 0});
+            }
+        },
+
         onLeave: function(index, nextIndex, direction){
         	// Set header/logo sizes depending on whether next slide is top slide or not
             if(nextIndex == 1){
 		    	TweenMax.to($(".main-menu-item"), .5, {height: "4em", lineHeight: "4em", fontSize: "2em"});
-		    	TweenMax.to($("#main-menu-logo"), .5, {height: "6.5em"});
+		    	TweenMax.to($("#main-menu-logo"), .5, {height: "6em"});
 		    	TweenMax.to($(".header-filler"), .8, {opacity: 0});
             }
             else{
@@ -32,7 +42,7 @@ $(document).ready(function() {
             }
 
             // Reset the slow zoom effect when scrolling to slide 2
-            if(index == 2) {
+            if(nextIndex == 2) {
 				slowZoomScene = new ScrollMagic.Scene({triggerElement: "#profile-trigger", duration: 0})
 											.setTween(slowZoomIn)
 											.addTo(controller);
@@ -41,32 +51,7 @@ $(document).ready(function() {
             else {
             	//enableFullPage();
             }
-        },
-
-    //     afterLoad: function(anchorLink, index){
-    //     	// Set header/logo sizes depending on whether this slide is top slide or not
-    //         if(index == 1){
-		  //   	TweenMax.to($(".main-menu-item"), .5, {height: "4em", lineHeight: "4em", fontSize: "2em"});
-		  //   	TweenMax.to($("#main-menu-logo"), .5, {height: "6.5em"});
-		  //   	TweenMax.to($(".header-filler"), .8, {opacity: 0});
-    //         }
-    //         else{
-		  //   	TweenMax.to($(".main-menu-item"), .5, {height: "3.25em", lineHeight: "3.25em", fontSize: "1.6em"});
-		  //   	TweenMax.to($("#main-menu-logo"), .5, {height: "5.5em"});
-		  //   	TweenMax.to($(".header-filler"), .8, {opacity: 1});	    
-    //         }
-
-    //         // Reset the slow zoom effect when scrolling to slide 2
-    //         if(index == 2) {
-				// slowZoomScene = new ScrollMagic.Scene({triggerElement: "#profile-trigger", duration: 0})
-				// 							.setTween(slowZoomIn)
-				// 							.addTo(controller);
-				// //disableFullPage();
-    //         }
-    //         else {
-    //         	//enableFullPage();
-    //         }
-    //     }        
+        }
     });
 
     function enableFullPage() {
@@ -84,8 +69,8 @@ $(document).ready(function() {
 	var parallax = new Parallax(scene, {
 		scalarX: 30,
   		scalarY: 10,
-		frictionX: 0.05,
-		frictionY: 0.05,
+		frictionX: 0.02,
+		frictionY: 0.02,
 	});
 
 
@@ -205,16 +190,25 @@ $(document).ready(function() {
 		$.fn.fullpage.moveSectionDown();
 	});
 
+
 	$("#mobile-menu-trigger").click(function() {
 		$("#mobile-menu").toggleClass("active");
-		$("body").addClass("noScroll");		
+		$("#mobile-menu-trigger").toggleClass("active");
+		if($(this).hasClass("active")) {
+			$("body").addClass("noScroll");
+		} else {
+			$("body").removeClass("noScroll");
+		}
+
 	});
 
 	$("#close-mobile-menu, .mobile-menu-item").click(function() {
 		$("#mobile-menu").toggleClass("active");
-		$('#burger-icon').toggleClass('open');
-		$("body").removeClass("noScroll");		
+		$("#mobile-menu-trigger").toggleClass("active");
+		$("body").removeClass("noScroll");
 	});
+
+
 
 	$("#kelly-image img").click(function() {
 		$("#profile-bio-kelly").addClass("active");
@@ -231,9 +225,38 @@ $(document).ready(function() {
 		$("body").removeClass("noScroll");
 	});
 
-	$('#mobile-menu-trigger').click(function(){
-		$('#burger-icon').toggleClass('open');
+
+
+
+	// Code for contact form
+	var form = $('#contact-form');
+	var submitButton = $('#contact-submit');
+
+	$(form).submit(function(event) {
+		submitButton.html('Sending...');
+
+		event.preventDefault();
+
+		// Serialize form data
+		var formData = $(form).serialize();
+
+		$.ajax({
+			type: 'POST',
+			url: $(form).attr('action'),
+			data: formData
+		})
+		.done(function(response) {
+			$('#name').val('');
+			$('#email').val('');
+			$('#message').val('');
+			submitButton.html('Sent!');
+		})
+		.fail(function(data) {
+			submitButton.html('Error... :(');
+		});
+
 	});
+
 
 }); 
 })(jQuery); // End of making jQuery safe?

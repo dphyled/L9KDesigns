@@ -42,6 +42,7 @@ jsSources = ['components/scripts/*.js'];
 sassSources = ['components/styles/*.scss'];
 cssSources = ['components/styles/*.css'];
 htmlSources = ['components/*.html'];
+phpSources = ['components/*.php'];
 imageSources = ['components/images/*'];
 
 // gulp.task('coffee', function() {
@@ -89,6 +90,12 @@ gulp.task('html', function() {
 		.pipe(connect.reload())
 });
 
+gulp.task('php', function() {
+	gulp.src(phpSources)
+		.pipe(gulp.dest(outputDir))
+		.pipe(connect.reload())
+});
+
 gulp.task('images', () =>
     gulp.src(imageSources)
         .pipe(imagemin())
@@ -102,6 +109,7 @@ gulp.task('watch', function() {					// in terminal "gulp watch"
 	gulp.watch(cssSources, ['css']);
 	// gulp.watch('components/sass/*.scss', ['compass']);
 	gulp.watch(htmlSources, ['html']);
+	gulp.watch(phpSources, ['php']);
 	gulp.watch(imageSources, ['images']);
 });
 
@@ -112,4 +120,4 @@ gulp.task('connect', function() {
 	});
 });
 
-gulp.task('default', ['html', 'js', 'css', 'images', 'connect', 'watch']);			// in terminal----  just "gulp"
+gulp.task('default', ['html', 'php', 'js', 'css', 'images', 'connect', 'watch']);			// in terminal----  just "gulp"

@@ -12,6 +12,10 @@
 	<link href="https://fonts.googleapis.com/css?family=Jura:300" rel="stylesheet">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+	<!--[if lt IE 9]>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<![endif]-->	
 </head>
 <body>
 	<header id="header" class="header">
@@ -21,7 +25,7 @@
 			<a href="#work" class="main-menu-item">WORK</a>
 			<div class="main-menu-item logo-container">
 				<a href="#home">
-					<svg id="main-menu-logo" class="logo main-menu-logo" width="282" height="316.49" enable-background="new 0 0 612 792" version="1.1" viewBox="0 0 281.99799 316.4902" xmlns="http://www.w3.org/2000/svg"><g stroke="#000"><circle class="circle" cx="141" cy="163.53" r="134" fill="none" stroke-miterlimit="10" stroke-width="16"/><path d="m166.51 233 105.82-30-11 29-131.11 31.242 58.754-158.79 29.356-4.453z"/><path d="m123.33 0.624-29.355 4.4531-56.557 152.85l-10.197 25.939-11 29 105.82-30-51.82 133 29.355-4.4531 58.754-158.79 7.8184-19.697 11.182-29.303-105.82 30zm17.764 138.21-7.7617 19.744-81.404 19.398 8.2168-20.043z"/></g></svg>
+					<svg id="logo" class="logo main-menu-logo" width="277" height="315.24" enable-background="new 0 0 612 792" version="1.1" viewBox="0 0 277 315.24219" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-116.76 -244.38)"><circle class="circle" cx="255.26" cy="409.12" r="134.5" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="8"/><polygon points="162.37 421.86 244.32 402.34 252.17 382.37 171.13 401.68" fill="none"/><path d="m234.32 244.38-29.355 4.4531-56.557 152.85-10.199 25.939-11 29 105.82-30-51.82 133 29.357-4.4531 57.881-156.43 8.8184-22.344 0.0547-0.0137 11-29-105.82 30zm95.498 91.834-29 8.332-62.5 166.33 134-36.787 11-29-105.82 30zm-77.646 46.158-7.8496 19.965-81.947 19.527 8.7637-20.184z"/></g></svg>
 				</a>
 			</div>
 			<a href="#feed" class="main-menu-item">FEED</a>
@@ -35,13 +39,13 @@
 		<section id="slide1" class="section page-slide slide1">
 			<ul id="main-scene" class="main-scene">
 				<li class="layer slide1-1" data-depth="0.00"></li>
-				<li class="layer slide1-2" data-depth="0.05"></li>
+				<li class="layer slide1-2" data-depth="0.04"></li>
 				<li class="layer slide1-2-birds" data-depth="0.1">
 					<img id="bird1" src="images/bird.svg" alt="A bird!" class="bird1">
 					<img id="bird2" src="images/bird.svg" alt="Another bird!" class="bird2">
 					<img id="bird3" src="images/bird.svg" alt="So many birds!" class="bird3">
 				</li>
-				<li class="layer slide1-3" data-depth="0.03"></li>
+				<li class="layer slide1-3" data-depth="0.07"></li>
 				<li class="layer slide1-4" data-depth="0.00"></li>
 			</ul>
 			<span class="more-arrow">
@@ -51,11 +55,11 @@
 			</span>				
 		</section>
 
-		<section id="slide2" class="section page-slide slide2">
+		<section id="slide2" class="section fp-auto-height-responsive page-slide slide2">
 			<div class="in-slide-container">
+				<div id="profile-trigger" class="scene-trigger"></div>
 				<h1>L9K Design Studio is...</h1>
 				<div class="profile-image-holder">
-					<div id="profile-trigger" class="trigger"></div>
 					<div id="kelly-image" class="profile-image kelly">
 						<img src="images/k.png" alt=""><div class="name-label kelly">KELLY</div>
 						<div class="profile-detail kelly">
@@ -72,7 +76,7 @@
 			</div>
 		</section>
 
-		<section id="slide3" class="section fp-auto-height page-slide slide3">
+		<section id="slide3" class="section fp-auto-height-responsive page-slide slide3">
 			<div class="in-slide-container">
 				<div class="placeholder">
 					<h1>Past projects</h1>
@@ -101,15 +105,35 @@
 		</section>
 
 		<section id="slide5" class="section page-slide slide5">
-			
+			<div class="in-slide-container contact">
+				<h2>Hit us up! We welcome feedback, suggestions, party invites, and business proposals. What's next?</h2>
+				<form id="contact-form" class="contact-form" action="contact.php" method="post">
+					<div class="field">
+						<label for="name">Name: (required)</label>
+						<input type="text" id="name" name="name" required placeholder="Your name...">
+					</div>
+					<div class="field">
+						<label for="email">Email: (required)</label>
+						<input type="email" id="email" name="email" required placeholder="Your email...">
+					</div>
+					<div class="field">
+						<label for="message">Message: (required)</label>
+						<textarea id="message" name="message" required placeholder="And your message..."></textarea>
+					</div>
+					<div class="field">
+						<button type="submit" id="contact-submit" name="submit">Send Message</button>
+					</div>
+				</form>
+				<div id="contact-form-response" class="contact-form-response"></div>
+			</div>
 		</section>
 	</div>
 
 	<div id="mobile-menu" class="mobile-menu">
 		<ul>
-			<li class="mobile-menu-item home"><a href="#home"><svg id="mobile-menu-logo" class="logo mobile-menu-logo" width="282" height="316.49" enable-background="new 0 0 612 792" version="1.1" viewBox="0 0 281.99799 316.4902" xmlns="http://www.w3.org/2000/svg"><g stroke="#000"><circle class="circle" cx="141" cy="163.53" r="134" fill="none" stroke-miterlimit="10" stroke-width="16"/><path d="m166.51 233 105.82-30-11 29-131.11 31.242 58.754-158.79 29.356-4.453z"/><path d="m123.33 0.624-29.355 4.4531-56.557 152.85l-10.197 25.939-11 29 105.82-30-51.82 133 29.355-4.4531 58.754-158.79 7.8184-19.697 11.182-29.303-105.82 30zm17.764 138.21-7.7617 19.744-81.404 19.398 8.2168-20.043z"/></g></svg>Home</a></li>
-			<li class="mobile-menu-item"><a href="#work">Work</a></li>
+			<li class="mobile-menu-item home"><a href="#home"><svg id="mobile-menu-logo" class="logo mobile-menu-logo" width="277" height="315.24" enable-background="new 0 0 612 792" version="1.1" viewBox="0 0 277 315.24219" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-116.76 -244.38)"><circle class="circle" cx="255.26" cy="409.12" r="134.5" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="8"/><polygon points="162.37 421.86 244.32 402.34 252.17 382.37 171.13 401.68" fill="none"/><path d="m234.32 244.38-29.355 4.4531-56.557 152.85-10.199 25.939-11 29 105.82-30-51.82 133 29.357-4.4531 57.881-156.43 8.8184-22.344 0.0547-0.0137 11-29-105.82 30zm95.498 91.834-29 8.332-62.5 166.33 134-36.787 11-29-105.82 30zm-77.646 46.158-7.8496 19.965-81.947 19.527 8.7637-20.184z"/></g></svg>Home</a></li>
 			<li class="mobile-menu-item"><a href="#about">About</a></li>
+			<li class="mobile-menu-item"><a href="#work">Work</a></li>
 			<li class="mobile-menu-item"><a href="#feed">Feed</a></li>
 			<li class="mobile-menu-item"><a href="#contact">Contact</a></li>
 			<li class="mobile-menu-item close">
@@ -122,7 +146,7 @@
 	</div>
 
 	<div id="mobile-menu-trigger" class="mobile-menu-trigger">
-		<div id="burger-icon">
+		<div id="burger-icon" class="burger-icon">
 		  <span></span>
 		  <span></span>
 		  <span></span>
