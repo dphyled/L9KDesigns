@@ -6,7 +6,9 @@
 * browse to localhost:8080
 
 ## This site uses:
-* fullpage.js
-* scrollmagic
+* fullPage.js
+* ScrollMagic
 * GSAP
-* parrallax.js
+* parallax.js
+* lodash
+* jQuery
