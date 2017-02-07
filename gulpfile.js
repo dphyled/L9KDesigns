@@ -9,10 +9,11 @@ var gulp = require('gulp'),
 	gulpif = require('gulp-if'),
 	uglify = require('gulp-uglify'),
 	minifyHTML = require('gulp-minify-html'),
-	concat = require('gulp-concat')
-	imagemin = require('gulp-imagemin')
-	autoprefixer = require('gulp-autoprefixer')
+	concat = require('gulp-concat'),
+	imagemin = require('gulp-imagemin'),
+	autoprefixer = require('gulp-autoprefixer'),
 	minifyCSS = require('gulp-minify-css');
+
 
 var env,
 	coffeeSources,

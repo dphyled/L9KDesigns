@@ -16,7 +16,7 @@ $(document).ready(function() {
         bigSectionsDestination: 'top',
         responsiveWidth: 600,
         responsiveHeight: 500,
-        normalScrollElements: '#profile-bio-kelly, #profile-bio-eriya',
+        normalScrollElements: '#profile-bio-kelly, #profile-bio-eriya, #test-list',
 
 
         afterLoad: function(anchorLink, index){
@@ -26,6 +26,15 @@ $(document).ready(function() {
 		    	TweenMax.to($("#main-menu-logo"), .5, {height: "6em"});
 		    	TweenMax.to($(".header-filler"), .8, {opacity: 0});
             }
+
+
+       //      if(index == 2){
+		    	// $.fn.fullpage.setFitToSection(false);
+		    	// $.fn.fullpage.setAutoScrolling(false);
+       //      } else {
+		    	// $.fn.fullpage.setFitToSection(true);
+		    	// $.fn.fullpage.setAutoScrolling(true);
+       //      }            
         },
 
         onLeave: function(index, nextIndex, direction){
@@ -46,23 +55,10 @@ $(document).ready(function() {
 				slowZoomScene = new ScrollMagic.Scene({triggerElement: "#profile-trigger", duration: 0})
 											.setTween(slowZoomIn)
 											.addTo(controller);
-				//disableFullPage();
-            }
-            else {
-            	//enableFullPage();
             }
         }
     });
 
-    function enableFullPage() {
-		$.fn.fullpage.setAutoScrolling(true);
-		$.fn.fullpage.setFitToSection(true);
-    }
-
-    function disableFullPage() {
-		$.fn.fullpage.setAutoScrolling(false);
-		$.fn.fullpage.setFitToSection(false);
-    }
 
     // ----------Initilization for parallax.js------------
 	var scene = document.getElementById('main-scene');
@@ -249,10 +245,18 @@ $(document).ready(function() {
 			$('#name').val('');
 			$('#email').val('');
 			$('#message').val('');
-			submitButton.html('Sent!');
+
+			$(form).slideUp("fast");
+			$('#contact-form-response').html(response).hide().slideDown("fast");
 		})
 		.fail(function(data) {
 			submitButton.html('Error... :(');
+
+			if(data.responseText !== '' ) {
+				$('#contact-form-response').html(data.responseText);
+			} else {
+				$('#contact-form-response').html('Woops.. An error has occured.');
+			}
 		});
 
 	});

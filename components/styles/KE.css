@@ -136,7 +136,7 @@ html, body {
 	bottom: .5em;
 	width: 0;
 	height: 2px;
-	background-color: #a8c9d7;
+	background-color: #cba97c;
 	transition: .2s all ease;
 	margin: 0 auto;
 }
@@ -144,11 +144,11 @@ html, body {
 .main-menu-item:hover {
 	letter-spacing: .2em;
 	/*text-decoration: underline;*/
-	color: #a8c9d7 !important;
+	color: #cba97c !important;
 }
 
 .main-menu-item:not(.logo-container):hover::after {
-	bottom: .85em;
+	bottom: .95em;
 	opacity: 1;
 	width: 40%;
 }
@@ -208,7 +208,7 @@ html, body {
 	border: 0;
 	
 	background-color: #171819;
-	transition: .8s all;
+	transition: .5s all;
 }
 
 .mobile-menu.active {
@@ -239,7 +239,7 @@ html, body {
 	text-transform: uppercase;
 	/*box-shadow: 0px 5px 15px 0px rgba(207,229,255,0.3);*/
 
-	transition: .7s all;
+	transition: .5s all;
 }
 
 .mobile-menu.active .mobile-menu-item {
@@ -263,8 +263,7 @@ html, body {
 }*/
 
 .mobile-menu-item.close {
-	border-top: 3px solid black;
-
+	border-top: 2px solid #7a7a7a;
 }
 
 
@@ -274,9 +273,9 @@ html, body {
 
 .mobile-menu-logo {
 	display: inline-block;
-	width: 1.2em;
-	height: 1.2em;
-	margin: -.2em .5em 0 0;
+	width: 1.5em;
+	height: 1.5em;
+	margin: -.2em .8em 0 0;
 }
 
 .mobile-menu-item.close svg {
@@ -284,6 +283,10 @@ html, body {
 	position: relative;
 	top: .23em;
 	left: -.3em;
+}
+
+.mobile-menu-item.close g {
+	fill: #dadada !important;
 }
 
 .mobile-menu-item a {
@@ -302,7 +305,7 @@ html, body {
 	width: 4em;
 	height: 4em;
 	cursor: pointer;
-	background-color: rgba(0,0,0,.3);
+	background-color: rgba(0,0,0,.35);
 	border-radius: 50%;
 
 	transition: .5s all;
@@ -408,8 +411,15 @@ html, body {
 	min-height: 100vh;
 }
 
+/* When main menu is showing, add padding to all slides except first */
+@media screen and (min-width: 600px) {
+	.page-slide:not(.slide-1) {
+		padding-top: 3.25em;
+	}
+}
+
 .slide2 {
-	background-color: #ebdecd;
+	background-color: #fdfdfe;
 }
 
 .slide3 {
@@ -417,7 +427,7 @@ html, body {
 }
 
 .slide4 {
-	background-color: #090903;
+	background-color: #cecdbd;
 }
 
 .slide5 {
@@ -591,11 +601,30 @@ html, body {
 
 
 /*  ---------------SLIDE2 -- ABOUT---------------  */
-.slide2 h1 {
+.about-info {
 	position: relative;
 	top: -5vh;
 	padding: 0 10vw;
-	font-size: 3em;
+	font-size: 2.1em;
+}
+
+@media screen and (max-width: 1300px) {
+	.about-info {
+		margin-bottom: 2em;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.about-info {
+		top: 0;
+		margin: 2em 0 3em;
+	}
+}
+
+.about-info h1 {
+	display: inline-block;
+	margin: 0;
+	font-size: 1em;
 }
 
 .scene-trigger {
@@ -613,6 +642,13 @@ html, body {
 	vertical-align: middle;
 	overflow: visible;
 }
+
+@media screen and (max-width: 600px) {
+	.profile-image-holder {
+		margin-bottom: 9em;
+	}
+}
+
 
 .profile-image {
 	display: inline-block;
@@ -656,6 +692,7 @@ html, body {
 	display: inline-block;
 	position: absolute;
 	font-size: 3em;
+	margin: 0;
 
 	transition: .3s all;
 }
@@ -720,7 +757,7 @@ html, body {
 
 @media screen and (max-width: 1300px) {
 	.profile-image img {
-		width: 35vw;
+		width: 32vw;
 	}
 
 	.name-label.kelly {
@@ -868,6 +905,27 @@ html, body {
 
 
 /*  ---------------SLIDE3 -- PAST WORK/PROJECTS---------------  */
+
+.work-info {
+	position: relative;
+	top: -5vh;
+	padding: 0 10vw;
+	font-size: 2.1em;
+}
+
+.work-info h1 {
+	display: inline-block;
+	margin: 0;
+	font-size: 1em;
+}
+
+@media screen and (max-width: 600px) {
+	.work-info {
+		top: 0;
+		margin: 1.5em 0;
+	}
+}
+
 .project-list {
 	display: block;
 	width: 90%;
@@ -952,12 +1010,21 @@ html, body {
     border-radius: 5px;
 }
 
+.contact-form input[type="text"]:hover,
+.contact-form input[type="email"]:hover,
+.contact-form textarea:hover,
+.contact-form button[type="submit"]:hover {
+    box-shadow: inset 1px 1px 1px black, 1px 1px 1px black;
+    transform: scale(1.01);
+    outline: none;
+}
+
 .contact-form input[type="text"]:focus,
 .contact-form input[type="email"]:focus,
 .contact-form textarea:focus,
 .contact-form button[type="submit"]:focus {
-    box-shadow: inset 0 1px 2px black, 0 1px 0 black;
-    transform: scale(1.01);
+    box-shadow: inset 2px 2px 1px black, 2px 2px 1px black;
+    transform: scale(1.02);
     outline: none;
 }
 
@@ -969,7 +1036,7 @@ html, body {
     background-image: linear-gradient(to top, #142640 0%, #192f50 52%);
     color: #fff;
 	font-size: 1.15em;    
-    margin: 0 0 5px;
+    margin: .5em 0;
     padding: 10px;
     border-radius: 5px;
 }
@@ -982,6 +1049,17 @@ html, body {
 	font-weight: bolder;
 	margin: .6em 0 .3em;
 }
+
+.contact-form-response {
+	font-size: 1.8em;
+	text-align: center;
+}
+
+.required-text {
+	font-size: .75em;
+	opacity: .8;
+}
+
 
 /*  ---------------OTHER ELEMENTS---------------  */
 #fp-nav ul li .fp-tooltip {
