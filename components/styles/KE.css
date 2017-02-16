@@ -158,7 +158,7 @@ html, body {
 	padding: 0 !important;
 }
 
-@media screen and (max-width: 1450px) {
+@media screen and (max-width: 1500px) {
 	.main-menu {
 		font-size: .9em;
 	}
@@ -585,22 +585,22 @@ html, body {
 .bird1 {
 	width: 1.5vw;
 	position: absolute;
-	bottom: 45%;
-	left: 15%;
+	bottom: 45vh;
+	left: 15vw;
 }
 
 .bird2 {
 	width: 1vw;
 	position: absolute;
-	bottom: 55%;
-	right: 55%;
+	bottom: 55vh;
+	right: 55vw;
 }
 
 .bird3 {
 	width: 1.1vw;
 	position: absolute;
-	bottom: 65%;
-	left: 25%;
+	bottom: 65vh;
+	left: 25vw;
 }
 
 @media screen and (max-width: 1000px) {
@@ -622,7 +622,7 @@ html, body {
 	width: 100%;
 	z-index: 101;
 	position: absolute;
-	bottom: 25px;
+	bottom: 1.2em;
 	text-align: center;
 	cursor: pointer;
 
