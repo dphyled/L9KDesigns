@@ -1,8 +1,26 @@
 var jQuery = require('jquery');
 
+
 // Making jQuery safe?
 (function($){
 $(document).ready(function() {
+
+	// Once all images and resources have loaded...
+	window.onload = function() {
+		// Hide the loading screen overlay
+		loading = $('#loading-container');
+		TweenMax.to(loading, .1, {opacity: 0});
+		$(loading).css("display", "none");
+
+
+		// ----------Animations with TweenMax and Scroll Magic------------
+		// ----------Initial Page load fade in----------
+		TweenMax.to($("#fullpage"), .05, {opacity: 1, delay: .1});
+		TweenMax.from(".logo", .5, {opacity: 0, scale: 0, ease:Bounce.easeOut, delay: .5});
+		TweenMax.from($(".slide1 div:not(#slide1-1), .header"), 2.5, {opacity: 0, delay: .3});
+		TweenMax.to($(".main-menu-item"), 1.0, {opacity:1, delay: 1.25});
+		TweenMax.to($(".logo"), .5, {transition: ".5s all", delay: 1.25});
+	}
 
 	// ----------Initilization for fullPage.js------------
     $('#fullpage').fullpage({
@@ -14,6 +32,7 @@ $(document).ready(function() {
         navigationTooltips: ['Top', 'About', 'Work', 'Feed', 'Contact'],
         showActiveTooltip: false,
         bigSectionsDestination: 'top',
+        //paddingTop: '3.5em',
         responsiveWidth: 600,
         responsiveHeight: 500,
         normalScrollElements: '#profile-bio-kelly, #profile-bio-eriya, #test-list',
@@ -50,12 +69,12 @@ $(document).ready(function() {
 		    	TweenMax.to($(".header-filler"), .8, {opacity: 1});	    
             }
 
-            // Reset the slow zoom effect when scrolling to slide 2
-            if(nextIndex == 2) {
-				slowZoomScene = new ScrollMagic.Scene({triggerElement: "#profile-trigger", duration: 0})
-											.setTween(slowZoomIn)
-											.addTo(controller);
-            }
+    //         // Reset the slow zoom effect when scrolling to slide 2
+    //         if(nextIndex == 2) {
+				// slowZoomScene = new ScrollMagic.Scene({triggerElement: "#profile-trigger", duration: 0})
+				// 							.setTween(slowZoomIn)
+				// 							.addTo(controller);
+    //         }
         }
     });
 
@@ -68,17 +87,6 @@ $(document).ready(function() {
 		frictionX: 0.02,
 		frictionY: 0.02,
 	});
-
-
-
-	// ----------Animations with TweenMax and Scroll Magic------------
-	// ----------Initial Page load fade in----------
-	TweenMax.to($("#fullpage"), .05, {opacity: 1, delay: .1});
-	TweenMax.from(".logo", .5, {opacity: 0, scale: 0, ease:Bounce.easeOut, delay: .5});
-	TweenMax.from($(".slide1 div:not(#slide1-1), .header"), 2.5, {opacity: 0, delay: .3});
-	TweenMax.to($(".main-menu-item"), 1.0, {opacity:1, delay: 1.25});
-	TweenMax.to($(".logo"), .5, {transition: ".5s all", delay: 1.25});
-
 
 
 	// ----------Birds Flying----------
@@ -167,18 +175,21 @@ $(document).ready(function() {
 			 .from(".name-label.kelly", .2, {transform: "translateX(-2000px)"}, .40)
 			 .from(".name-label.eriya", .2, {transform: "translateX(2000px)"}, .40); //target, duration, props, startTime
 
-	// ---------- Zoom Effect----------
-	var slowZoomIn = new TimelineMax()
-		.add(TweenMax.to($("#slide2 .in-slide-container"), 15, {scale: 1.1}));
+	// // ---------- Zoom Effect----------
+	// var slowZoomIn = new TimelineMax()
+	// 	.add(TweenMax.to($("#slide2 .in-slide-container"), 15, {scale: 1.1}));
 
 	var profileScene = new ScrollMagic.Scene({triggerElement: "#profile-trigger", duration: 0})
 								.setTween(profileTL)
 								.addTo(controller);
 
-	// Slow zoom scene also added in onLeave event of FullPage init, so that it resets when entering slide 3
-	var slowZoomScene = new ScrollMagic.Scene({triggerElement: "#profile-trigger", duration: 0})
-								.setTween(slowZoomIn)
-								.addTo(controller);
+	// // Slow zoom scene also added in onLeave event of FullPage init, so that it resets when entering slide 3
+	// var slowZoomScene = new ScrollMagic.Scene({triggerElement: "#profile-trigger", duration: 0})
+	// 							.setTween(slowZoomIn)
+	// 							.addTo(controller);
+
+
+
 
 
 	// Setup other page elements
@@ -206,12 +217,13 @@ $(document).ready(function() {
 
 
 
-	$("#kelly-image img").click(function() {
+
+	$("#kelly-image img, #kelly-image .name-label").click(function() {
 		$("#profile-bio-kelly").addClass("active");
 		$("body").addClass("noScroll");
 	});
 
-	$("#eriya-image img").click(function() {
+	$("#eriya-image img, #eriya-image .name-label").click(function() {
 		$("#profile-bio-eriya").addClass("active");
 		$("body").addClass("noScroll");
 	});

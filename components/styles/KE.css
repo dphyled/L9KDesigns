@@ -136,7 +136,7 @@ html, body {
 	bottom: .5em;
 	width: 0;
 	height: 2px;
-	background-color: #cba97c;
+	background-color: #73a1b1;
 	transition: .2s all ease;
 	margin: 0 auto;
 }
@@ -144,7 +144,7 @@ html, body {
 .main-menu-item:hover {
 	letter-spacing: .2em;
 	/*text-decoration: underline;*/
-	color: #cba97c !important;
+	color: #73a1b1 !important;
 }
 
 .main-menu-item:not(.logo-container):hover::after {
@@ -229,7 +229,7 @@ html, body {
 	height: 0;
 	line-height: 11vh;
 	/*font-size: 2.5em;*/
-	font-size: 5vw;
+	font-size: 6vmin;
 	text-align: right;
 	font-weight: 100;
 	padding-right: 6vw;
@@ -317,6 +317,16 @@ html, body {
 	}
 }
 
+.mobile-menu-item .social-icon {
+	width: 1.75em;
+	margin: .2em;
+}
+
+.mobile-menu-item .social-icon:nth-of-type(1) {
+	margin-top: 1em;
+}
+
+
 /*@media screen and (max-width: 400px) {
 	.mobile-menu-trigger {
 		width: 4.5em;
@@ -399,6 +409,32 @@ html, body {
 	width: 0%;
 	left: 50%;
 }
+
+
+/*  --------------- SOCIAL MEDIA ICONS---------------  */
+.main-menu-social-icons {
+	position: fixed;
+	z-index: 10000;
+	top: .5em;
+	right: .5em;
+}
+
+.main-menu-social-icons .social-icon {
+	width: 1.5em;
+	margin: .25em;
+	cursor: pointer;
+}
+
+.social-icon {
+	opacity: .5;
+	transition: .3s all;
+}
+
+.social-icon:hover {
+	opacity: 1;
+	transform: scale(1.1);
+}
+
 
 /*  ---------------PAGE SLIDES/SECTIONS---------------  */
 
@@ -490,7 +526,7 @@ html, body {
 
 @media screen and (max-width: 1000px) {
 	.slide1-1 {
-		background-size: 120vw;
+		background-size: 120vmin;
 	}
 }
 
@@ -515,7 +551,7 @@ html, body {
 }
 
 .slide1-3 {
-	background: url(../images/top-smoke.png) bottom no-repeat;
+	background: url(../images/top-smoke.png) bottom repeat-x;
 	background-size: 110vw auto;
 	background-position: 100% 100%;
 	bottom: 0% !important;
@@ -523,6 +559,8 @@ html, body {
 	width: 110% !important;
 	z-index: 20;
 }
+
+
 
 .slide1-4 {
 	background: url(../images/top-sky.jpg) top;
@@ -535,6 +573,12 @@ html, body {
 		background-size: auto 100vh;
 		background-position: center;
 		max-width: 1200px;
+	}
+}
+
+@media screen and (orientation: landscape) {
+	.slide1-4 {
+		background-size: 100vw 100vh;
 	}
 }
 
@@ -603,9 +647,9 @@ html, body {
 /*  ---------------SLIDE2 -- ABOUT---------------  */
 .about-info {
 	position: relative;
-	top: -5vh;
-	padding: 0 10vw;
-	font-size: 2.1em;
+	/*top: -5vh;*/
+	padding: 2em 10vw 0;
+	font-size: 1.9em;
 }
 
 @media screen and (max-width: 1300px) {
@@ -641,6 +685,7 @@ html, body {
 	text-align: center;
 	vertical-align: middle;
 	overflow: visible;
+	margin: 7em 0 9em;
 }
 
 @media screen and (max-width: 600px) {
@@ -667,7 +712,7 @@ html, body {
 
 .profile-image img:hover {
 	opacity: .6;
-	transform: scale(1.05);
+	transform: scale(1.02);
 }
 
 .profile-image.kelly {
@@ -694,6 +739,7 @@ html, body {
 	font-size: 3em;
 	margin: 0;
 
+	pointer-events: initial;
 	transition: .3s all;
 }
 
@@ -706,13 +752,15 @@ html, body {
 	right: 0;
 }
 
-.profile-image.kelly img:hover + .name-label {
+
+/*  Hover over profile image or name --> trigger name animation   */
+.profile-image.kelly img:hover + .name-label, .profile-image.kelly .name-label:hover {
 	font-size: 3.5em;
 	text-shadow: 5px 0px 2px rgba(150, 150, 150, 1);
 	left: -.5em;
 }
 
-.profile-image.eriya img:hover + .name-label {
+.profile-image.eriya img:hover + .name-label, .profile-image.eriya .name-label:hover {
 	font-size: 3.5em;
 	text-shadow: -5px 0px 2px rgba(150, 150, 150, 1);
 	right: -.5em;
@@ -737,13 +785,14 @@ html, body {
 	top: 2.75em;
 }
 
-.profile-image.kelly img:hover ~ .profile-detail {
+/*  Hover over profile image or name --> trigger detail animation   */
+.profile-image.kelly img:hover ~ .profile-detail, .profile-image.kelly .name-label:hover ~ .profile-detail {
 	left: -1.15em;
 	opacity: 1;
 	transform: rotateX(0deg);
 }
 
-.profile-image.eriya img:hover ~ .profile-detail {
+.profile-image.eriya img:hover ~ .profile-detail, .profile-image.eriya .name-label:hover ~ .profile-detail {
 	right: -2.5em;
 	opacity: 1;
 	transform: rotateX(0deg);
@@ -768,13 +817,13 @@ html, body {
 		bottom: -1.2em;
 	}
 
-	.profile-image.kelly img:hover + .name-label {
+	.profile-image.kelly img:hover + .name-label, .profile-image.kelly .name-label:hover {
 		text-shadow: 0 -5px 2px rgba(150, 150, 150, 1);
 		top: -1.5em;
 		left: -.5em;
 	}
 
-	.profile-image.eriya img:hover + .name-label {
+	.profile-image.eriya img:hover + .name-label, .profile-image.eriya .name-label:hover {
 		text-shadow: 0 5px 2px rgba(150, 150, 150, 1);
 		bottom: -1.5em;
 		right: -.5em;
@@ -791,14 +840,14 @@ html, body {
 		top: initial;
 	}
 
-	.profile-image.kelly img:hover ~ .profile-detail {
+	.profile-image.kelly img:hover ~ .profile-detail, .profile-image.kelly .name-label:hover ~ .profile-detail {
 		left: -1em;
 		top: -1.5em;
 		opacity: 1;
 		transform: rotateX(0deg);
 	}
 
-	.profile-image.eriya img:hover ~ .profile-detail {
+	.profile-image.eriya img:hover ~ .profile-detail, .profile-image.eriya .name-label:hover ~ .profile-detail {
 		right: -1.4em;
 		opacity: 1;
 		transform: rotateX(0deg);
@@ -822,6 +871,7 @@ html, body {
 .profile-bio {
 	position: fixed;
 	box-sizing: border-box;
+	overflow: auto;
 	top: 11.5vh;
 	width: 98vw;
 	height: calc(98vh - 80px);
@@ -889,9 +939,36 @@ html, body {
 	font-size: 2em;
 }
 
+.profile-bio h3 {
+	font-size: 1.6em;
+}
+
 .profile-bio-list > li {
 	font-size: 1.4em;
 	padding: .4em;
+}
+
+.profile-social-links {
+	list-style: none;
+	padding: 1em 0 0;
+}
+
+.profile-social-links li {
+	display: inline-block;
+}
+
+.profile-social-links img {
+	width: 12vw;
+	max-width: 85px;
+	cursor: pointer;
+	padding-right: .75em;
+	opacity: .8;
+
+	transition: .3s all;
+}
+
+.profile-social-links img:hover {
+	opacity: 1;
 }
 
 @media screen and (max-width: 600px) {
@@ -1093,4 +1170,35 @@ html, body {
 
 body.noScroll {
 	overflow: hidden !important;
+}
+
+.loading-container {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	z-index: 100000;
+	background-color: black;
+}
+
+.loading-container h1 {
+	display: block;
+	line-height: 100vh;
+	text-align: center;
+	color: white;
+
+	animation: loading 5s linear infinite;
+}
+
+@keyframes loading {
+	0% {
+		transform: rotate(0deg);
+		letter-spacing: .3em;
+	}
+	50% {
+		letter-spacing: .8em;
+	}
+	100% {
+		transform: rotate(360deg);
+		letter-spacing: .3em;
+	}
 }
