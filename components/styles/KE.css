@@ -519,7 +519,7 @@ html, body {
 
 .slide1-1 {
 	background: url(../images/top-circle-logo.png) center no-repeat;
-	background-size: 70vw;
+	background-size: 65vw;
 	z-index: 11;
 }
 
@@ -559,8 +559,6 @@ html, body {
 	width: 110% !important;
 	z-index: 20;
 }
-
-
 
 .slide1-4 {
 	background: url(../images/top-sky.jpg) top;
@@ -694,7 +692,6 @@ html, body {
 	}
 }
 
-
 .profile-image {
 	display: inline-block;
 	vertical-align: middle;
@@ -706,6 +703,7 @@ html, body {
 	vertical-align: middle;
 	width: 25vw;
 	pointer-events: auto;
+	cursor: pointer;
 
 	transition: .5s all;
 }
@@ -740,6 +738,7 @@ html, body {
 	margin: 0;
 
 	pointer-events: initial;
+	cursor: pointer;
 	transition: .3s all;
 }
 
