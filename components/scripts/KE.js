@@ -36,11 +36,11 @@ var jQuery = require('jquery');
 	function initializeFullPageJS() {
 		$('#fullpage').fullpage({
 			scrollBar: true,
-			anchors: ['home', 'about', 'work', 'feed', 'contact'],
+			anchors: ['home', 'about', 'work', 'blog', 'contact'],
 			fitToSectionDelay: 500,
 			navigation: true,
 			navigationPosition: 'right',
-			navigationTooltips: ['Top', 'About', 'Work', 'Feed', 'Contact'],
+			navigationTooltips: ['Top', 'About', 'Work', 'Blog', 'Contact'],
 			showActiveTooltip: false,
 			bigSectionsDestination: 'top',
 			responsiveWidth: 600,

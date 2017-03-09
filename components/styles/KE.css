@@ -122,7 +122,7 @@ html, body {
 	opacity: 0;
 
 	/*transition: all .5s;*/
-	transition: letter-spacing .5s, underline .5s, color .5s, width .5s, font-size .5s, padding .5s;
+	transition: letter-spacing .5s, underline .5s, color .3s, width .5s, font-size .5s, padding .5s, transform .2s;
 	letter-spacing: .1em;
 }
 
@@ -151,6 +151,15 @@ html, body {
 	bottom: .95em;
 	opacity: 1;
 	width: 40%;
+}
+
+.main-menu-item:active {
+	transform: scale(1.1);
+	color: red !important;
+}
+
+.main-menu-item:not(.logo-container):active::after {
+	background-color: red;
 }
 
 .logo-container {
@@ -870,7 +879,8 @@ html, body {
 .profile-bio {
 	position: fixed;
 	box-sizing: border-box;
-	overflow: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
 	top: 11.5vh;
 	width: 98vw;
 	height: calc(98vh - 80px);
@@ -1021,40 +1031,52 @@ html, body {
 	border-radius: 8px;
 	box-shadow: 4px 4px 5px 0px black;
 	margin: 8px;
-
-	transition: .3s all;
+	overflow: hidden;
 }
 
-.project-li:hover {
-	transform: scale(1.05);
+.project-li img {
+	width: 125%;
+	position: relative;
+	left: -15%;
+	top: -15%;
+	transition: all .3s;
+	transform-origin: center center;
+	transform-style: preserve-3d;
 }
 
+.project-li:hover img {
+	transform: scale(1.08) rotate(9deg);
+	filter: grayscale(.8);
+}
 
-/*  ---------------SLIDE4 -- FEED---------------  */
+/*  ---------------SLIDE4 -- BLOG---------------  */
 .slide4 .in-slide-container {
-	max-width: 1100px;
+	max-width: 800px;
 }
 
-.feed {
-	box-sizing: border-box;
-	border: 3px solid black;
-	height: 50vh;
-	font-size: 4em;
+.slide4 h1 {
+	font-size: 1.9em;
 }
 
-.fb-placeholder {
-	float: left;
-	width: 55%;
-	margin-right: 5%;
-	background-color: #3b5998;
+.coming-soon {
+	margin: 0 auto;
+	text-align: center;
+	font-size: 3em;
+	font-style: italic;
+	margin-bottom: .75em;
 }
 
-.twitter-placeholder {
-	float: left;
-	width: 40%;
-	background-color: #1da1f2;
+.coming-soon-box {
+	filter: blur(2px);
+	font-size: 1.2em;
+	border: 1px solid black;
+	padding: 1em;
 }
 
+.coming-soon-box .date {
+	font-style: italic;
+	font-weight: bold;
+}
 
 /*  ---------------SLIDE5 -- CONTACT---------------  */
 .in-slide-container.contact {

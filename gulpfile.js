@@ -39,12 +39,13 @@ if (env==='development') {
 // 	XXX
 // ];
 
-jsSources = ['components/scripts/*.js'];
-sassSources = ['components/styles/*.scss'];
-cssSources = ['components/styles/*.css'];
-htmlSources = ['components/*.html'];
-phpSources = ['components/*.php'];
+jsSources = ['components/scripts/**/*.js'];
+sassSources = ['components/styles/**/*.scss'];
+cssSources = ['components/styles/**/*.css'];
+htmlSources = ['components/**/*.html'];
+phpSources = ['components/**/*.php'];
 imageSources = ['components/images/*'];
+sampleImageSource = ['components/samples/images/*'];
 
 // gulp.task('coffee', function() {
 // 	gulp.src(coffeeSources)
@@ -55,7 +56,7 @@ imageSources = ['components/images/*'];
 
 //gulp.task('js', ['coffee'], function() {		//  2nd param = dependencies, optional
 gulp.task('js', function() {		//  2nd param = dependencies, optional
-	gulp.src(jsSources)
+	gulp.src(jsSources, {base: './components/'})
 		.pipe(concat('script.js'))
 		.pipe(browserify())
 		.pipe(gulpif(env === 'production', uglify()))
@@ -76,31 +77,38 @@ gulp.task('js', function() {		//  2nd param = dependencies, optional
 // });
 
 gulp.task('css', function() {		//  2nd param = dependencies, optional
-	gulp.src(cssSources)
+	gulp.src(cssSources, {base: './components/'})
 		.pipe(concat('style.css'))
-		.pipe(autoprefixer('last 10 versions', 'ie 9'))
+		.pipe(autoprefixer('last 5 versions', 'ie 9'))
 		.pipe(gulpif(env === 'production', minifyCSS({keepBreaks: false})))
 		.pipe(gulp.dest(outputDir + 'styles'))
 		.pipe(connect.reload())
 });
 
 gulp.task('html', function() {
-	gulp.src(htmlSources)
+	gulp.src(htmlSources, {base: './components/'})
 		.pipe(gulpif(env === 'production', minifyHTML()))
 		.pipe(gulp.dest(outputDir))
 		.pipe(connect.reload())
 });
 
 gulp.task('php', function() {
-	gulp.src(phpSources)
+	gulp.src(phpSources, {base: './components/'})
 		.pipe(gulp.dest(outputDir))
 		.pipe(connect.reload())
 });
 
 gulp.task('images', () =>
+    gulp.src(imageSources, {base: './components/'})
+        .pipe(imagemin())
+        .pipe(gulp.dest(outputDir))
+        .pipe(connect.reload())
+);
+
+gulp.task('sampleImages', () =>
     gulp.src(imageSources)
         .pipe(imagemin())
-        .pipe(gulp.dest(outputDir + 'images'))
+        .pipe(gulp.dest(outputDir) + 'samples/images')
         .pipe(connect.reload())
 );
 
