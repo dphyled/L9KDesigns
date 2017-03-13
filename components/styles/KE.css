@@ -441,7 +441,7 @@ html, body {
 
 .social-icon:hover {
 	opacity: 1;
-	transform: scale(1.1);
+	transform: scale(1.12);
 }
 
 
@@ -560,10 +560,20 @@ html, body {
 }
 
 .slide1-3 {
-	background: url(../images/top-smoke.png) bottom repeat-x;
+	/*background: url(../images/top-smoke.png) bottom repeat-x;
 	background-size: 110vw auto;
-	background-position: 100% 100%;
+	background-position: 100% 100%;*/
 	bottom: 0% !important;
+	left: -5% !important;
+	width: 110% !important;
+	z-index: 20;
+
+	overflow: visible !important;
+}
+
+.main-scene .slide1-3 img {
+	position: absolute;
+	bottom: -5% !important;
 	left: -5% !important;
 	width: 110% !important;
 	z-index: 20;
@@ -632,6 +642,7 @@ html, body {
 	bottom: 1.2em;
 	text-align: center;
 	cursor: pointer;
+	pointer-events: none;
 
 	animation: bounce .4s infinite alternate;
 }
@@ -639,6 +650,7 @@ html, body {
 .more-arrow svg {
 	width: 20vw;
 	max-width: 100px;
+	pointer-events: initial;
 }
 
 @keyframes bounce {
@@ -713,6 +725,7 @@ html, body {
 	width: 25vw;
 	pointer-events: auto;
 	cursor: pointer;
+	filter: grayscale(.75);
 
 	transition: .5s all;
 }
@@ -723,11 +736,11 @@ html, body {
 }
 
 .profile-image.kelly {
-	margin-right: -6%;
+	margin-right: -9%;
 }
 
 .profile-image.eriya {
-	margin-left: -6%;
+	margin-left: -9%;
 }
 
 .profile-image.kelly img {
@@ -806,13 +819,13 @@ html, body {
 	transform: rotateX(0deg);
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1800px) {
 	.profile-image img {
 		width: 30vw;
 	}
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1400px) {
 	.profile-image img {
 		width: 32vw;
 	}
@@ -1047,6 +1060,11 @@ html, body {
 	filter: grayscale(.9);
 }
 
+.work-info-subtext {
+	margin-top: .5em;
+	font-size: .6em;
+}
+
 /*  ---------------SLIDE4 -- BLOG---------------  */
 .slide4 .in-slide-container {
 	max-width: 800px;
@@ -1060,7 +1078,6 @@ html, body {
 	margin: 0 auto;
 	text-align: center;
 	font-size: 2.5em;
-	font-style: italic;
 	margin-bottom: .75em;
 }
 
@@ -1079,6 +1096,10 @@ html, body {
 /*  ---------------SLIDE5 -- CONTACT---------------  */
 .in-slide-container.contact {
 	max-width: 600px;
+}
+
+.slide5 h1 {
+	font-size: 1.9em;
 }
 
 @media screen and (max-width: 600px) {
@@ -1217,7 +1238,7 @@ body.noScroll {
 		letter-spacing: .8em;
 	}
 	100% {
-		transform: rotate(360deg);
+		/*transform: rotate(360deg);*/
 		letter-spacing: .3em;
 	}
 }
