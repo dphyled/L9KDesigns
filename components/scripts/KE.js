@@ -209,8 +209,8 @@ var jQuery = require('jquery');
 		// ---------- About/Profile Page animations----------
 		// ---------- Pictures and names fly in----------
 		var profileTL = new TimelineMax();
-		profileTL.from("#kelly-image", .55, {scale: 0, ease: Power4.easeOut})
-				.from("#eriya-image", .55, {scale: 0, ease: Power4.easeOut}, 0)
+		profileTL.from("#kelly-image", .95, {scale: 0, ease: Power4.easeOut}, .15)
+				.from("#eriya-image", .95, {scale: 0, ease: Power4.easeOut}, .15)
 				.from(".name-label.kelly", .2, {transform: "translateX(-2000px)", opacity: 0}, .40)
 				.from(".name-label.eriya", .2, {transform: "translateX(2000px)", opacity: 0}, .40); //target, duration, props, startTime
 
