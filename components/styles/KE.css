@@ -11,9 +11,29 @@ html, body {
 	margin: 0;
 }
 
+h1 {
+	margin: 1.75em 0 0;
+	font-size: 2.5em;
+	text-align: center;
+}
+
+.info {
+	position: relative;
+	margin: 1em 0 0;
+	font-size: 1.9em;
+	text-align: justify;
+	text-justify: distribute;
+	line-height: 1.2em;
+}
+
+@media screen and (max-width: 600px) {
+	.info {
+		margin: 1.5em .5em 2em;
+		text-align: initial;
+	}
+}
 
 /*  ---------------HEADER and MAIN MENU---------------  */
-
 .header {
 	position: fixed;
 	top: 0;
@@ -493,13 +513,13 @@ html, body {
 
 .in-slide-container {
 	width: 80vw;
-	max-width: 1200px;
+	max-width: 800px;
 	margin: 0 auto;
 }
 
 @media screen and (max-width: 800px) {
 	.in-slide-container {
-		width: 95vw;
+		width: 92vw;
 	}
 }
 
@@ -664,30 +684,10 @@ html, body {
 
 
 /*  ---------------SLIDE2 -- ABOUT---------------  */
-.about-info {
-	position: relative;
-	/*top: -5vh;*/
-	padding: 2em 10vw 0;
-	font-size: 1.9em;
-}
-
 @media screen and (max-width: 1300px) {
-	.about-info {
+	.about.info {
 		margin-bottom: 2em;
 	}
-}
-
-@media screen and (max-width: 600px) {
-	.about-info {
-		top: 0;
-		margin: 2em 0 3em;
-	}
-}
-
-.about-info h1 {
-	display: inline-block;
-	margin: 0;
-	font-size: 1em;
 }
 
 .scene-trigger {
@@ -717,12 +717,14 @@ html, body {
 	display: inline-block;
 	vertical-align: middle;
 	pointer-events: none;
+	position: relative;
 }
 
 .profile-image img {
 	position: relative;
 	vertical-align: middle;
-	width: 25vw;
+	width: 460px;
+	max-width: 460px;
 	pointer-events: auto;
 	cursor: pointer;
 	filter: grayscale(.75);
@@ -736,11 +738,11 @@ html, body {
 }
 
 .profile-image.kelly {
-	margin-right: -9%;
+	margin-right: -13%;
 }
 
 .profile-image.eriya {
-	margin-left: -9%;
+	margin-left: -13%;
 }
 
 .profile-image.kelly img {
@@ -821,15 +823,11 @@ html, body {
 
 @media screen and (max-width: 1800px) {
 	.profile-image img {
-		width: 30vw;
+		width: 430px;
 	}
 }
 
-@media screen and (max-width: 1400px) {
-	.profile-image img {
-		width: 32vw;
-	}
-
+@media screen and (max-width: 1000px) {
 	.name-label.kelly {
 		top: -1.2em;
 	}
@@ -875,13 +873,13 @@ html, body {
 	}
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
 	.profile-image.kelly {
-		margin-right: -10%;
+		margin-right: -11%;
 	}
 
 	.profile-image.eriya {
-		margin-left: -10%;
+		margin-left: -11%;
 	}
 
 	.profile-image img {
@@ -1004,31 +1002,9 @@ html, body {
 
 
 /*  ---------------SLIDE3 -- PAST WORK/PROJECTS---------------  */
-
-.work-info {
-	position: relative;
-	top: -5vh;
-	padding: 0 10vw;
-	font-size: 2.1em;
-}
-
-.work-info h1 {
-	display: inline-block;
-	margin: 0;
-	font-size: 1em;
-}
-
-@media screen and (max-width: 600px) {
-	.work-info {
-		top: 0;
-		margin: 1.5em 0;
-	}
-}
-
 .project-list {
 	display: block;
-	width: 90%;
-	margin: 2em auto;
+	margin-top: 2em;
 	padding: 0;
 	list-style: none;
 	text-align: center;
@@ -1036,7 +1012,7 @@ html, body {
 
 .project-li {
 	display: inline-block;
-	width: 13em;
+	width: 10em;
 	height: 8em;
 	border: 4px solid black;
 	border-radius: 8px;
@@ -1060,32 +1036,31 @@ html, body {
 	filter: grayscale(.9);
 }
 
-.work-info-subtext {
-	margin-top: .5em;
-	font-size: .6em;
-}
-
 /*  ---------------SLIDE4 -- BLOG---------------  */
 .slide4 .in-slide-container {
 	max-width: 800px;
 }
 
-.slide4 h1 {
-	font-size: 2.1em;
-}
-
-.coming-soon {
-	margin: 0 auto;
+.coming-soon.info {
+	margin: .25em auto;
 	text-align: center;
-	font-size: 2.5em;
+	font-size: 2.25em;
 	margin-bottom: .75em;
 }
 
 .coming-soon-box {
+	margin-bottom: 1em;
 	filter: blur(2px);
 	font-size: 1.2em;
 	border: 1px solid black;
 	padding: 1em;
+}
+
+@media screen and (max-width: 600px) {
+	.coming-soon-box {
+		margin: 0 auto 1em;
+		width: 80vw;
+	}
 }
 
 .coming-soon-box .date {
@@ -1094,18 +1069,15 @@ html, body {
 }
 
 /*  ---------------SLIDE5 -- CONTACT---------------  */
-.in-slide-container.contact {
-	max-width: 600px;
-}
-
-.slide5 h1 {
-	font-size: 1.9em;
-}
-
 @media screen and (max-width: 600px) {
 	.in-slide-container.contact {
 		width: 90vw;
 	}
+}
+
+.contact.info, .contact-form {
+	max-width: 600px;
+	margin: 1em auto;
 }
 
 .contact-form * {
