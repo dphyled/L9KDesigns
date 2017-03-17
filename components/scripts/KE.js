@@ -11,6 +11,7 @@ var jQuery = require('jquery');
 		setupMobileMenu();
 		setupBirds();
 		setupProfilePage(scrollMagicController);
+		setupWorkPage();
 		setupContactForm();
 		setupOtherPageElements();
 	}); //End of $(document).ready
@@ -29,8 +30,6 @@ var jQuery = require('jquery');
 		TweenMax.to($(".main-menu-item"), 1.0, {opacity:1, delay: 1.25});
 		TweenMax.to($(".logo"), .5, {transition: ".5s all", delay: 1.25});
 	}
-
-	
 
 	// ---------- Initialize fullPage.js ------------
 	function initializeFullPageJS() {
@@ -229,21 +228,27 @@ var jQuery = require('jquery');
 
 		// When clicking on profile image or name label, display the bio and prevent page scrolling
 		$("#kelly-image img, #kelly-image .name-label").click(function() {
-			$("#profile-bio-kelly").addClass("active");
-			$("body").addClass("noScroll");
+			showModalAndLockPage();
+			$("#modal-inner").load("ajax/profile-kel.html");
 		});
 
 		$("#eriya-image img, #eriya-image .name-label").click(function() {
-			$("#profile-bio-eriya").addClass("active");
-			$("body").addClass("noScroll");
-		});
-
-		// Close bio when the X is clicked
-		$(".profile-bio .close-x").click(function() {
-			$(".profile-bio").removeClass("active");
-			$("body").removeClass("noScroll");
+			showModalAndLockPage();
+			$("#modal-inner").load("ajax/profile-eriya.html");
 		});
 	}
+
+
+	// ---------- Setup work page events ----------
+	function setupWorkPage() {
+		// When clicking on a project thumbnail, display info in a modal and prevent page scrolling
+		$(".project-li img").click(function() {
+			showModalAndLockPage();
+
+			// Strip images folder from thumbnail path, replace -tn.jpg with .html, then load that page into modal
+			$("#modal-inner").load("ajax/" + $(this).attr("src").replace("-tn.jpg", ".html").replace("images/", ""));
+		});
+	}	
 
 
 	// ---------- Setup submit action for contact form ----------
@@ -286,6 +291,22 @@ var jQuery = require('jquery');
 		});
 	}
 
+	// ----------- Setup other page elements -----------
+	function setupOtherPageElements() {
+		// Bouncing Arrow on top slide moves to next slide
+		$(".more-arrow").click(function() {
+			$.fn.fullpage.moveSectionDown();
+		});
+
+		// Close modal when the X is clicked
+		$(".modal .close-x").click(function() {
+			hideModalAndFreePage();
+		});
+	}
+
+
+	// ---------------------- HELPER FUNCTIONS ----------------------
+
 	// Make menu items and logo bigger, and hide the black filler 
 	// that helps the transition/fade seem smoother than fading the gradient
 	function expandMainMenu() {
@@ -302,11 +323,19 @@ var jQuery = require('jquery');
 		TweenMax.to($(".header-filler"), .8, {opacity: 1});	    
 	}
 
-	// ----------- Setup other page elements -----------
-	function setupOtherPageElements() {
-		// Bouncing Arrow on top slide moves to next slide
-		$(".more-arrow").click(function() {
-			$.fn.fullpage.moveSectionDown();
-		});
+	// Show the modal and prevent main page from scrolling
+	function showModalAndLockPage() {
+		$("#modal").addClass("active");
+		$("body").addClass("noScroll");
+		$.fn.fullpage.setAllowScrolling(false);	
+		$.fn.fullpage.setKeyboardScrolling(false);
+	}
+
+	// Hide the modal and allow main page to scroll
+	function hideModalAndFreePage() {
+		$(".modal").removeClass("active");
+		$("body").removeClass("noScroll");
+		$.fn.fullpage.setAllowScrolling(true);	
+		$.fn.fullpage.setKeyboardScrolling(true);		
 	}
 })(jQuery);
