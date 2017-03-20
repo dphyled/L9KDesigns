@@ -7,11 +7,11 @@ var jQuery = require('jquery');
 	$(document).ready(function() {
 		initializeFullPageJS();
 		initializeParallaxJS();
-		scrollMagicController = initializeScrollMagicJS();
+		var scrollMagicController = initializeScrollMagicJS();
 		setupMobileMenu();
 		setupBirds();
 		setupProfilePage(scrollMagicController);
-		setupWorkPage();
+		setupWorkPage(scrollMagicController);
 		setupContactForm();
 		setupOtherPageElements();
 	}); //End of $(document).ready
@@ -238,9 +238,17 @@ var jQuery = require('jquery');
 		});
 	}
 
-
 	// ---------- Setup work page events ----------
-	function setupWorkPage() {
+	function setupWorkPage(scrollMagicController) {
+		// ---------- Work Page animations----------
+		// ---------- Projects fly in----------
+		var workTL = new TimelineMax();
+		workTL.staggerFrom(".project-li", .85, {scale:0.5, opacity:0, delay:0.3, ease:Power4.easeOut, force3D:true}, 0.2);
+
+		var workScene = new ScrollMagic.Scene({triggerElement: "#work-trigger", duration: 0})
+									.setTween(workTL)
+									.addTo(scrollMagicController);
+
 		// When clicking on a project thumbnail, display info in a modal and prevent page scrolling
 		$(".project-li img").click(function() {
 			showModalAndLockPage();
