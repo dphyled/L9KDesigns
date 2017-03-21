@@ -243,7 +243,7 @@ var jQuery = require('jquery');
 		// ---------- Work Page animations----------
 		// ---------- Projects fly in----------
 		var workTL = new TimelineMax();
-		workTL.staggerFrom(".project-li", .85, {scale:0.5, opacity:0, delay:0.3, ease:Power4.easeOut, force3D:true}, 0.2);
+		workTL.staggerFrom(".project-li", .85, {scale:0.5, opacity:0, delay:.25, ease:Power4.easeOut, force3D:true}, 0.25);
 
 		var workScene = new ScrollMagic.Scene({triggerElement: "#work-trigger", duration: 0})
 									.setTween(workTL)

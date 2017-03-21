@@ -117,7 +117,7 @@ h1 {
 		stroke-width: 6px;	
 	}
 	50% { 
-		stroke-width: 12px; 
+		stroke-width: 15px; 
 	}
 	100% { 
 		stroke-width: 6px;
@@ -135,6 +135,7 @@ h1 {
 	color: white !important;
 	padding: 0 1.5em;
 	opacity: 0;
+	cursor: pointer;
 
 	/*transition: all .5s;*/
 	transition: letter-spacing .5s, underline .5s, color .3s, width .5s, font-size .5s, padding .5s, transform .2s;
@@ -158,7 +159,6 @@ h1 {
 
 .main-menu-item:hover {
 	letter-spacing: .2em;
-	/*text-decoration: underline;*/
 	color: #a0a0a0 !important;
 }
 
@@ -252,7 +252,6 @@ h1 {
 	box-sizing: border-box;
 	height: 0;
 	line-height: 11vh;
-	/*font-size: 2.5em;*/
 	font-size: 6vmin;
 	text-align: right;
 	font-weight: 100;
@@ -261,7 +260,6 @@ h1 {
 	cursor: pointer !important;
 	color: #dadada;
 	text-transform: uppercase;
-	/*box-shadow: 0px 5px 15px 0px rgba(207,229,255,0.3);*/
 
 	transition: .5s all;
 }
@@ -270,30 +268,9 @@ h1 {
 	height: 11vh;
 }
 
-
-/*.mobile-menu-item::before {
-	content: "";
-	display: block;
-	position: absolute;
-	left: 2vw;
-	margin-top: 4.5vh;
-	width: 1.25vw;
-	height: 8vh;
-	background-color: #250000;
-}*/
-
-/*.mobile-menu-item:not(:last-of-type) {
-	border-bottom: 1px solid gray;
-}*/
-
 .mobile-menu-item.close {
 	border-top: 2px solid #7a7a7a;
 }
-
-
-/*.mobile-menu-item:hover {
-	transform: scale(1.1);
-}*/
 
 .mobile-menu-logo {
 	display: inline-block;
