@@ -71,6 +71,10 @@ h1 {
 	font-size: 1rem;
 }
 
+.main-menu:hover .main-menu-item:not(.logo-container) {
+	filter: blur(2px);
+}
+
 .logo {
 	max-width: 90%;
 	max-height: 90%;
@@ -138,7 +142,7 @@ h1 {
 	cursor: pointer;
 
 	/*transition: all .5s;*/
-	transition: letter-spacing .5s, underline .5s, color .3s, width .5s, font-size .5s, padding .5s, transform .2s;
+	transition: letter-spacing .5s, underline .5s, color .3s, width .5s, font-size .5s, padding .5s, transform .2s, filter .6s;
 	letter-spacing: .1em;
 }
 
@@ -157,12 +161,21 @@ h1 {
 	margin: 0 auto;
 }
 
-.main-menu-item:hover {
+.main-menu-item:hover, 
+.fp-viewing-about .main-menu-item.about, 
+.fp-viewing-work .main-menu-item.work, 
+.fp-viewing-blog .main-menu-item.blog, 
+.fp-viewing-contact .main-menu-item.contact {
 	letter-spacing: .2em;
 	color: #a0a0a0 !important;
+	filter: blur(0) !important;
 }
 
-.main-menu-item:not(.logo-container):hover::after {
+.main-menu-item:not(.logo-container):hover::after,
+.fp-viewing-about .main-menu-item.about::after, 
+.fp-viewing-work .main-menu-item.work::after, 
+.fp-viewing-blog .main-menu-item.blog::after, 
+.fp-viewing-contact .main-menu-item.contact::after {
 	bottom: .95em;
 	opacity: 1;
 	width: 40%;
