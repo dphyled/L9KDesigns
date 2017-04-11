@@ -102,13 +102,17 @@ var jQuery = require('jquery');
 
 	// ---------- Setup Mobile Menu and Mobile Menu Trigger ----------
 	function setupMobileMenu() {
-		// On Mobile trigger, add "active" class to menu and trigger.
-		// Prevent page from scrolling
+		// On Mobile trigger click, toggle "active" class on mobile menu and trigger.
+		// "active" = mobile menu is open
 		$("#mobile-menu-trigger").click(function() {
 			$("#mobile-menu").toggleClass("active");
 			$("#mobile-menu-trigger").toggleClass("active");
+
+			// If opening ("active" was added in lines above), prevent page from scrolling.
+			// Otherwise allow scrolling.
 			if($(this).hasClass("active")) {
 				$("body").addClass("noScroll");
+				TweenMax.staggerFrom(".mobile-menu-item", .25, {left:"100vw", opacity:.4, delay:.15, ease:Power4.easeOut, force3D:true}, 0.09);
 			} else {
 				$("body").removeClass("noScroll");
 			}
