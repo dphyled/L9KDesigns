@@ -12,6 +12,7 @@ var jQuery = require('jquery');
 		setupBirds();
 		setupProfilePage(scrollMagicController);
 		setupWorkPage(scrollMagicController);
+		setupContactPage();
 		setupContactForm();
 		setupOtherPageElements();
 	}); //End of $(document).ready
@@ -61,13 +62,6 @@ var jQuery = require('jquery');
 				else{
 					shrinkMainMenu();
 				}
-
-				// Reset the slow zoom effect when scrolling to slide 2
-				// if(nextIndex == 2) {
-				// 	slowZoomScene = new ScrollMagic.Scene({triggerElement: "#profile-trigger", duration: 0})
-				// 	.setTween(slowZoomIn)
-				// 	.addTo(controller);
-				// }
 			}
 		});
 
@@ -112,7 +106,7 @@ var jQuery = require('jquery');
 			// Otherwise allow scrolling.
 			if($(this).hasClass("active")) {
 				$("body").addClass("noScroll");
-				TweenMax.staggerFrom(".mobile-menu-item", .25, {left:"100vw", opacity:.4, delay:.15, ease:Power4.easeOut, force3D:true}, 0.09);
+				TweenMax.staggerFrom(".mobile-menu-item", .25, {left:"100vw", opacity:.4, delay:.15, ease:Power4.easeOut, force3D:true}, 0.05);
 			} else {
 				$("body").removeClass("noScroll");
 			}
@@ -221,16 +215,11 @@ var jQuery = require('jquery');
 									.setTween(profileTL)
 									.addTo(scrollMagicController);
 
-		// // ---------- Zoom Effect ----------
-		// var slowZoomIn = new TimelineMax()
-		// 	.add(TweenMax.to($("#slide2 .in-slide-container"), 15, {scale: 1.1}));
+		$("#about-l9k-link").click(function() {
+			showModalAndLockPage();
+			$("#modal-inner").load("ajax/profile-l9k.html");
+		});
 
-		// // Slow zoom scene also added in onLeave event of FullPage init, so that it resets when entering slide 3
-		// var slowZoomScene = new ScrollMagic.Scene({triggerElement: "#profile-trigger", duration: 0})
-		// 							.setTween(slowZoomIn)
-		// 							.addTo(controller);
-
-		// When clicking on profile image or name label, display the bio and prevent page scrolling
 		$("#kelly-image img, #kelly-image .name-label").click(function() {
 			showModalAndLockPage();
 			$("#modal-inner").load("ajax/profile-kel.html");
@@ -247,21 +236,60 @@ var jQuery = require('jquery');
 		// ---------- Work Page animations----------
 		// ---------- Projects fly in----------
 		var workTL = new TimelineMax();
-		workTL.staggerFrom(".project-li", .85, {scale:0.5, opacity:0, delay:.25, ease:Power4.easeOut, force3D:true}, 0.25);
+		// workTL.staggerFrom(".project-li", .85, {scale:0.5, opacity:0, delay:.25, ease:Power4.easeOut, force3D:true}, 0.25);
+
+		workTL.staggerFrom(".work-link", .65, {scale:0, delay:.35, ease:Power4.easeOut, force3D:true}, 0.45);
 
 		var workScene = new ScrollMagic.Scene({triggerElement: "#work-trigger", duration: 0})
 									.setTween(workTL)
 									.addTo(scrollMagicController);
 
-		// When clicking on a project thumbnail, display info in a modal and prevent page scrolling
-		$(".project-li img").click(function() {
+		$("#work-fashion-link").click(function() {
 			showModalAndLockPage();
-
-			// Strip images folder from thumbnail path, replace -tn.jpg with .html, then load that page into modal
-			$("#modal-inner").load("ajax/" + $(this).attr("src").replace("-tn.jpg", ".html").replace("images/", ""));
+			loadModalContent("ajax/sample-fashion.html");
 		});
+
+		$("#work-food-link").click(function() {
+			showModalAndLockPage();
+			loadModalContent("ajax/sample-food.html");
+		});
+
+		$("#work-gym-link").click(function() {
+			showModalAndLockPage();
+			loadModalContent("ajax/sample-gym.html");
+		});				
 	}	
 
+
+	// ---------- Contact Page ----------
+	function setupContactPage() {
+		$("#contact-mail").click( function() {
+			showModalAndLockPage();
+			loadModalContent("ajax/contact-form.html");
+		});
+
+		$("#contact-facebook").click( function() {
+			var answer = confirm("Go to L9K's Facebook page?");
+			if(answer) {
+				window.location.href = "https://www.facebook.com/l9kdesigns/";
+			}
+		});
+
+		$("#contact-twitter").click( function() {
+			var answer = confirm("Go to L9K's Twitter page?");
+			if(answer) {
+				window.location.href = "https://twitter.com/l9kdesigns";
+			}
+		});				
+
+		// After ajax calls, run setupContactForm just in case the call loaded the contact form
+		// Tried putting this in the oncomplete of the load, but wasn't working
+		// TODO fix that
+		$( document ).ajaxComplete(function() {
+			setupContactForm();
+			$("#contact-form #name").focus();
+		});
+	}
 
 	// ---------- Setup submit action for contact form ----------
 	function setupContactForm() {
@@ -274,6 +302,9 @@ var jQuery = require('jquery');
 
 			// Serialize form data
 			var formData = $(form).serialize();
+
+			console.log(formData);
+			console.log($(form).attr('action'));
 
 			// Send data to contact.php for processing
 			$.ajax({
@@ -288,10 +319,12 @@ var jQuery = require('jquery');
 				$('#message').val('');
 
 				$(form).slideUp("fast");
+				$(".contact.info").slideUp("fast");
 				$('#contact-form-response').html(response).hide().slideDown("fast");
 			})
 			// if it fails, then display error
 			.fail(function(data) {
+				console.log(data);
 				submitButton.html('Error... :(');
 
 				if(data.responseText !== '' ) {
@@ -313,7 +346,16 @@ var jQuery = require('jquery');
 		// Close modal when the X is clicked
 		$(".modal .close-x").click(function() {
 			hideModalAndFreePage();
+			clearModalContent();
 		});
+
+		// Close modal when escape key is pressed
+		$(document).keyup(function(e) {
+			if (e.keyCode == 27) { // escape key maps to keycode `27`
+				hideModalAndFreePage();
+				clearModalContent();
+			}
+		});		
 	}
 
 
@@ -333,6 +375,18 @@ var jQuery = require('jquery');
 		TweenMax.to($(".main-menu-item"), .5, {height: "3.25em", lineHeight: "3.25em", fontSize: "1.6em"});
 		TweenMax.to($("#main-menu-logo"), .5, {height: "5.5em"});
 		TweenMax.to($(".header-filler"), .8, {opacity: 1});	    
+	}
+
+	function loadModalContent(url) {
+		$("#modal-inner").load( url );
+	}
+
+	function loadModalContent(url, callback) {
+		$("#modal-inner").load( url, callback );
+	}	
+
+	function clearModalContent() {
+		$("#modal-inner *").empty();
 	}
 
 	// Show the modal and prevent main page from scrolling
