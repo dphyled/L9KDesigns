@@ -19,7 +19,7 @@
 		}
 
 		// Set recipient email address
-		$recipient = "kelly@l9kdesigns.com";
+		$recipient = "contact@l9kdesigns.com";
 
 		// Set email subject
 		$subject = "New message from $name";
