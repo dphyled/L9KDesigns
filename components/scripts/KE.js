@@ -236,8 +236,7 @@ var jQuery = require('jquery');
 		// ---------- Work Page animations----------
 		// ---------- Projects fly in----------
 		var workTL = new TimelineMax();
-		// workTL.staggerFrom(".project-li", .85, {scale:0.5, opacity:0, delay:.25, ease:Power4.easeOut, force3D:true}, 0.25);
-
+		
 		workTL.staggerFrom(".work-link", .65, {scale:0, delay:.35, ease:Power4.easeOut, force3D:true}, 0.45);
 
 		var workScene = new ScrollMagic.Scene({triggerElement: "#work-trigger", duration: 0})
@@ -399,9 +398,9 @@ var jQuery = require('jquery');
 
 	// Hide the modal and allow main page to scroll
 	function hideModalAndFreePage() {
-		$(".modal").removeClass("active");
+		$(".modal").removeClass("active").scrollTop(0);
 		$("body").removeClass("noScroll");
 		$.fn.fullpage.setAllowScrolling(true);	
-		$.fn.fullpage.setKeyboardScrolling(true);		
+		$.fn.fullpage.setKeyboardScrolling(true);
 	}
 })(jQuery);

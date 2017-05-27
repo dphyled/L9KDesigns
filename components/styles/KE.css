@@ -10,6 +10,8 @@ html, body {
 	font-family: 'Jura', sans-serif;
 	/*font-family: 'Quicksand', sans-serif;*/
 	/*font-family: 'Oswald', sans-serif;*/
+	/*font-family: 'Amiri', serif;*/
+	/*letter-spacing: .15em;*/
 	margin: 0;
 }
 
@@ -37,6 +39,7 @@ h1 {
 
 /*  ---------------HEADER and MAIN MENU---------------  */
 .header {
+	font-family: 'Jura', sans-serif;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -229,7 +232,8 @@ h1 {
 	width: 60vw;
 	height: 100vh;
 	border: 0;
-	
+	font-family: 'Jura', sans-serif;	
+
 	background-color: #171819;
 	transition: .5s all;
 }
@@ -333,17 +337,9 @@ h1 {
 }
 
 
-/*@media screen and (max-width: 400px) {
-	.mobile-menu-trigger {
-		width: 4.5em;
-		height: 4.5em;
-	}
-}*/
-
 /* Burger Icon */
 .burger-icon {
 	width: 65%;
-	/*height: 20vw;*/
 	position: relative;
 	top: 1em;
 	margin: 0 auto;
@@ -358,21 +354,11 @@ h1 {
 	height: .2em;
 	width: 100%;
 	background: black;
-	/*border-radius: 1em;*/
 	opacity: 1;
 	left: 0;
 	transform: rotate(0deg);
 	transition: .4s ease-in-out;
 }
-
-/*@media screen and (max-width: 400px) {
-	.burger-icon {
-		top: .8em;
-	}
-	.burger-icon span {
-		height: .4em;
-	}
-}*/
 
 .burger-icon span:nth-child(1) {
 	top: 0;
@@ -664,25 +650,34 @@ h1 {
 
 /*  ---------------SLIDE2 -- ABOUT---------------  */
 
+.slide2 {
+	font-size: 15px;
+	font-family: 'Oswald', sans-serif;
+	letter-spacing: .3em;
+	margin: 0;	
+}
+
 h1.about {
 	color: red;
-	font-size: 2em;
+	font-size: 1.5em;
 	display: inline-block;
 	position: relative;
-	top: .6em;
+	/*top: -3.6em;*/
+	margin-bottom: 5em;
 	left: 12%;
 }
 
 @media screen and (min-width: 1100px) {
 	h1.about {
-		top: 5.5em;
-		left: -3em;
+		top: 3em;
+		left: -5.5em;
+		margin-bottom: 0;
 	}
 }
 
 @media screen and (min-width: 1300px) {
 	h1.about {
-		left: -5em;
+		left: -9em;
 	}
 }
 
@@ -690,45 +685,46 @@ a.about-info {
 	text-align: left;
 	display: inline-block;
 	width: auto;
-	padding: .2em .4em;
-	border: 2px solid black;
+	padding: .2em .95em .2em 1.2em;
+	border: 3px solid black;
 	cursor: pointer;
-	font-size: 1.4em;
+	font-size: 1.6em;
 	color: black !important;
 	text-decoration: none;
 	text-align: center;
+	letter-spacing: .3em;
 
-	animation: red-border-blink 5s infinite;		
+	transition: .3s all;
 }
 
-a.about-info:after {
+a.about-info:hover {
+	transform: scale(1.1);
+
+}
+
+/*a.about-info:after {
 	content: "\A";
 	display: inline-block;
+	display: none;
 	width: 0;
 	height: 0;
-	border-left: .5em solid black;
-	border-top: .25em solid transparent;
-	border-bottom: .25em solid transparent;
+	border-left: .45em solid black;
+	border-top: .2em solid transparent;
+	border-bottom: .2em solid transparent;
 	margin-left: .3em;
 	position: relative;
-	top: -.05em;
-	animation: bounce-right .4s infinite alternate;
-}
+	top: -.07em;
+	animation: bounce-right .9s infinite alternate;
+}*/
 
-@media screen and (max-width: 1200px) {
-	h1.about {
-		margin-left: 0;
-	}
-}
-
-@keyframes bounce-right {
+/*@keyframes bounce-right {
 	from {
 		transform: translateX(5px);
 	}
 	to {
 		transform: translateX(0);
 	}
-}
+}*/
 
 .scene-trigger {
 	width: 100%;
@@ -745,13 +741,7 @@ a.about-info:after {
 	text-align: center;
 	vertical-align: middle;
 	overflow: visible;
-	margin: 7em 0 9em;
-}
-
-@media screen and (max-width: 600px) {
-	.profile-image-holder {
-		/*margin-bottom: 9em;*/
-	}
+	margin: 0 0 9em;
 }
 
 .profile-image {
@@ -776,7 +766,6 @@ a.about-info:after {
 }
 
 .profile-image img:hover {
-	/*opacity: .6;*/
 	transform: scale(1.02);
 }
 
@@ -837,6 +826,7 @@ a.about-info:after {
 
 .name-label.eriya {
 	right: 0;
+	top: 0;
 }
 
 .inner-name-label {
@@ -889,14 +879,16 @@ a.about-info:after {
 /*  Hover over profile image or name --> trigger name animation   */
 .profile-image.kelly img:hover + .name-label, .profile-image.kelly .name-label:hover {
 	font-size: 3.5em;
-	text-shadow: 5px 0px 2px rgba(150, 150, 150, 1);
-	left: -.5em;
+	text-shadow: 3px 0px 1px rgba(150, 150, 150, 1);
+	left: -.25em;
+	opacity: .25 !important;	
 }
 
 .profile-image.eriya img:hover + .name-label, .profile-image.eriya .name-label:hover {
 	font-size: 3.5em;
-	text-shadow: -5px 0px 2px rgba(150, 150, 150, 1);
-	right: -.5em;
+	text-shadow: -3px 0px 1px rgba(150, 150, 150, 1);
+	right: -.25em;
+	opacity: .25 !important;		
 }
 
 .profile-detail {
@@ -911,67 +903,66 @@ a.about-info:after {
 
 .profile-detail.kelly {
 	left: 0;
+	bottom: -.85em;
 }
 
 .profile-detail.eriya {
-	right: -1em;
-	top: 2.75em;
+	right: -3em;
+	top: 3.35em;
 }
 
 /*  Hover over profile image or name --> trigger detail animation   */
 .profile-image.kelly img:hover ~ .profile-detail, .profile-image.kelly .name-label:hover ~ .profile-detail {
-	left: -1.15em;
+	left: -.55em;
 	opacity: 1;
 	transform: rotateX(0deg);
 }
 
 .profile-image.eriya img:hover ~ .profile-detail, .profile-image.eriya .name-label:hover ~ .profile-detail {
-	right: -2.5em;
+	right: -3.8em;
 	opacity: 1;
 	transform: rotateX(0deg);
 }
 
-@media screen and (max-width: 1800px) {
-	.profile-image img {
-		/*width: 430px;*/
-	}
-}
-
 @media screen and (max-width: 1000px) {
 	.name-label.kelly {
-		top: -1.2em;
+		top: -1.75em;
 	}
 
 	.name-label.eriya {
-		bottom: -1.2em;
+		bottom: -1.5em;
+		top: auto;
 	}
 
 	.profile-image.kelly img:hover + .name-label, .profile-image.kelly .name-label:hover {
-		text-shadow: 0 -5px 2px rgba(150, 150, 150, 1);
-		top: -1.5em;
-		left: -.5em;
+		text-shadow: 0 -2px 1px rgba(150, 150, 150, 1);
+		top: -1.85em;
+		left: -.2em;
+		opacity: 0 !important;
 	}
 
 	.profile-image.eriya img:hover + .name-label, .profile-image.eriya .name-label:hover {
-		text-shadow: 0 5px 2px rgba(150, 150, 150, 1);
+		text-shadow: 0 2px 1px rgba(150, 150, 150, 1);
 		bottom: -1.5em;
 		right: -.5em;
+		opacity: 0 !important;		
 	}
 
 	.profile-detail.kelly {
 		left: 0;
 		top: 0;
+		bottom: auto;
 	}
 
 	.profile-detail.eriya {
 		right: 0;
-		bottom: -4.95em;
+		bottom: -1.95em;
 		top: initial;
 	}
 
 	.profile-image.kelly img:hover ~ .profile-detail, .profile-image.kelly .name-label:hover ~ .profile-detail {
-		left: -1em;
-		top: -1.5em;
+		left: -.5em;
+		top: -1.55em;
 		opacity: 1;
 		transform: rotateX(0deg);
 	}
@@ -1054,6 +1045,7 @@ a.about-info:after {
 .slide3 {
 	background: #000 url(../images/work-bak.jpg) 50% 50% fixed;
 	background-size: cover;
+	font-family: 'Oswald', sans-serif;
 }
 
 .slide3 .in-slide-container {
@@ -1063,7 +1055,9 @@ a.about-info:after {
 h1.work {
 	text-align: left;
 	color: white;
-	margin-bottom: -1em;
+	margin-bottom: -1.25em;
+	font-size: 1.4em;
+	letter-spacing: .3em;
 }
 
 h1.work:after {
@@ -1071,20 +1065,24 @@ h1.work:after {
 	display: inline-block;
 	width: 0;
 	height: 0;
-	border-left: .7em solid white;
-	border-top: .4em solid transparent;
-	border-bottom: .4em solid transparent;
+	border-left: .6em solid white;
+	border-top: .35em solid transparent;
+	border-bottom: .35em solid transparent;
 	margin-left: .5em;
 	position: relative;
-	top: .1em;
+	top: 0;
 }
 
 @media screen and (max-width: 1200px) {
 	h1.work {
 		margin-bottom: 1em;
-		margin-left: -6em;
+		margin-left: -13em;
 		text-align: center;
 	}
+
+	h1.work:after {
+		display: none;
+	}	
 }
 
 .sample-page-image {
@@ -1113,7 +1111,7 @@ h1.work:after {
 	}
 
 	h1.work {
-		margin-left: -3.5em;
+		margin-left: -8em;
 	}
 }
 
@@ -1164,6 +1162,11 @@ h1.work:after {
 	max-width: 800px;
 }
 
+h1.blog {
+	/*font-family: 'Jura', sans-serif;*/
+	/*letter-spacing: .3em;*/
+}
+
 .coming-soon.info {
 	margin: .25em auto;
 	text-align: center;
@@ -1196,6 +1199,7 @@ h1.work:after {
 .slide5 {
 	background: #000 url(../images/contact-bak.jpg) 50% 50% fixed;
 	background-size: cover;
+	font-family: 'Jura', sans-serif;
 }
 
 .contact-options {
@@ -1212,12 +1216,6 @@ h1.work:after {
 		background-position-x: 35%;
 	}
 
-	.contact-options {
-		margin-left: 3em;
-	}
-}
-
-@media screen and (max-width: 600px) {
 	.contact-options {
 		font-size: 13px;
 		margin: 3em auto;
@@ -1236,8 +1234,8 @@ h1.work:after {
     position: absolute;
     top: -1.25em;
     color: white;
-    font-size: 2em;
-    letter-spacing: 0.016em;
+    font-size: 1.85em;
+    letter-spacing: 0.01em;
 }
 
 .contact-link {
@@ -1417,24 +1415,20 @@ h1.work:after {
 	top: -0.3em;
 }
 
-/*@media screen and (max-width: 600px) {
-	#fp-nav {
-		top: 15%;
-	}
-
-	#fp-nav ul li .active + .fp-tooltip {
-		opacity: 1;
-		width: auto;
-	}
-}*/
-
 #fp-nav ul li .active + .fp-tooltip {
 	opacity: 1;
 	width: auto;
 }
 
-a[href^="#work"].active + div.fp-tooltip, a[href^="#contact"].active + div.fp-tooltip {
+/* When Work or contact are active, make tooltip and dots white because backgrounds are dark */
+.fp-viewing-work #fp-nav div.fp-tooltip, 
+.fp-viewing-contact #fp-nav div.fp-tooltip {
 	color: white !important;
+}
+
+.fp-viewing-work #fp-nav a span, 
+.fp-viewing-contact #fp-nav a span {
+	background: white !important;
 }
 
 .placeholder {
@@ -1486,7 +1480,6 @@ body.noScroll {
 	top: calc(80px + 1vh);
 	width: 98vw;
 	height: calc(98vh - 80px);
-	
 	left: 1vw;
 
 	margin: 0 auto;
@@ -1508,6 +1501,7 @@ body.noScroll {
 
 .modal .close-x {
 	width: 4vw;
+	max-width: 3.5em;
 	position: fixed;
 	top: 7em;
 	right: 3vw;
