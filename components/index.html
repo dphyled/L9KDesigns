@@ -10,8 +10,9 @@
 	
 	<link rel="stylesheet" type="text/css" href="styles/style.css" media="all" />
 	<link href="https://fonts.googleapis.com/css?family=Jura:300" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+	<!--<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">-->
+	<link href="https://fonts.googleapis.com/css?family=Oswald:200,300" rel="stylesheet">
+	<!--<link href="https://fonts.googleapis.com/css?family=Amiri" rel="stylesheet">-->
 	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -21,7 +22,23 @@
 </head>
 <body>
 	<div id="loading-container" class="loading-container">
-		<h1>LOADING</h1>
+		<h1><span class="loading-text">LOADING</span>
+			<noscript>
+				<style>
+					.loading-text {
+						display: none;
+					}
+					.loading-container h1 {
+						animation: none;
+						line-height: initial;
+						margin: 3em auto;
+						max-width: 80vw;
+					}
+				</style>
+				This page totes requires JavaScript. Please visit our <a href="https://www.L9KDesigns.com/blog">BLOG</a> for info about L9K Designs without all the crazy stuff on this page.
+			</noscript>
+		</h1>
+
 	</div>
 	<header id="header" class="header">
 		<div class="header-filler"></div>
@@ -81,20 +98,21 @@
 		<section id="slide2" class="section fp-auto-height-responsive page-slide slide2">
 			<div class="in-slide-container">
 				<div id="profile-trigger" class="scene-trigger"></div>
-				<h1 class="about">About L9K Designs</h1>
-				<div class="about info">L9K is a 2-dude web development and graphic design studio based in Tokyo, Japan. Those two dudes are...</div>
+				<h1 class="about">ABOUT<br><a id="about-l9k-link" href="javascript:void(0);" class="about-info">L9K</a></h1>
 				<div class="profile-image-holder">
 					<div id="kelly-image" class="profile-image kelly">
 						<img src="images/k2.png" alt="Image of Kelly"><h2 class="name-label kelly">KELLY</h2>
 						<div class="profile-detail kelly">
 							CODING/DESIGN
 						</div>
+						<h2 class="inner-name-label kelly">KELLY</h2>
 					</div>
 					<div id="eriya-image" class="profile-image eriya">
 						<img src="images/e2.png" alt="Image of Eriya"><h2 class="name-label eriya">ERIYA</h2>
 						<div class="profile-detail eriya">
 							ARTWORK/DESIGN
 						</div>
+						<h2 class="inner-name-label eriya">ERIYA</h2>
 					</div>
 				</div>
 			</div>
@@ -103,19 +121,25 @@
 		<section id="slide3" class="section fp-auto-height-responsive page-slide slide3">
 			<div class="in-slide-container">
 				<div id="work-trigger" class="scene-trigger"></div>				
-				<h1 class="work">Our Work</h1>
-				<div class="work info">Past projects we've worked on include website design and development, software development, other non-web graphic design work, and much more. Check it!</div>
-				<ul class="project-list">
-					<li class="project-li"><img src="images/sample-fashion-tn.jpg" alt="Fashion page thumbnail"><div class="project-title">FASHION</div></li>
-					<li class="project-li"><img src="images/sample-food-tn.jpg" alt="Fashion page thumbnail"><div class="project-title">FOOD</div></li>
-					<li class="project-li">Project 3</li>
-				</ul>
+				<h1 class="work">THE WORK</h1>
+				<div id="work-triangle-group" class="work-triangle-group">
+					<img src="images/work-triangle-group.png" alt="Triangle group background">
+					<div id="work-fashion-link" class="work-link top-left">
+						<img src="images/sample-fashion-tri.png" alt="Sample site for a fashion brand">
+					</div>
+					<div id="work-food-link" class="work-link top-right">
+						<img src="images/sample-food-tri.png" alt="Sample site for a restaurant">
+					</div>
+					<div id="work-gym-link" class="work-link bottom">
+						<img src="images/sample-gym-tri.png" alt="Sample site for a gym">	
+					</div>
+				</div>
 			</div>
 		</section>
 
 		<section id="slide4" class="section page-slide slide4">
 			<div class="in-slide-container">			
-				<h1 class="blog">Blog</h1>
+				<h1 class="blog">The Blog</h1>
 				<div class="coming-soon info">( ...coming soon... )</div>
 				<div class="coming-soon-box">
 					<p>
@@ -139,26 +163,12 @@
 
 		<section id="slide5" class="section page-slide slide5">
 			<div class="in-slide-container contact">
-				<h1 class="contact">Contact</h1>
-				<div class="contact info">Hit us up! We welcome feedback, suggestions, party invites, and business proposals. What's next?</div>
-				<form id="contact-form" class="contact-form" action="contact.php" method="post">
-					<div class="field">
-						<label for="name">Name: <span class="required-text">(required)</span></label>
-						<input type="text" id="name" name="name" required placeholder="Your name...">
-					</div>
-					<div class="field">
-						<label for="email">Email: <span class="required-text">(required)</span></label>
-						<input type="email" id="email" name="email" required placeholder="Your email...">
-					</div>
-					<div class="field">
-						<label for="message">Message: <span class="required-text">(required)</span></label>
-						<textarea id="message" name="message" required placeholder="And your message..."></textarea>
-					</div>
-					<div class="field">
-						<button type="submit" id="contact-submit" name="submit">Send Message</button>
-					</div>
-				</form>
-				<div id="contact-form-response" class="contact-form-response"></div>
+				<div id="contact-options" class="contact-options">
+					<div id="contact-facebook" class="contact-link top-left"><img src="images/F_icon.svg" alt="Facebook"></div>
+					<div id="contact-twitter" class="contact-link center"><img src="images/twitter_icon.svg" alt="Twitter"></div>
+					<div id="contact-mail" class="contact-link top-right"><img src="images/letter.svg" alt="eMail"></div>
+					<div id="contact-OTHER" class="contact-link bottom"></div>
+				</div>
 			</div>
 		</section>
 	</div>
@@ -206,11 +216,25 @@
 
 	<div id="modal" class="modal">
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300.000000 291.000000" class="close-x">
-			<g transform="translate(0.000000,291.000000) scale(0.100000,-0.100000)" fill="white" stroke="none">
+			<g transform="translate(0.000000,291.000000) scale(0.100000,-0.100000)" fill="white" stroke="black">
 			<path d="M1735 2040 l-280 -280 -275 275 c-151 151 -280 275 -285 275 -6 0 -77 -66 -158 -148 l-147 -147 275 -275 c151 -151 275 -279 275 -285 0 -5 -125 -135 -277 -287 l-277 -277 152 -153 151 -153 278 278 c153 152 283 277 288 277 6 0 134 -124 285 -275 l275 -275 147 147 c82 81 148 152 148 157 0 5 -124 133 -275 284 l-276 276 281 281 280 280 -153 153 -152 152 -280 -280z" stroke-width="20"></path></g>
 		</svg>
 		<div id="modal-inner" class="modal-inner">
 		</div>
 	</div>
+
+	<svg height="0" width="0">
+		<defs>
+			<clipPath id="upsidedown-triangle" viewBox="0 0 100 100" clipPathUnits="objectBoundingBox">
+				<polygon points="0,0 1,0 .5,1" />
+			</clipPath>
+			<clipPath id="triangle" viewBox="0 0 100 100" clipPathUnits="objectBoundingBox">			
+				<polygon points="0.5,0 0,.965 1,.965" />
+			</clipPath>
+			<clipPath id="work-triangle" viewBox="0 0 100 100" clipPathUnits="objectBoundingBox">			
+				<polygon points="0.001,0.001 .999,0.001 .5,.979" />
+			</clipPath>					
+		</defs>
+	</svg>
 </body>
 </html>
