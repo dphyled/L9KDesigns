@@ -529,7 +529,7 @@ h1 {
 }
 
 .slide1-2 {
-	background: url(../images/top-mountain.gif) no-repeat;
+	background: url(../images/top-mountain.png) no-repeat;
 	background-size: 110vw auto;
 	background-position: bottom;
 	left: -5% !important;
@@ -1486,7 +1486,8 @@ body.noScroll {
 	height: calc(98vh - 80px);
 	left: 1vw;
 
-	font-family: arial;
+/*	font-family: Arial, sans-serif;
+	letter-spacing: .1em;*/
 
 	margin: 0 auto;
 	background-color: rgba( 0, 0, 0, .95 );
