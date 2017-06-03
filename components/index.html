@@ -12,7 +12,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Jura:300" rel="stylesheet">
 	<!--<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">-->
 	<link href="https://fonts.googleapis.com/css?family=Oswald:200,300" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Amiri" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
+	<!--<link href="https://fonts.googleapis.com/css?family=Amiri" rel="stylesheet">-->
 	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -21,23 +22,32 @@
 	<![endif]-->	
 </head>
 <body>
-	<div id="loading-container" class="loading-container">
-		<h1><span class="loading-text">LOADING</span>
-			<noscript>
-				<style>
-					.loading-text {
-						display: none;
-					}
-					.loading-container h1 {
-						animation: none;
-						line-height: initial;
-						margin: 3em auto;
-						max-width: 80vw;
-					}
-				</style>
-				This page relies heavily on JavaScript. Please visit our <a href="https://www.L9KDesigns.com/blog">BLOG</a> for info about L9K Designs without all the crazy stuff on this page.
-			</noscript>
-		</h1>
+	<div id="splash-container" class="splash-container">
+		<div class="welcome-block">
+			<img class="splash-logo" src="images/L9K-logo-black-white.svg" alt="">
+			<h1 class="welcome">W<span>e</span>lcome</h1><br />
+			<span class="welcome-message">L<span>9</span>K is a web/graphic design company</span>
+		</div>
+		<div class="loading-text">LOADING</div>
+		<div class="continue-text"><svg class="continue-triangle" viewBox="0 0 100 100"><polygon points="0,0 100,50 0,100" style="fill:black;stroke:white;stroke-width:5;" /></svg>Continue to Site</div>
+
+		<noscript>
+			<style>
+				.loading-text, .continue-text {
+					display: none;
+				}
+				.loading-container h1 {
+					animation: none;
+					line-height: initial;
+					margin: 3em auto;
+					max-width: 80vw;
+				}
+				.no-javascript-message {
+					position: relative;
+				}
+			</style>
+			<span class="no-javascript-message">This page relies heavily on JavaScript. Please visit our <a href="https://www.L9KDesigns.com/blog">BLOG</a> for info about L9K Designs without all the crazy stuff on this page.</span>
+		</noscript>
 
 	</div>
 	<header id="header" class="header">
@@ -225,10 +235,13 @@
 
 	<svg height="0" width="0">
 		<defs>
+			<clipPath id="triangle" viewBox="0 0 100 100" clipPathUnits="objectBoundingBox">			
+				<polygon points="0.5,0 0,1 1,1" />
+			</clipPath>			
 			<clipPath id="upsidedown-triangle" viewBox="0 0 100 100" clipPathUnits="objectBoundingBox">
 				<polygon points="0,0 1,0 .5,1" />
 			</clipPath>
-			<clipPath id="triangle" viewBox="0 0 100 100" clipPathUnits="objectBoundingBox">			
+			<clipPath id="contact-triangle" viewBox="0 0 100 100" clipPathUnits="objectBoundingBox">			
 				<polygon points="0.5,0 0,.965 1,.965" />
 			</clipPath>
 			<clipPath id="work-triangle" viewBox="0 0 100 100" clipPathUnits="objectBoundingBox">			

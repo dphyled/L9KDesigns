@@ -56,7 +56,7 @@ sampleImageSource = ['components/samples/images/*'];
 // });
 
 //gulp.task('js', ['coffee'], function() {		//  2nd param = dependencies, optional
-gulp.task('js', function() {		//  2nd param = dependencies, optional
+gulp.task('js', function() {
 	gulp.src(jsSources, {base: './components/'})
 		.pipe(concat('script.js'))
 		.pipe(browserify())

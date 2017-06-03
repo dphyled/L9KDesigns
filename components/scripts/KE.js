@@ -19,10 +19,22 @@ var jQuery = require('jquery');
 	
 	// ---------- Once all images and resources have loaded... ----------
 	window.onload = function() {
-		// ---------- Hide the loading screen overlay ----------
-		loading = $('#loading-container');
+		loading = $(".loading-text");
+		continueText = $(".continue-text");
 		TweenMax.to(loading, .3, {opacity: 0});
-		$(loading).css("pointer-events", "none");
+		loading.css("display", "none");
+		continueText.css("display", "inline-block");
+		TweenMax.to(continueText, .3, {opacity: 1});
+		$(".continue-text").on( "click", function() {
+			hideLoadingScreen();
+		});
+	}
+
+	function hideLoadingScreen() {
+		// ---------- Hide the splash screen overlay ----------
+		splash = $('#splash-container');
+		TweenMax.to(splash, .3, {opacity: 0});
+		$(splash).css("pointer-events", "none");
 
 		// ---------- Initial Page load fade in ----------
 		TweenMax.to($("#fullpage"), .3, {opacity: 1, delay: .1});
