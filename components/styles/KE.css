@@ -235,7 +235,7 @@ h1 {
 	font-family: 'Jura', sans-serif;	
 
 	background-color: #171819;
-	transition: .5s all;
+	transition: .4s all;
 }
 
 .mobile-menu.active {
@@ -254,8 +254,10 @@ h1 {
 .mobile-menu-item {
 	position: relative;
 	box-sizing: border-box;
-	/*height: 0;*/
-	height: 11vh;
+	height: 0;
+	/*height: 11vh;*/
+	top: 0;
+	transform: translateX(100%);
 	line-height: 11vh;
 	font-size: 6vmin;
 	text-align: right;
@@ -266,12 +268,14 @@ h1 {
 	color: #dadada;
 	text-transform: uppercase;
 
-	transition: .45s all, .2s letter-spacing;
+	transition: .65s all, .2s letter-spacing;
 }
 
-/*.mobile-menu.active .mobile-menu-item {
+.mobile-menu.active .mobile-menu-item {
 	height: 11vh;
-}*/
+	top: auto;
+	transform: translateX(0);
+}
 
 .mobile-menu-item.close {
 	border-top: 2px solid #7a7a7a;
@@ -881,14 +885,14 @@ a.about-info:hover {
 	font-size: 3.5em;
 	text-shadow: 3px 0px 1px rgba(150, 150, 150, 1);
 	left: -.25em;
-	opacity: .25 !important;	
+	opacity: .05 !important;	
 }
 
 .profile-image.eriya img:hover + .name-label, .profile-image.eriya .name-label:hover {
 	font-size: 3.5em;
 	text-shadow: -3px 0px 1px rgba(150, 150, 150, 1);
 	right: -.25em;
-	opacity: .25 !important;		
+	opacity: .05 !important;		
 }
 
 .profile-detail {
@@ -1481,6 +1485,8 @@ body.noScroll {
 	width: 98vw;
 	height: calc(98vh - 80px);
 	left: 1vw;
+
+	font-family: arial;
 
 	margin: 0 auto;
 	background-color: rgba( 0, 0, 0, .95 );

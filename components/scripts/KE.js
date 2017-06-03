@@ -81,7 +81,7 @@ var jQuery = require('jquery');
 	function initializeParallaxJS() {
 		var scene = document.getElementById('main-scene');
 		var parallax = new Parallax(scene, {
-			scalarX: 30,
+			scalarX: $( window ).width() > 600 ? 30 : 100,
 			scalarY: 10,
 			frictionX: 0.02,
 			frictionY: 0.02,
@@ -106,7 +106,7 @@ var jQuery = require('jquery');
 			// Otherwise allow scrolling.
 			if($(this).hasClass("active")) {
 				$("body").addClass("noScroll");
-				TweenMax.staggerFrom(".mobile-menu-item", .25, {left:"100vw", opacity:.4, delay:.15, ease:Power4.easeOut, force3D:true}, 0.05);
+				//TweenMax.staggerFrom(".mobile-menu-item", .25, {left:"100vw", opacity:.4, delay:.15, ease:Power4.easeOut, force3D:true}, 0.05);
 			} else {
 				$("body").removeClass("noScroll");
 			}
