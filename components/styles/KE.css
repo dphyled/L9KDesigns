@@ -436,7 +436,7 @@ h1 {
 /*  --------------- LANGUAGE CHOOSER ---------------  */
 .language-chooser {
 	position: fixed;
-	z-index: 10000;
+	z-index: 100;
 	top: 1em;
 	left: 1em;
 	cursor: pointer;
@@ -482,6 +482,18 @@ h1 {
 
 .language-chooser.flipped .language.jp {
 	transform: rotateY(0);
+}
+
+.language-chooser.mobile {
+	display: none;
+	position: absolute;
+	text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+	.language-chooser.mobile {
+		display: block;
+	}
 }
 
 /*  ---------------PAGE SLIDES/SECTIONS---------------  */

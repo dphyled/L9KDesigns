@@ -140,10 +140,17 @@ var jQuery = require('jquery');
 	// ---------- Setup Language Chooser ----------
 	function setupLanguageChooser() {
 		var languageChooser = $("#language-chooser");
+		var languageChooserMobile = $("#language-chooser-mobile");
 		languageChooser.click( function() {
 			languageChooser.toggleClass("flipped");
+			languageChooserMobile.toggleClass("flipped");
 			languageChooser.hasClass("flipped") ? setLanguageToJapanese() : setLanguageToEnglish();
 		});
+		languageChooserMobile.click( function() {
+			languageChooser.toggleClass("flipped");
+			languageChooserMobile.toggleClass("flipped");
+			languageChooser.hasClass("flipped") ? setLanguageToJapanese() : setLanguageToEnglish();
+		});		
 	}	
 
 	// ---------- Setup flying birds on top slide ----------
