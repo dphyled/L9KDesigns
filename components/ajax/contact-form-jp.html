@@ -1,0 +1,20 @@
+<h1 class="contact">Contact</h1>
+<div class="contact info">Hit us up! We welcome feedback, suggestions, party invites, and business proposals. What's next?</div>
+<form id="contact-form" class="contact-form" action="contact.php" method="POST">
+    <div class="field">
+        <label for="name">Name: <span class="required-text">(required)</span></label>
+        <input type="text" id="name" name="name" required placeholder="Your name...">
+    </div>
+    <div class="field">
+        <label for="email">Email: <span class="required-text">(required)</span></label>
+        <input type="email" id="email" name="email" required placeholder="Your email...">
+    </div>
+    <div class="field">
+        <label for="message">Message: <span class="required-text">(required)</span></label>
+        <textarea id="message" name="message" required placeholder="And your message..."></textarea>
+    </div>
+    <div class="field">
+        <button type="submit" id="contact-submit" name="submit">Send Message</button>
+    </div>
+</form>
+<div id="contact-form-response" class="contact-form-response"></div>

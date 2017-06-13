@@ -145,11 +145,17 @@ var jQuery = require('jquery');
 			languageChooser.toggleClass("flipped");
 			languageChooserMobile.toggleClass("flipped");
 			languageChooser.hasClass("flipped") ? setLanguageToJapanese() : setLanguageToEnglish();
+
+			hideModalAndFreePage();
+			clearModalContent();
 		});
 		languageChooserMobile.click( function() {
 			languageChooser.toggleClass("flipped");
 			languageChooserMobile.toggleClass("flipped");
 			languageChooser.hasClass("flipped") ? setLanguageToJapanese() : setLanguageToEnglish();
+
+			hideModalAndFreePage();
+			clearModalContent();			
 		});		
 	}	
 
