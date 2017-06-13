@@ -6,9 +6,11 @@ var jQuery = require('jquery');
 	// ---------- Once DOM has loaded... ----------
 	$(document).ready(function() {
 		initializeFullPageJS();
+		lockScrolling();
 		initializeParallaxJS();
 		var scrollMagicController = initializeScrollMagicJS();
 		setupMobileMenu();
+		setupLanguageChooser();
 		setupBirds();
 		setupProfilePage(scrollMagicController);
 		setupWorkPage(scrollMagicController);
@@ -42,6 +44,9 @@ var jQuery = require('jquery');
 		TweenMax.from($(".slide1 div:not(#slide1-1), .header"), 2.5, {opacity: 0, delay: .3});
 		TweenMax.to($(".main-menu-item"), 1.0, {opacity:1, delay: 1.25});
 		TweenMax.to($(".logo"), .5, {transition: ".5s all", delay: 1.25});
+
+		// ---------- Allow scrolling ----------
+		unlockScrolling();
 	}
 
 	// ---------- Initialize fullPage.js ------------
@@ -93,7 +98,7 @@ var jQuery = require('jquery');
 	function initializeParallaxJS() {
 		var scene = document.getElementById('main-scene');
 		var parallax = new Parallax(scene, {
-			scalarX: $( window ).width() > 600 ? 30 : 100,
+			scalarX: $( window ).width() > 600 ? 30 : 60,
 			scalarY: 10,
 			frictionX: 0.02,
 			frictionY: 0.02,
@@ -117,10 +122,10 @@ var jQuery = require('jquery');
 			// If opening ("active" was added in lines above), prevent page from scrolling.
 			// Otherwise allow scrolling.
 			if($(this).hasClass("active")) {
-				$("body").addClass("noScroll");
+				$("body").addClass("no-scroll");
 				//TweenMax.staggerFrom(".mobile-menu-item", .25, {left:"100vw", opacity:.4, delay:.15, ease:Power4.easeOut, force3D:true}, 0.05);
 			} else {
-				$("body").removeClass("noScroll");
+				$("body").removeClass("no-scroll");
 			}
 		});
 
@@ -128,9 +133,18 @@ var jQuery = require('jquery');
 		$("#close-mobile-menu, .mobile-menu-item").click(function() {
 			$("#mobile-menu").toggleClass("active");
 			$("#mobile-menu-trigger").toggleClass("active");
-			$("body").removeClass("noScroll");
+			$("body").removeClass("no-scroll");
 		});
 	}
+
+	// ---------- Setup Language Chooser ----------
+	function setupLanguageChooser() {
+		var languageChooser = $("#language-chooser");
+		languageChooser.click( function() {
+			languageChooser.toggleClass("flipped");
+			languageChooser.hasClass("flipped") ? setLanguageToJapanese() : setLanguageToEnglish();
+		});
+	}	
 
 	// ---------- Setup flying birds on top slide ----------
 	function setupBirds() {
@@ -229,17 +243,17 @@ var jQuery = require('jquery');
 
 		$("#about-l9k-link").click(function() {
 			showModalAndLockPage();
-			$("#modal-inner").load("ajax/profile-l9k.html");
+			loadModalContent("ajax/profile-l9k");
 		});
 
 		$("#kelly-image img, #kelly-image .name-label").click(function() {
 			showModalAndLockPage();
-			$("#modal-inner").load("ajax/profile-kel.html");
+			loadModalContent("ajax/profile-kel");
 		});
 
 		$("#eriya-image img, #eriya-image .name-label").click(function() {
 			showModalAndLockPage();
-			$("#modal-inner").load("ajax/profile-eriya.html");
+			loadModalContent("ajax/profile-eriya");
 		});
 	}
 
@@ -257,17 +271,17 @@ var jQuery = require('jquery');
 
 		$("#work-fashion-link").click(function() {
 			showModalAndLockPage();
-			loadModalContent("ajax/sample-fashion.html");
+			loadModalContent("ajax/sample-fashion");
 		});
 
 		$("#work-food-link").click(function() {
 			showModalAndLockPage();
-			loadModalContent("ajax/sample-food.html");
+			loadModalContent("ajax/sample-food");
 		});
 
 		$("#work-gym-link").click(function() {
 			showModalAndLockPage();
-			loadModalContent("ajax/sample-gym.html");
+			loadModalContent("ajax/sample-gym");
 		});				
 	}	
 
@@ -276,7 +290,7 @@ var jQuery = require('jquery');
 	function setupContactPage() {
 		$("#contact-mail").click( function() {
 			showModalAndLockPage();
-			loadModalContent("ajax/contact-form.html");
+			loadModalContent("ajax/contact-form");
 		});
 
 		$("#contact-facebook").click( function() {
@@ -292,6 +306,10 @@ var jQuery = require('jquery');
 				window.location.href = "https://twitter.com/l9kdesigns";
 			}
 		});				
+
+		$("#contact-OTHER").click( function() {
+			alert("RING RING... Sorry, nothing here yet.");
+		});	
 
 		// After ajax calls, run setupContactForm just in case the call loaded the contact form
 		// Tried putting this in the oncomplete of the load, but wasn't working
@@ -389,11 +407,13 @@ var jQuery = require('jquery');
 	}
 
 	function loadModalContent(url) {
-		$("#modal-inner").load( url );
+		var fullURL =  url + getLanguageExtension() + ".html";
+		$("#modal-inner").load( fullURL );
 	}
 
 	function loadModalContent(url, callback) {
-		$("#modal-inner").load( url, callback );
+		var fullURL =  url + getLanguageExtension() + ".html";
+		$("#modal-inner").load( fullURL, callback );
 	}	
 
 	function clearModalContent() {
@@ -403,16 +423,40 @@ var jQuery = require('jquery');
 	// Show the modal and prevent main page from scrolling
 	function showModalAndLockPage() {
 		$("#modal").addClass("active");
-		$("body").addClass("noScroll");
-		$.fn.fullpage.setAllowScrolling(false);	
-		$.fn.fullpage.setKeyboardScrolling(false);
+		lockScrolling();
 	}
 
 	// Hide the modal and allow main page to scroll
 	function hideModalAndFreePage() {
 		$(".modal").removeClass("active").scrollTop(0);
-		$("body").removeClass("noScroll");
+		unlockScrolling();
+	}
+
+	function lockScrolling() {
+		$("body").addClass("no-scroll");
+		$.fn.fullpage.setAllowScrolling(false);	
+		$.fn.fullpage.setKeyboardScrolling(false);
+	}
+
+	function unlockScrolling() {
+		$("body").removeClass("no-scroll");
 		$.fn.fullpage.setAllowScrolling(true);	
 		$.fn.fullpage.setKeyboardScrolling(true);
 	}
+
+	function getLanguageExtension() {
+		var lang = "";
+		lang = $("body").hasClass("en-lang") ? "" : "-jp";
+		return lang;
+	}
+
+	function setLanguageToEnglish() {
+		$("body").removeClass("jp-lang");
+		$("body").addClass("en-lang");
+	}
+
+	function setLanguageToJapanese() {
+		$("body").removeClass("en-lang");
+		$("body").addClass("jp-lang");
+	}	
 })(jQuery);

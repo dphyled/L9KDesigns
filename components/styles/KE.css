@@ -433,6 +433,56 @@ h1 {
 	transform: scale(1.12);
 }
 
+/*  --------------- LANGUAGE CHOOSER ---------------  */
+.language-chooser {
+	position: fixed;
+	z-index: 10000;
+	top: 1em;
+	left: 1em;
+	cursor: pointer;
+	opacity: .8;
+	transition: .3s all;
+	width: 3em;
+	height: 3em;
+}
+
+.language-chooser:hover {
+	opacity: 1;
+	transform: scale(1.12);
+}
+
+.language-chooser .language {
+	color: white;
+	font-size: .9em;
+	line-height: 3em;
+	border-radius: .5em;	
+
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+	transition: transform .3s;
+}
+
+.language-chooser .language.en {
+	background-color: #02587e;
+	transform: rotateY(0);
+}
+
+.language-chooser .language.jp {
+	background-color: #622312;	
+	transform: rotateY(-180deg);
+}
+
+.language-chooser.flipped .language.en {
+	transform: rotateY(-180deg);
+}
+
+.language-chooser.flipped .language.jp {
+	transform: rotateY(0);
+}
 
 /*  ---------------PAGE SLIDES/SECTIONS---------------  */
 
@@ -461,7 +511,7 @@ h1 {
 }
 
 .slide4 {
-	background-color: #cecdbd;
+	background-color: black;
 }
 
 .slide5 {
@@ -1176,6 +1226,10 @@ h1.work:after {
 }
 
 /*  ---------------SLIDE4 -- BLOG---------------  */
+.slide4 {
+	color: white;
+}
+
 .slide4 .in-slide-container {
 	max-width: 800px;
 }
@@ -1190,26 +1244,6 @@ h1.blog {
 	text-align: center;
 	font-size: 2.25em;
 	margin-bottom: .75em;
-}
-
-.coming-soon-box {
-	margin-bottom: 1em;
-	filter: blur(2px);
-	font-size: 1.2em;
-	border: 1px solid black;
-	padding: 1em;
-}
-
-@media screen and (max-width: 600px) {
-	.coming-soon-box {
-		margin: 0 auto 1em;
-		width: 80vw;
-	}
-}
-
-.coming-soon-box .date {
-	font-style: italic;
-	font-weight: bold;
 }
 
 /*  ---------------SLIDE5 -- CONTACT---------------  */
@@ -1354,6 +1388,12 @@ h1.blog {
 	top: 10.666em;
 }
 
+.contact-link.bottom img {
+	left: -3em;
+	top: -9.5em;
+	width: 6em;
+}
+
 
 @media screen and (max-width: 600px) {
 	.in-slide-container.contact {
@@ -1431,8 +1471,8 @@ h1.blog {
 }
 
 .required-text {
-	font-size: .75em;
-	opacity: .8;
+	font-size: .65em;
+	opacity: .75;
 }
 
 
@@ -1466,7 +1506,7 @@ h1.blog {
 	font-size: 3em;
 }
 
-body.noScroll {
+body.no-scroll {
 	overflow: hidden !important;
 }
 
@@ -1586,12 +1626,12 @@ body.noScroll {
 	}
 
 	.splash-logo {
-		width: 8em;
-		margin-top: 10vh;
+		width: 4em;
+		margin-top: 12vh;
 	}	
 
 	.welcome-block .welcome {
-		font-size: 2.5em;
+		font-size: 2.25em;
 		margin: .5em 0;
 	}
 
@@ -1601,7 +1641,7 @@ body.noScroll {
 	}
 
 	.loading-text, .continue-text {
-		font-size: 1.5em;
+		font-size: 1.3em;
 		left: 0;
 		right: 0;
 		width: 100vw;
@@ -1725,4 +1765,21 @@ body.noScroll {
 	right: 0;
 
 	color: white;
+}
+
+
+.no-js .splash-container {
+	/*display: none;*/
+}
+
+.no-js #fullpage {
+	opacity: 1 !important;
+}
+
+.no-js .slide1 .layer {
+	height: 100vh;
+	width: 100vw;
+	position: absolute;
+	top: 0;
+	left: 0;
 }

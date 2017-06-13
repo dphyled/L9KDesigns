@@ -21,7 +21,7 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
 	<![endif]-->	
 </head>
-<body>
+<body class="no-scroll no-js en-lang">
 	<div id="splash-container" class="splash-container">
 		<div class="welcome-block">
 			<img class="splash-logo" src="images/L9K-logo-black-white.svg" alt="">
@@ -43,7 +43,11 @@
 					max-width: 80vw;
 				}
 				.no-javascript-message {
+					display: block;
 					position: relative;
+					top: 1em;
+					left: 1em;
+					width: 90vw;
 				}
 			</style>
 			<span class="no-javascript-message">This page relies heavily on JavaScript. Please visit our <a href="https://www.L9KDesigns.com/blog">BLOG</a> for info about L9K Designs without all the crazy stuff on this page.</span>
@@ -53,6 +57,10 @@
 	<header id="header" class="header">
 		<div class="header-filler"></div>
 		<nav id="main-menu" class="main-menu">
+			<div id="language-chooser" class="language-chooser">
+				<div class="language en">ENG</div>
+				<div class="language jp">JPN</div>
+			</div>			
 			<a href="#about" class="main-menu-item about">ABOUT</a>
 			<a href="#work" class="main-menu-item work">WORK</a>
 			<div class="main-menu-item logo-container">
@@ -150,24 +158,8 @@
 		<section id="slide4" class="section page-slide slide4">
 			<div class="in-slide-container">			
 				<h1 class="blog">The Blog</h1>
-				<div class="coming-soon info">( ...coming soon... )</div>
-				<div class="coming-soon-box">
-					<p>
-						<div class="date">3/15/2017</div>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi quia natus reiciendis quaerat, doloribus sit laborum perspiciatis iusto, magnam molestias id tempora possimus quod, dolores debitis quis? Veritatis, necessitatibus, aliquam. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					</p>
-
-					<p>
-						<div class="date">3/12/2017</div>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi quia natus reiciendis quaerat, doloribus sit laborum perspiciatis iusto, magnam molestias id tempora possimus quod, dolores debitis quis? Veritatis, necessitatibus, aliquam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					</p>
-
-					<p>
-						<div class="date">3/9/2017</div>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi quia natus reiciendis quaerat, doloribus sit laborum perspiciatis iusto, magnam molestias id tempora possimus quod, dolores debitis quis? Veritatis, necessitatibus, aliquam. 
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					</p>					
-				</div>
+				<div class="coming-soon info">( ...feed coming soon... )</div>
+				<div class="coming-soon info" style="font-size:1.3em;">For now you can see it <a href="https://www.l9kdesigns.com/blog/">here</a>, though it's still under construction</div>
 			</div>
 		</section>
 
@@ -177,7 +169,7 @@
 					<div id="contact-facebook" class="contact-link top-left"><img src="images/F_icon.svg" alt="Facebook"></div>
 					<div id="contact-twitter" class="contact-link center"><img src="images/twitter_icon.svg" alt="Twitter"></div>
 					<div id="contact-mail" class="contact-link top-right"><img src="images/letter.svg" alt="eMail"></div>
-					<div id="contact-OTHER" class="contact-link bottom"></div>
+					<div id="contact-OTHER" class="contact-link bottom"><img src="images/phone_icon.svg" alt="Phone?"></div>
 				</div>
 			</div>
 		</section>
