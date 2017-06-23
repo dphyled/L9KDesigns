@@ -24,10 +24,8 @@ h1 {
 .info {
 	position: relative;
 	margin: 1em 0 0;
-	font-size: 1.9em;
 	text-align: justify;
 	text-justify: distribute;
-	line-height: 1.2em;
 }
 
 @media screen and (max-width: 600px) {
@@ -873,6 +871,7 @@ a.about-info:hover {
 	clip-path: polygon(0% 100%, 100% 100%, 50% 0%);
 }
 
+/* Target Firefox since polygon clip-path doesn't work */
 @-moz-document url-prefix() {
 	.profile-image.kelly img, .profile-image.kelly:after {
 		clip-path: url(#upsidedown-triangle);
@@ -1050,35 +1049,15 @@ a.about-info:hover {
 }
 
 .profile-bio h2 {
-	font-size: 2em;
+	font-size: 1.8em;
 }
 
 .profile-bio h3 {
-	font-size: 1.6em;
-}
-
-.profile-bio p {
-	font-size: 1.5em;
-	line-height: 1.4em;
-}
-
-.profile-bio-list > li {
-	font-size: 1.4rem;
-	padding: .4em;
+	font-size: 1.4em;
 }
 
 .profile-bio-list > li a {
 	color: #3e859f !important;
-	font-size: 1.1em;
-}
-
-.profile-bio-list > li > ul {
-	padding-top: .35em;
-}
-
-.profile-bio-list > li > ul > li {
-	font-size: .95em;
-	padding: .35em;
 }
 
 .profile-social-links {
@@ -1107,8 +1086,6 @@ a.about-info:hover {
 
 @media screen and (max-width: 600px) {
 	.profile-bio-list > li {
-		font-size: 1.2em;
-		line-height: 1.2em;
 		padding: .2em;
 	}
 }
@@ -1163,14 +1140,6 @@ h1.work:after {
 .sample-page-image {
 	max-width: 100%;
 	margin: 2em 0;
-}
-
-.sample-header {
-	font-size: 2em;
-}
-
-.sample-description {
-	font-size: 1.3em;
 }
 
 .work-triangle-group {
@@ -1618,6 +1587,7 @@ body.no-scroll {
 }
 
 .continue-triangle {
+	position: relative;
 	width: .8em;	
 	margin-right: .5em;
 }
@@ -1689,6 +1659,8 @@ body.no-scroll {
 
 	font-family: 'Libre Baskerville', serif;
 	letter-spacing: .15em;
+	font-size: 1.3em;
+	line-height: 2.5em;
 
 	margin: 0 auto;
 	background-color: rgba( 0, 0, 0, .95 );
@@ -1724,6 +1696,10 @@ body.no-scroll {
 	transform: scale(1.1);
 }
 
+.modal h2 {
+	line-height: 1.5em;
+}
+
 @keyframes close-x-animation {
 	0% { 
 		transform: rotate(0deg) scale(1);
@@ -1752,6 +1728,11 @@ body.no-scroll {
 }
 
 @media screen and (max-width: 800px) {
+	.modal {
+		font-size: 1.15em;
+		line-height: 2em;
+	}
+
 	.modal .close-x {
 		width: 11vw;
 	}
@@ -1761,6 +1742,8 @@ body.no-scroll {
 	.modal {
 		top: 1vh;
 		height: 98vh;
+		font-size: 1.1em;
+		line-height: 1.85em;
 	}
 
 	.modal .close-x {
@@ -1794,4 +1777,25 @@ body.no-scroll {
 	position: absolute;
 	top: 0;
 	left: 0;
+}
+
+
+/* Target IE10 and 11 */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	.profile-image:after { 
+		background: rgba(0,0,0,0); 
+	}
+
+	.continue-triangle {
+		top: 2em;
+	}
+
+	.modal {
+		position: fixed;
+	}
+
+	.modal .close-x {
+		top: -4em;
+	}
+
 }
