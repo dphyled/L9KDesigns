@@ -1209,6 +1209,7 @@ h1.work:after {
 /*  ---------------SLIDE4 -- BLOG---------------  */
 .slide4 {
 	color: white;
+	font-family: 'Libre Baskerville', serif;
 }
 
 .slide4 .in-slide-container {
@@ -1216,15 +1217,59 @@ h1.work:after {
 }
 
 h1.blog {
-	/*font-family: 'Jura', sans-serif;*/
-	/*letter-spacing: .3em;*/
+	margin-bottom: .5em;
 }
 
-.coming-soon.info {
-	margin: .25em auto;
+.link-main-blog {
+	font-size: 1.5em;
 	text-align: center;
-	font-size: 2.25em;
+}
+
+.blog-feed-container {
+	background: gray;
+	height: 50vh;
+	margin: 2em 0;
+	padding: 1em;
+	overflow-y: scroll;
+}
+
+.blog-post {
+	padding: 1em 0 1.2em;
+	border-bottom: 1px solid black;
+}
+
+.blog-title {
+	font-size: 1.1em;
 	margin-bottom: .75em;
+	line-height: 1.75em;
+}
+
+.blog-title a {
+	font-size: 1.5em;
+	margin-right: .5em;
+}
+
+.blog-content {
+	font-size: 1.25em;
+	line-height: 1.4em;
+}
+
+@media screen and (max-width: 600px) {
+	.link-main-blog {
+		font-size: 1.2em;
+	}
+
+	.link-main-blog a {
+		font-size: 1.5em;
+	}
+
+	.blog-title {
+		font-size: .9em;
+	}
+
+	.blog-content {
+		font-size: 1.1em;
+	}
 }
 
 /*  ---------------SLIDE5 -- CONTACT---------------  */

@@ -16,6 +16,7 @@ var jQuery = require('jquery');
 		setupWorkPage(scrollMagicController);
 		setupContactPage();
 		setupContactForm();
+		setupBlogFeed();
 		setupOtherPageElements();
 	}); //End of $(document).ready
 	
@@ -375,6 +376,37 @@ var jQuery = require('jquery');
 					$('#contact-form-response').html('Woops.. An error has occured.');
 				}
 			});
+		});
+	}
+
+	// ---------- Setup the blog feed ----------
+	function setupBlogFeed() {
+		$.ajax({
+			type: 'GET',
+			url: "https://www.l9kdesigns.com/blog/feed/",
+			contentType: "text/xml",
+			dataType: "xml"
+		})
+		.done( function(response) {
+			var container = $("#blog-feed-container");
+			var postCount = 5;
+
+			$(response).find( 'item' ).each( function(index) {
+				if( index < postCount ) {
+					var title = $(this).find('title').text();
+					var url = $(this).find('link').text();
+					var pubDate = new Date($(this).find('pubDate').text());
+					var description = $(this).find('description').text();
+					var content = $(this).find('encoded').text();
+					$('<div class="blog-post"></div>').html(
+						'<div class="blog-title"><a href="' + url + '">' + title + '</a> on ' + pubDate.toDateString() + '</div>' + 
+						'<div class="blog-content">' + content + "</div>" ).appendTo(container);
+				}
+			})	
+		})
+		.fail( function(data) {
+			console.log(data);
+			$("#blog-feed-container").html("Sorry! Couldn't load the blog feed.");
 		});
 	}
 
