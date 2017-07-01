@@ -63,7 +63,7 @@ var jQuery = require('jquery');
 			bigSectionsDestination: 'top',
 			responsiveWidth: 600,
 			responsiveHeight: 600,
-			normalScrollElements: '#profile-bio-kelly, #profile-bio-eriya, #test-list',
+			normalScrollElements: '#blog-feed-container',
 
 			afterLoad: function(anchorLink, index){
 				// Set header/logo for first slide transitions

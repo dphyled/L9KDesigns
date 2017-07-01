@@ -1615,7 +1615,7 @@ body.no-scroll {
 	font-family: 'Jura', sans-serif;
 	animation: loading 5s linear infinite;
 	width: 100vw;
-	bottom: 2em;
+	bottom: 2.5em;
 	text-align: center;
 }
 
@@ -1624,7 +1624,7 @@ body.no-scroll {
 	opacity: 0;
 	letter-spacing: .2em;
 	left: 50vw;
-	bottom: 2.5em;
+	bottom: 3em;
 	cursor: pointer;
 	transform: scale(1);
 
