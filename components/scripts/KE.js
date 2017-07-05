@@ -399,10 +399,11 @@ var jQuery = require('jquery');
 					var description = $(this).find('description').text();
 					var content = $(this).find('encoded').text();
 					$('<div class="blog-post"></div>').html(
-						'<div class="blog-title"><a href="' + url + '">' + title + '</a> on ' + pubDate.toDateString() + '</div>' + 
+						'<div class="blog-title"><a href="' + url + '">' + title + '</a> <span class="blog-date">on ' + pubDate.toDateString() + '</span></div>' + 
 						'<div class="blog-content">' + content + "</div>" ).appendTo(container);
 				}
-			})	
+			});
+			$(".blog-content p:last-child()").remove();
 		})
 		.fail( function(data) {
 			console.log(data);

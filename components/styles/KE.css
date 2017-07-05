@@ -382,6 +382,7 @@ h1 {
 
 .mobile-menu-trigger.active .burger-icon span, 
 .fp-viewing-work .burger-icon span,
+.fp-viewing-blog .burger-icon span,
 .fp-viewing-contact .burger-icon span {
 	background: gray;
 }
@@ -1216,6 +1217,10 @@ h1.work:after {
 	max-width: 800px;
 }
 
+.slide4 a {
+	color: #5a8fff !important;
+}
+
 h1.blog {
 	margin-bottom: .5em;
 }
@@ -1226,15 +1231,16 @@ h1.blog {
 }
 
 .blog-feed-container {
-	background: gray;
+	background: #383838;
 	height: 50vh;
 	margin: 2em 0;
 	padding: 1em;
+	border-radius: .5em;
 	overflow-y: scroll;
 }
 
 .blog-post {
-	padding: 1em 0 1.2em;
+	padding: 1.5em 0 1.2em;
 	border-bottom: 1px solid black;
 }
 
@@ -1247,6 +1253,10 @@ h1.blog {
 .blog-title a {
 	font-size: 1.5em;
 	margin-right: .5em;
+}
+
+.blog-date {
+	display: inline-block;
 }
 
 .blog-content {
