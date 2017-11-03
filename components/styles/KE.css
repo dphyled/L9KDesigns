@@ -651,21 +651,21 @@ h1 {
 }
 
 .bird1 {
-	width: 1.5vw;
+	width: 3vmax;
 	position: absolute;
 	bottom: 45vh;
 	left: 15vw;
 }
 
 .bird2 {
-	width: 1vw;
+	width: 2.7vmax;
 	position: absolute;
 	bottom: 55vh;
 	right: 55vw;
 }
 
 .bird3 {
-	width: 1.1vw;
+	width: 3.5vmax;
 	position: absolute;
 	bottom: 65vh;
 	left: 25vw;
@@ -1218,7 +1218,7 @@ h1.work:after {
 }
 
 .slide4 a {
-	color: #5a8fff !important;
+	color: #5f1111 !important;
 }
 
 h1.blog {
@@ -1231,7 +1231,8 @@ h1.blog {
 }
 
 .blog-feed-container {
-	background: #383838;
+	background: white;
+	color: black;
 	height: 50vh;
 	margin: 2em 0;
 	padding: 1em;
@@ -1616,7 +1617,8 @@ body.no-scroll {
 	color: red;
 }
 
-.loading-text, .continue-text {
+.loading-text, 
+.continue-text {
 	position: absolute;
 	font-size: 2em;
 }
@@ -1641,13 +1643,36 @@ body.no-scroll {
 	transition: .3s all;
 }
 
+.continue-text.txt,
+.continue-text.eng,
+.continue-text.jpn {
+	position: relative;
+	left: 0;
+	bottom: 0;
+	font-size: 1em;
+	margin: 0 .3em;
+}
+
+.continue-text-languages {
+	display: inline-block;
+}
+
+.continue-text.eng {
+	color: #02587e;
+}
+
+.continue-text.jpn {
+	color: #622312;
+}
+
 .continue-triangle {
 	position: relative;
 	width: .8em;	
 	margin-right: .5em;
 }
 
-.continue-text:hover {
+.continue-text span:hover,
+.continue-text div:hover {
 	transform: scale(1.05);
 }
 
@@ -1681,7 +1706,6 @@ body.no-scroll {
 		font-size: 1.3em;
 		left: 0;
 		right: 0;
-		width: 100vw;
 		padding: 0 .5em;
 		text-align: center;
 	}	

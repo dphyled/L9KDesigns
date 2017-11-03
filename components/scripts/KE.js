@@ -22,15 +22,24 @@ var jQuery = require('jquery');
 	
 	// ---------- Once all images and resources have loaded... ----------
 	window.onload = function() {
+		$("body").removeClass("no-js");
 		loading = $(".loading-text");
 		continueText = $(".continue-text");
 		TweenMax.to(loading, .3, {opacity: 0});
 		loading.css("display", "none");
 		continueText.css("display", "inline-block");
 		TweenMax.to(continueText, .3, {opacity: 1});
-		$(".continue-text").on( "click", function() {
+		var loadingScreenTimeoout = setTimeout(hideLoadingScreen, 8000);
+		$(".continue-text.txt, .continue-text.eng").on( "click", function() {
 			hideLoadingScreen();
+			clearTimeout(loadingScreenTimeoout);
 		});
+		$(".continue-text.jpn").on( "click", function() {
+			setLanguageToJapanese();
+			hideLoadingScreen();
+			clearTimeout(loadingScreenTimeoout);
+		});
+
 	}
 
 	function hideLoadingScreen() {
@@ -140,20 +149,14 @@ var jQuery = require('jquery');
 
 	// ---------- Setup Language Chooser ----------
 	function setupLanguageChooser() {
-		var languageChooser = $("#language-chooser");
-		var languageChooserMobile = $("#language-chooser-mobile");
-		languageChooser.click( function() {
-			languageChooser.toggleClass("flipped");
-			languageChooserMobile.toggleClass("flipped");
-			languageChooser.hasClass("flipped") ? setLanguageToJapanese() : setLanguageToEnglish();
+		$("#language-chooser").click( function() {
+			$(this).hasClass("flipped") ? setLanguageToEnglish() : setLanguageToJapanese();
 
 			hideModalAndFreePage();
 			clearModalContent();
 		});
-		languageChooserMobile.click( function() {
-			languageChooser.toggleClass("flipped");
-			languageChooserMobile.toggleClass("flipped");
-			languageChooser.hasClass("flipped") ? setLanguageToJapanese() : setLanguageToEnglish();
+		$("#language-chooser-mobile").click( function() {
+			$(this).hasClass("flipped") ? setLanguageToEnglish() : setLanguageToJapanese();
 
 			hideModalAndFreePage();
 			clearModalContent();			
@@ -308,17 +311,11 @@ var jQuery = require('jquery');
 		});
 
 		$("#contact-facebook").click( function() {
-			var answer = confirm("Go to L9K's Facebook page?");
-			if(answer) {
-				window.location.href = "https://www.facebook.com/l9kdesigns/";
-			}
+			window.open("https://www.facebook.com/l9kdesigns/", "_blank");
 		});
 
 		$("#contact-twitter").click( function() {
-			var answer = confirm("Go to L9K's Twitter page?");
-			if(answer) {
-				window.location.href = "https://twitter.com/l9kdesigns";
-			}
+			window.open("https://twitter.com/l9kdesigns", "_blank");
 		});				
 
 		$("#contact-OTHER").click( function() {
@@ -388,6 +385,7 @@ var jQuery = require('jquery');
 			dataType: "xml"
 		})
 		.done( function(response) {
+			console.log(response);
 			var container = $("#blog-feed-container");
 			var postCount = 5;
 
@@ -397,12 +395,16 @@ var jQuery = require('jquery');
 					var url = $(this).find('link').text();
 					var pubDate = new Date($(this).find('pubDate').text());
 					var description = $(this).find('description').text();
-					var content = $(this).find('encoded').text();
+					var content = $(this).find('item content\\:encoded').text();
+
+					// Build the post and append it to the container
 					$('<div class="blog-post"></div>').html(
 						'<div class="blog-title"><a href="' + url + '">' + title + '</a> <span class="blog-date">on ' + pubDate.toDateString() + '</span></div>' + 
 						'<div class="blog-content">' + content + "</div>" ).appendTo(container);
 				}
 			});
+
+			// Remove the "This post appeared on..." part from each post
 			$(".blog-content p:last-child()").remove();
 		})
 		.fail( function(data) {
@@ -499,10 +501,14 @@ var jQuery = require('jquery');
 	function setLanguageToEnglish() {
 		$("body").removeClass("jp-lang");
 		$("body").addClass("en-lang");
+		$("#language-chooser").removeClass("flipped");
+		$("#language-chooser-mobile").removeClass("flipped");		
 	}
 
 	function setLanguageToJapanese() {
 		$("body").removeClass("en-lang");
 		$("body").addClass("jp-lang");
+		$("#language-chooser").addClass("flipped");
+		$("#language-chooser-mobile").addClass("flipped");
 	}	
 })(jQuery);

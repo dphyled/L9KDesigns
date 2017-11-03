@@ -12,7 +12,8 @@ var gulp = require('gulp'),
 	concat = require('gulp-concat'),
 	imagemin = require('gulp-imagemin'),
 	autoprefixer = require('gulp-autoprefixer'),
-	minifyCSS = require('gulp-minify-css');
+	minifyCSS = require('gulp-minify-css'),
+	del = require('del');
 
 
 var env,
@@ -128,6 +129,10 @@ gulp.task('connect', function() {
 		root: outputDir,
 		livereload: true
 	});
+});
+
+gulp.task('clean:production', function () {
+	return del('builds/production/**/*');
 });
 
 gulp.task('default', ['html', 'php', 'js', 'css', 'images', 'connect', 'watch']);			// in terminal----  just "gulp"
