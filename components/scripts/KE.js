@@ -299,7 +299,12 @@ var jQuery = require('jquery');
 		$("#work-gym-link").click(function() {
 			showModalAndLockPage();
 			loadModalContent("ajax/sample-gym");
-		});				
+		});
+
+		$("#work-services-link").click(function() {
+			showModalAndLockPage();
+			loadModalContent("ajax/services");
+		});					
 	}	
 
 

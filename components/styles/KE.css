@@ -651,21 +651,21 @@ h1 {
 }
 
 .bird1 {
-	width: 3vmax;
+	width: 1.5vw;
 	position: absolute;
 	bottom: 45vh;
 	left: 15vw;
 }
 
 .bird2 {
-	width: 2.7vmax;
+	width: 1vw;
 	position: absolute;
 	bottom: 55vh;
 	right: 55vw;
 }
 
 .bird3 {
-	width: 3.5vmax;
+	width: 1.2vw;
 	position: absolute;
 	bottom: 65vh;
 	left: 25vw;
@@ -1061,6 +1061,17 @@ a.about-info:hover {
 	color: #3e859f !important;
 }
 
+.profile-bio-kleriya {
+	width: 60%;
+	float: right;
+}
+
+@media screen and (max-width: 600px) {
+	.profile-bio-kleriya {
+		width: 100%;
+	}
+}
+
 .profile-social-links {
 	list-style: none;
 	padding: 1em 0 0 !important;
@@ -1207,6 +1218,26 @@ h1.work:after {
 	filter: contrast(200%);
 }
 
+.work-services {
+	display: block;
+	box-sizing: border-box;
+	margin: 2em auto;
+	padding: 1em 1.5em;
+	border: 3px solid white;
+	font-size: 1.2em;
+	letter-spacing: .06em;
+	font-weight: bolder;
+
+	background-color: transparent;
+	color: white;
+	transition: .2s all;
+}
+
+.work-services:hover {
+	background-color: white;
+	color: black;
+}
+
 /*  ---------------SLIDE4 -- BLOG---------------  */
 .slide4 {
 	color: white;
@@ -1228,6 +1259,7 @@ h1.blog {
 .link-main-blog {
 	font-size: 1.5em;
 	text-align: center;
+	line-height: 1.5;
 }
 
 .blog-feed-container {
@@ -1635,8 +1667,9 @@ body.no-scroll {
 	display: none;
 	opacity: 0;
 	letter-spacing: .2em;
+	line-height: 1.5;
 	left: 50vw;
-	bottom: 3em;
+	bottom: 4em;
 	cursor: pointer;
 	transform: scale(1);
 
@@ -1655,6 +1688,9 @@ body.no-scroll {
 
 .continue-text-languages {
 	display: inline-block;
+	transform: scale(1);
+	
+	transition: .3s all;	
 }
 
 .continue-text.eng {
@@ -1672,7 +1708,8 @@ body.no-scroll {
 }
 
 .continue-text span:hover,
-.continue-text div:hover {
+.continue-text div:hover,
+.continue-text-languages {
 	transform: scale(1.05);
 }
 

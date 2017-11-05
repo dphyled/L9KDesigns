@@ -45,6 +45,7 @@ jsSources = ['components/scripts/**/*.js'];
 sassSources = ['components/styles/**/*.scss'];
 cssSources = ['components/styles/**/*.css'];
 htmlSources = ['components/**/*.html'];
+txtSources = ['components/**/*.txt'];
 phpSources = ['components/**/*.php'];
 imageSources = ['components/images/*'];
 sampleImageSource = ['components/samples/images/*'];
