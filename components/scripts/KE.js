@@ -39,7 +39,6 @@ var jQuery = require('jquery');
 			hideLoadingScreen();
 			clearTimeout(loadingScreenTimeoout);
 		});
-
 	}
 
 	function hideLoadingScreen() {
@@ -260,7 +259,7 @@ var jQuery = require('jquery');
 
 		$("#about-l9k-link").click(function() {
 			showModalAndLockPage();
-			loadModalContent("ajax/profile-l9k");
+			loadModalContent("ajax/profile-l9k", attachKleriyaClick);
 		});
 
 		$("#kelly-image img, #kelly-image .name-label").click(function() {
@@ -515,5 +514,12 @@ var jQuery = require('jquery');
 		$("body").addClass("jp-lang");
 		$("#language-chooser").addClass("flipped");
 		$("#language-chooser-mobile").addClass("flipped");
+	}
+
+	function attachKleriyaClick() {
+		$("#kleriya-bio").click(function() {
+			clearModalContent();
+			$("#modal-inner").load( "ajax/profile-kleriya.html" );
+		})
 	}	
 })(jQuery);

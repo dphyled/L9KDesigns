@@ -1062,8 +1062,10 @@ a.about-info:hover {
 }
 
 .profile-bio-kleriya {
-	width: 60%;
+	width: 40%;
 	float: right;
+	margin-left: 3em;
+	cursor: pointer;
 }
 
 @media screen and (max-width: 600px) {
@@ -1102,6 +1104,16 @@ a.about-info:hover {
 	}
 }
 
+.kleriya-full-img {
+	width: 100%;
+}
+
+.kleriya-text {
+	display: block;
+	text-align: center;
+	font-size: 1.2em;
+	cursor: pointer;
+}
 
 
 /*  ---------------SLIDE3 -- PAST WORK/PROJECTS---------------  */
@@ -1236,6 +1248,19 @@ h1.work:after {
 .work-services:hover {
 	background-color: white;
 	color: black;
+}
+
+.work-our-services {
+	width: 110%;
+	position: relative;
+	left: -5%;
+}
+
+@media screen and (max-width: 600px) {
+	.work-our-services {
+		width: 210%;
+		left: -100%;
+	}
 }
 
 /*  ---------------SLIDE4 -- BLOG---------------  */
