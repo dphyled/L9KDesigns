@@ -503,6 +503,7 @@ var jQuery = require('jquery');
 	}
 
 	function setLanguageToEnglish() {
+		$("html").attr("lang", "en");
 		$("body").removeClass("jp-lang");
 		$("body").addClass("en-lang");
 		$("#language-chooser").removeClass("flipped");
@@ -510,6 +511,7 @@ var jQuery = require('jquery');
 	}
 
 	function setLanguageToJapanese() {
+		$("html").attr("lang", "ja");
 		$("body").removeClass("en-lang");
 		$("body").addClass("jp-lang");
 		$("#language-chooser").addClass("flipped");

@@ -1,26 +1,241 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-	<title>L9K Designs || Web/Graphic Design Company Located in Tokyo</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+	<meta name="description" content="L9K is a web/graphic design company located in Tokyo. We provide website development, branding/logo design, and many other services.">
+	<link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+
+	<title>L9K Designs || A Web/Graphic Design Company in Tokyo</title>
+
+	<link rel="canonical" href="https://www.l9kdesigns.com">
+
+	<link rel="stylesheet" type="text/css" href="styles/style.css?20171103854" media="all" />
+	<link href="https://fonts.googleapis.com/css?family=Jura:300" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Oswald:200,300" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
+	<!--<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">-->
+	<!--<link href="https://fonts.googleapis.com/css?family=Amiri" rel="stylesheet">-->
 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.min.js"></script>
 	<script type="text/javascript" src="scripts/script.js?20171103854"></script>
 	
-	<link rel="stylesheet" type="text/css" href="styles/style.css?20171103854" media="all" />
-	<link href="https://fonts.googleapis.com/css?family=Jura:300" rel="stylesheet">
-	<!--<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">-->
-	<link href="https://fonts.googleapis.com/css?family=Oswald:200,300" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
-	<!--<link href="https://fonts.googleapis.com/css?family=Amiri" rel="stylesheet">-->
-	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<meta name="description" content="L9K is a web/graphic design company located in Tokyo. We provide website development, branding/logo design, and many other services.">
-
 	<!--[if lt IE 9]>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-	<![endif]-->	
+	<![endif]-->
+
+	<style>
+		.splash-container {
+			position: fixed;
+			width: 100vw;
+			height: 100vh;
+			z-index: 100000;
+			background-color: black;
+			color: white;
+
+			font-family: 'Libre Baskerville', serif;
+		}
+
+		.welcome-block {
+			display: inline-block;
+			position: absolute;
+			top: 25vh;
+			left: 0;
+			right: 0;
+		}
+
+		.welcome-block::before {
+			content: "Level 9 Kleric";
+			display: inline-block;
+			position: absolute;
+			left: 2.5em;
+			top: 5.3em;
+			transform: rotate(90deg);
+			font-size: 1.65vw;
+			letter-spacing: .1em;	
+			color: #1d1d1d;
+		}
+
+		.welcome-block, .welcome-block .welcome, .welcome-block .welcome-message {
+			display: inline-block;
+			text-align: center;
+			letter-spacing: .2em;
+			font-weight: 100;	
+		}
+
+		.splash-logo {
+			width: 16vw;
+		}
+
+		.welcome-block .welcome {
+			position: absolute;	
+			font-size: 9vw;
+			margin: 0 0 0 .25em;
+			position: relative;
+			top: -.85em;
+		}
+
+		.welcome-block .welcome span {
+			transform: rotate(180deg);
+			display: inline-block;
+			position: relative;
+			top: .18em;
+			left: -.25em;
+		}
+
+		.welcome-block .welcome-message {
+			position: relative;
+			top: -3.3em;
+			left: 4.5em;
+			font-size: 2vw;
+			letter-spacing: .2em;	
+		}
+
+		.welcome-block .welcome-message span {
+			color: red;
+		}
+
+		.loading-text, 
+		.continue-text {
+			position: absolute;
+			font-size: 2em;
+		}
+
+		.loading-text {
+			font-family: 'Jura', sans-serif;
+			animation: loading 5s linear infinite;
+			width: 100vw;
+			bottom: 2.5em;
+			text-align: center;
+		}
+
+		.continue-text {
+			display: none;
+			opacity: 0;
+			letter-spacing: .2em;
+			line-height: 1.5;
+			left: 50vw;
+			bottom: 4em;
+			cursor: pointer;
+			transform: scale(1);
+
+			transition: .3s all;
+		}
+
+		.continue-text.txt,
+		.continue-text.eng,
+		.continue-text.jpn {
+			position: relative;
+			left: 0;
+			bottom: 0;
+			font-size: 1em;
+			margin: 0 .3em;
+		}
+
+		.continue-text-languages {
+			display: inline-block;
+			transform: scale(1);
+			
+			transition: .3s all;	
+		}
+
+		.continue-text.eng {
+			color: #02587e;
+		}
+
+		.continue-text.jpn {
+			color: #622312;
+		}
+
+		.continue-triangle {
+			position: relative;
+			width: .8em;	
+			margin-right: .5em;
+		}
+
+		.continue-text span:hover,
+		.continue-text div:hover,
+		.continue-text-languages {
+			transform: scale(1.05);
+		}
+
+		@media screen and (max-width: 800px) {
+			.welcome-block, .welcome-block .welcome, .welcome-block .welcome-message {
+				display: block;
+				top: 0;
+				left: 0;
+			}
+
+			.welcome-block::before {
+				display: none;
+			}
+
+			.splash-logo {
+				width: 4em;
+				margin-top: 12vh;
+			}	
+
+			.welcome-block .welcome {
+				font-size: 2.25em;
+				margin: .5em 0;
+			}
+
+			.welcome-block .welcome-message {
+				font-size: 1.25em;
+				padding: 0 .5em;		
+			}
+
+			.loading-text, .continue-text {
+				font-size: 1.3em;
+				left: 0;
+				right: 0;
+				padding: 0 .5em;
+				text-align: center;
+			}	
+		}
+
+		@keyframes loading {
+			0% {
+				transform: rotate(0deg);
+				letter-spacing: .3em;
+			}
+			50% {
+				letter-spacing: .8em;
+			}
+			100% {
+				/*transform: rotate(360deg);*/
+				letter-spacing: .3em;
+			}
+		}
+
+		.no-javascript-message {
+			display: none;
+		}
+	</style>
+
+	<noscript>
+		<style>
+			.loading-text, .continue-text {
+				display: none;
+			}
+			.loading-container h1 {
+				animation: none;
+				line-height: initial;
+				margin: 3em auto;
+				max-width: 80vw;
+			}
+			.no-javascript-message {
+				display: block;
+				position: relative;
+				top: 1em;
+				left: 1em;
+				width: 90vw;
+			}
+		</style>
+	</noscript>	
 </head>
 <body class="no-scroll no-js en-lang">
 	<div id="splash-container" class="splash-container">
@@ -32,31 +247,10 @@
 		<div class="loading-text">LOADING</div>
 		<div class="continue-text">
 			<span class="continue-text txt"><svg class="continue-triangle" viewBox="0 0 100 100"><polygon points="0,0 100,50 0,100" style="fill:black;stroke:white;stroke-width:5;" /></svg>Continue to Site</span>
-			<span class="continue-text-languages">(<div class="continue-text eng">ENG</div>|<div class="continue-text jpn">JPN</div>)</span>
+			<div class="continue-text-languages">(<div class="continue-text eng">ENG</div>|<div class="continue-text jpn">JPN</div>)</div>
 		</div>
 
-		<noscript>
-			<style>
-				.loading-text, .continue-text {
-					display: none;
-				}
-				.loading-container h1 {
-					animation: none;
-					line-height: initial;
-					margin: 3em auto;
-					max-width: 80vw;
-				}
-				.no-javascript-message {
-					display: block;
-					position: relative;
-					top: 1em;
-					left: 1em;
-					width: 90vw;
-				}
-			</style>
-			<span class="no-javascript-message">This page relies heavily on JavaScript. Please visit our <a href="https://www.L9KDesigns.com/blog">BLOG</a> for info about L9K Designs without all the crazy stuff on this page.</span>
-		</noscript>
-
+		<span class="no-javascript-message">This page relies heavily on JavaScript. Please visit our <a href="https://www.L9KDesigns.com/blog">BLOG</a> for info about L9K Designs without all the crazy stuff on this page.</span>
 	</div>
 	<header id="header" class="header">
 		<div class="header-filler"></div>
@@ -182,21 +376,7 @@
 
 	<div id="mobile-menu" class="mobile-menu">
 		<ul>
-			<li class="mobile-menu-item home"><a href="#home">
-				<svg id="mobile-menu-logo" class="logo mobile-menu-logo" width="277" height="315.24" enable-background="new 0 0 612 792" version="1.1" viewBox="0 0 277 315.24219" xmlns="http://www.w3.org/2000/svg">
-					<g transform="translate(-116.76 -244.38)">
-						<defs>
-							<linearGradient id="linear" x1="0%" y1="0%" x2="0%" y2="100%">
-								<stop offset="0%"   stop-color="#fff"/>
-								<stop offset="100%" stop-color="#777"/>
-							</linearGradient>
-						</defs>								
-						<circle class="circle" cx="255.26" cy="409.12" r="134.5" fill="none" stroke="url(#linear)" stroke-miterlimit="10" stroke-width="8"/>
-						<polygon points="162.37 421.86 244.32 402.34 252.17 382.37 171.13 401.68" fill="none"/>
-						<path d="m234.32 244.38-29.355 4.4531-56.557 152.85-10.199 25.939-11 29 105.82-30-51.82 133 29.357-4.4531 57.881-156.43 8.8184-22.344 0.0547-0.0137 11-29-105.82 30zm95.498 91.834-29 8.332-62.5 166.33 134-36.787 11-29-105.82 30zm-77.646 46.158-7.8496 19.965-81.947 19.527 8.7637-20.184z"/>
-					</g>
-				</svg>Home</a>
-			</li>
+			<li class="mobile-menu-item home"><a href="#home">Home</a></li>
 			<li class="mobile-menu-item"><a href="#about">About</a></li>
 			<li class="mobile-menu-item"><a href="#work">Work</a></li>
 			<li class="mobile-menu-item"><a href="#blog">Blog</a></li>
@@ -204,7 +384,7 @@
 			<li class="mobile-menu-item close">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300.000000 291.000000">
 					<g transform="translate(0.000000,291.000000) scale(0.100000,-0.100000)" fill="white" stroke="none">
-					<path d="M1735 2040 l-280 -280 -275 275 c-151 151 -280 275 -285 275 -6 0 -77 -66 -158 -148 l-147 -147 275 -275 c151 -151 275 -279 275 -285 0 -5 -125 -135 -277 -287 l-277 -277 152 -153 151 -153 278 278 c153 152 283 277 288 277 6 0 134 -124 285 -275 l275 -275 147 147 c82 81 148 152 148 157 0 5 -124 133 -275 284 l-276 276 281 281 280 280 -153 153 -152 152 -280 -280z" id="node1" class="stroke-width="20"></path></g>
+					<path d="M1735 2040 l-280 -280 -275 275 c-151 151 -280 275 -285 275 -6 0 -77 -66 -158 -148 l-147 -147 275 -275 c151 -151 275 -279 275 -285 0 -5 -125 -135 -277 -287 l-277 -277 152 -153 151 -153 278 278 c153 152 283 277 288 277 6 0 134 -124 285 -275 l275 -275 147 147 c82 81 148 152 148 157 0 5 -124 133 -275 284 l-276 276 281 281 280 280 -153 153 -152 152 -280 -280z" id="node1" stroke-width="20"></path></g>
 				</svg>CLOSE
 			</li>
 			<li class="mobile-menu-item"><a href="https://www.facebook.com/l9kdesigns/"><img class="social-icon" src="images/F_icon.svg" alt="Facebook"></a></li>

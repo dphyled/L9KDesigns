@@ -15,6 +15,10 @@ html, body {
 	margin: 0;
 }
 
+body.no-scroll {
+	overflow: hidden !important;
+}
+
 h1 {
 	margin: 1em 0 0;
 	font-size: 2.5em;
@@ -96,7 +100,7 @@ h1 {
 }
 
 .logo .circle {
-	animation: logo-animation 6s linear infinite;
+	animation: logo-animation 5s linear infinite;
 }
 
 .logo path:not(.circle) {
@@ -1593,198 +1597,6 @@ h1.blog {
 .fp-viewing-work #fp-nav a span, 
 .fp-viewing-contact #fp-nav a span {
 	background: white !important;
-}
-
-.placeholder {
-	text-align: center;
-	font-size: 3em;
-}
-
-body.no-scroll {
-	overflow: hidden !important;
-}
-
-.splash-container {
-	position: fixed;
-	width: 100vw;
-	height: 100vh;
-	z-index: 100000;
-	background-color: black;
-	color: white;
-
-	font-family: 'Libre Baskerville', serif;
-}
-
-.welcome-block {
-	display: inline-block;
-	position: absolute;
-	top: 25vh;
-	left: 0;
-	right: 0;
-}
-
-.welcome-block::before {
-	content: "Level 9 Kleric";
-	display: inline-block;
-	position: absolute;
-	left: 2.5em;
-	top: 5.3em;
-	transform: rotate(90deg);
-	font-size: 1.65vw;
-	letter-spacing: .1em;	
-	color: #1d1d1d;
-}
-
-.welcome-block, .welcome-block .welcome, .welcome-block .welcome-message {
-	display: inline-block;
-	text-align: center;
-	letter-spacing: .2em;
-	font-weight: 100;	
-}
-
-.splash-logo {
-	width: 16vw;
-}
-
-.welcome-block .welcome {
-	position: absolute;	
-	font-size: 9vw;
-	margin: 0 0 0 .25em;
-	position: relative;
-	top: -.85em;
-}
-
-.welcome-block .welcome span {
-	transform: rotate(180deg);
-	display: inline-block;
-	position: relative;
-	top: .18em;
-	left: -.25em;
-}
-
-.welcome-block .welcome-message {
-	position: relative;
-	top: -3.3em;
-	left: 4.5em;
-	font-size: 2vw;
-	letter-spacing: .2em;	
-}
-
-.welcome-block .welcome-message span {
-	color: red;
-}
-
-.loading-text, 
-.continue-text {
-	position: absolute;
-	font-size: 2em;
-}
-
-.loading-text {
-	font-family: 'Jura', sans-serif;
-	animation: loading 5s linear infinite;
-	width: 100vw;
-	bottom: 2.5em;
-	text-align: center;
-}
-
-.continue-text {
-	display: none;
-	opacity: 0;
-	letter-spacing: .2em;
-	line-height: 1.5;
-	left: 50vw;
-	bottom: 4em;
-	cursor: pointer;
-	transform: scale(1);
-
-	transition: .3s all;
-}
-
-.continue-text.txt,
-.continue-text.eng,
-.continue-text.jpn {
-	position: relative;
-	left: 0;
-	bottom: 0;
-	font-size: 1em;
-	margin: 0 .3em;
-}
-
-.continue-text-languages {
-	display: inline-block;
-	transform: scale(1);
-	
-	transition: .3s all;	
-}
-
-.continue-text.eng {
-	color: #02587e;
-}
-
-.continue-text.jpn {
-	color: #622312;
-}
-
-.continue-triangle {
-	position: relative;
-	width: .8em;	
-	margin-right: .5em;
-}
-
-.continue-text span:hover,
-.continue-text div:hover,
-.continue-text-languages {
-	transform: scale(1.05);
-}
-
-@media screen and (max-width: 800px) {
-	.welcome-block, .welcome-block .welcome, .welcome-block .welcome-message {
-		display: block;
-		top: 0;
-		left: 0;
-	}
-
-	.welcome-block::before {
-		display: none;
-	}
-
-	.splash-logo {
-		width: 4em;
-		margin-top: 12vh;
-	}	
-
-	.welcome-block .welcome {
-		font-size: 2.25em;
-		margin: .5em 0;
-	}
-
-	.welcome-block .welcome-message {
-		font-size: 1.25em;
-		padding: 0 .5em;		
-	}
-
-	.loading-text, .continue-text {
-		font-size: 1.3em;
-		left: 0;
-		right: 0;
-		padding: 0 .5em;
-		text-align: center;
-	}	
-}
-
-@keyframes loading {
-	0% {
-		transform: rotate(0deg);
-		letter-spacing: .3em;
-	}
-	50% {
-		letter-spacing: .8em;
-	}
-	100% {
-		/*transform: rotate(360deg);*/
-		letter-spacing: .3em;
-	}
 }
 
 .modal {
