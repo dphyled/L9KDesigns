@@ -1,10 +1,11 @@
-// gulpfile.js
+//'use strict';
 
 var gulp = require('gulp'),
 	gutil = require('gulp-util'),
 	//coffee = require('gulp-coffee'),
 	browserify = require('gulp-browserify'),
 	//compass = require('gulp-compass'),
+	sass = require('gulp-sass'),
 	connect = require('gulp-connect'),
 	gulpif = require('gulp-if'),
 	uglify = require('gulp-uglify'),
@@ -19,8 +20,12 @@ var gulp = require('gulp'),
 var env,
 	coffeeSources,
 	jsSources,
+	cssSources,
 	sassSources,
 	htmlSources,
+	phpSources,
+	imageSources,
+	sampleImageSource,
 	outputDir,
 	sassStyle;
 
@@ -45,7 +50,6 @@ jsSources = ['components/scripts/**/*.js'];
 sassSources = ['components/styles/**/*.scss'];
 cssSources = ['components/styles/**/*.css'];
 htmlSources = ['components/**/*.html'];
-txtSources = ['components/**/*.txt'];
 phpSources = ['components/**/*.php'];
 imageSources = ['components/images/*'];
 sampleImageSource = ['components/samples/images/*'];
@@ -101,19 +105,33 @@ gulp.task('php', function() {
 		.pipe(connect.reload())
 });
 
-gulp.task('images', () =>
+// gulp.task('images', () =>
+//     gulp.src(imageSources, {base: './components/'})
+//         .pipe(imagemin())
+//         .pipe(gulp.dest(outputDir))
+//         .pipe(connect.reload())
+// );
+
+// gulp.task('sampleImages', () =>
+//     gulp.src(imageSources)
+//         .pipe(imagemin())
+//         .pipe(gulp.dest(outputDir) + 'samples/images')
+//         .pipe(connect.reload())
+// );
+
+gulp.task('images', function() {
     gulp.src(imageSources, {base: './components/'})
         .pipe(imagemin())
         .pipe(gulp.dest(outputDir))
         .pipe(connect.reload())
-);
+});
 
-gulp.task('sampleImages', () =>
+gulp.task('sampleImages', function() {
     gulp.src(imageSources)
         .pipe(imagemin())
         .pipe(gulp.dest(outputDir) + 'samples/images')
         .pipe(connect.reload())
-);
+});
 
 gulp.task('watch', function() {					// in terminal "gulp watch"
 	// gulp.watch(coffeeSources, ['coffee']);
