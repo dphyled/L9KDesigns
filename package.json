@@ -44,6 +44,8 @@
   },
   "dependencies": {
     "fullpage.js": "^2.9.5",
+    "gaze": "^1.1.2",
+    "glob-watcher": "^4.0.0",
     "gsap": "^1.20.3",
     "jquery": "^3.2.1",
     "parallax-js": "^3.1.0",

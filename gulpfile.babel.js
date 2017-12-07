@@ -31,8 +31,8 @@ var env,
 	outputDir,
 	sassStyle;
 
-// env = process.env.NODE_ENV || 'development';
-env = process.env.NODE_ENV || 'production';
+env = process.env.NODE_ENV || 'development';
+// env = process.env.NODE_ENV || 'production';
 
 if (env==='development') {
 	outputDir = 'builds/development/';
@@ -82,18 +82,6 @@ gulp.task('scripts', function() {
 		.pipe(connect.reload());
 });
 
-// gulp.task('scripts', function() {
-// 	gulp.src(jsSources, {base: './components/'})
-// 		.pipe(concat('script.js'))
-// 		.pipe(browserify({
-// 			transform: ['babelify'],
-// 			presets: ['env']
-// 		}))
-// 		.pipe(gulpif(env === 'production', uglify()))
-// 		.pipe(gulp.dest(outputDir + 'scripts'))
-// 		.pipe(connect.reload());
-// });
-
 gulp.task('styles', function() {
 	var sassStream,
 		cssStream;
@@ -137,7 +125,6 @@ gulp.task('watch', function() {					// in terminal "gulp watch"
 	gulp.watch(jsSources, ['scripts']);
 	gulp.watch(cssSources, ['styles']);
 	gulp.watch(scssSources, ['styles']);
-	// gulp.watch('components/sass/*.scss', ['compass']);
 	gulp.watch(htmlSources, ['html']);
 	gulp.watch(phpSources, ['php']);
 	gulp.watch(imageSources, ['images']);
@@ -161,3 +148,5 @@ gulp.task('clean:dev', function () {
 });
 
 gulp.task('default', ['html', 'php', 'scripts', 'styles', 'images', 'connect', 'watch']);			// in terminal----  just "gulp"
+gulp.task('build', ['html', 'php', 'scripts', 'styles']);
+gulp.task('server', ['connect', 'watch']);
