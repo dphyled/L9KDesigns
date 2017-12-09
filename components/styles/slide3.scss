@@ -1,0 +1,142 @@
+/*  ---------------SLIDE3 -- PAST WORK/PROJECTS---------------  */
+
+.slide3 {
+	background: #000 url(../images/work-bak.jpg) 50% 50% fixed;
+	background-size: cover;
+	font-family: 'Oswald', sans-serif;
+    background-color: #9cc8d1;
+    
+    .in-slide-container {
+        max-width: 1000px;
+    }
+}
+
+
+h1.work {
+	text-align: left;
+	color: white;
+	margin-bottom: -1.25em;
+	font-size: 1.4em;
+	letter-spacing: .3em;
+    
+    &:after {
+        content: "\A";
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-left: .6em solid white;
+        border-top: .35em solid transparent;
+        border-bottom: .35em solid transparent;
+        margin-left: .5em;
+        position: relative;
+        top: 0;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+	h1.work {
+		margin-bottom: 1em;
+		margin-left: -13em;
+		text-align: center;
+	}
+
+	h1.work:after {
+		display: none;
+	}	
+}
+
+.sample-page-image {
+	max-width: 100%;
+	margin: 2em 0;
+}
+
+.work-triangle-group {
+	width: 27em;
+	font-size: 15px;
+	margin: 0 auto;
+    position: relative;
+    
+    img {
+        width: 100%;
+    }    
+}
+
+@media screen and (max-width: 600px) {
+	.work-triangle-group {
+		font-size: 11px;
+	}
+
+	// h1.work {
+	// 	margin-left: -8em;
+	// }
+}
+
+.work-link {
+    position: absolute;    
+	overflow: hidden;
+	-webkit-clip-path: polygon(1% 1%, 100% 1%, 50% 98%);
+	clip-path: polygon(1% 1%, 100% 1%, 50% 98%);
+    cursor: pointer;
+    width: 12.75em;    
+    
+    img {
+        transition: all .3s;
+    }
+    
+    &:hover img {
+        transform: scale(1.1);
+        filter: contrast(200%);
+    }
+
+    &.top-left {
+        top: .2em;
+        left: .34em;
+    }
+    
+    &.top-right {
+        top: .2em;
+        right: .34em;
+    }
+    
+    &.bottom {
+        top: 11.8em;
+        left: 7.0666em;
+    }    
+}
+
+@-moz-document url-prefix() {
+	.work-link {
+		clip-path: url(#work-triangle);	
+	}
+}
+
+.work-services {
+	display: block;
+	box-sizing: border-box;
+	margin: 2em auto;
+	padding: 1em 1.5em;
+	border: 3px solid white;
+	font-size: 1.2em;
+	letter-spacing: .06em;
+	font-weight: bolder;
+    background-color: transparent;
+	color: white;
+	transition: .2s all;
+    
+    &:hover {
+        background-color: white;
+        color: black;
+    }
+}
+
+// Temp Image for services
+.work-our-services {
+	width: 110%;
+	position: relative;
+	left: -5%;
+    
+    @media screen and (max-width: 600px) {
+        width: 210%;
+        left: -100%;
+    }
+}

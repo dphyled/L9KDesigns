@@ -1,0 +1,146 @@
+/*  ---------------SLIDE1 -- TOP---------------  */
+
+/*Although there are no divs in slide 1 in the HTML, the Fullpage.js is making one, so this actually does something*/
+.slide1 div {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.main-scene, 
+.main-scene .layer {
+	width: 100%;
+	height: 100%;
+	max-height: 100vh;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+.main-scene {
+	z-index: 1;
+}
+
+.slide1-1 {
+	background: url(../images/top-circle-logo.png) center no-repeat;
+	background-size: 65vw;
+	z-index: 11;
+
+    @media screen and (max-width: 1000px) {
+        background-size: 120vmin;
+    }
+}
+
+.slide1-2 {
+	background: url(../images/top-mountain.png) no-repeat;
+	background-size: 110vw auto;
+	background-position: bottom;
+	left: -5vw !important;
+	top: .5vh !important;
+	width: 110vw !important;
+	z-index: 9;
+
+    @media screen and (max-width: 600px) {
+        background-size: 250vw auto;
+        width: 125vw !important;
+    }
+
+    &-birds {
+        z-index: 10;
+    }
+}
+
+.slide1-3 {
+	bottom: 0% !important;
+	left: -5% !important;
+	width: 110% !important;
+	z-index: 20;
+    overflow: visible !important;
+
+    img {
+        position: absolute;
+        bottom: -5% !important;
+        left: -5% !important;
+        width: 110% !important;
+        z-index: 20;
+    }
+}
+
+.slide1-4 {
+	background: url(../images/top-sky.jpg) top fixed;
+	background-size: 100vw 100vh;
+	z-index: 7;	
+
+    @media screen and (max-width: 1200px) {
+        background-size: auto 100vh;
+        background-position: center;
+        max-width: 1200px;
+    }
+
+    @media screen and (orientation: landscape) {
+        background-size: 100vw 100vh;
+    }
+}
+
+.bird1 {
+	width: 1.5vw;
+	position: absolute;
+	bottom: 45vh;
+	left: 15vw;
+}
+
+.bird2 {
+	width: 1vw;
+	position: absolute;
+	bottom: 55vh;
+	right: 55vw;
+}
+
+.bird3 {
+	width: 1.2vw;
+	position: absolute;
+	bottom: 65vh;
+	left: 25vw;
+}
+
+@media screen and (max-width: 1000px) {
+	.bird1 {
+		width: 2.4vw;
+	}
+
+	.bird2 {
+		width: 2.1vw;
+	}
+
+	.bird3 {
+		width: 2.3vw;
+	}
+}
+
+.more-arrow {
+	display: block;
+	width: 100%;
+	z-index: 101;
+	position: absolute;
+	bottom: 1.2em;
+	text-align: center;
+	cursor: pointer;
+	pointer-events: none;
+
+	animation: bounce .4s infinite alternate;
+    
+    svg {
+        width: 20vw;
+        max-width: 100px;
+        pointer-events: initial;
+    }
+}
+
+@keyframes bounce {
+	from {
+		transform: translateY(10px);
+	}
+	to {
+		transform: translateY(0);
+	}
+}

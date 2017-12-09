@@ -12,7 +12,11 @@
 	border: 0;
 	font-family: 'Jura', sans-serif;	
 	background-color: #171819;
-	transition: .4s all;
+    transition: .4s all;
+    
+    @media screen and (max-width: 600px) {
+        display: block;
+    }    
     
     &.active {
         right: 0;
@@ -101,14 +105,12 @@
         border-radius: 50%;
     
         transition: .5s all;
+
+        @media screen and (max-width: 600px) {
+            display: block;
+        }        
     }
     
-}
-
-@media screen and (max-width: 600px) {
-	.mobile-menu, .mobile-menu-trigger {
-		display: block;
-	}
 }
 
 /* Burger Icon */

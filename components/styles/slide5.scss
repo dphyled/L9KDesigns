@@ -1,0 +1,222 @@
+/*  ---------------SLIDE5 -- CONTACT---------------  */
+
+.slide5 {
+	background: #000 url(../images/contact-bak.jpg) 50% 50% fixed;
+	background-size: cover;
+    font-family: 'Jura', sans-serif;
+    
+    @media screen and (max-width: 800px) {
+        background-position-x: 35%;
+    }
+
+    @media screen and (max-width: 600px) {
+        .in-slide-container.contact {
+            width: 90vw;
+        }
+    }    
+}
+
+.contact-options {
+	min-height: 20em;
+	max-width: 26em;
+	position: relative;
+	margin-top: 3em;
+	font-size: 15px;
+    overflow: visible;
+    
+    @media screen and (max-width: 800px) {
+        font-size: 13px;
+        margin: 3em auto;
+    }
+    
+    @media screen and (max-width: 420px) {
+        font-size: 11px;
+    }
+    
+    &::before {
+        content: "STAY IN TOUCH WITH US WITH";
+        display: block;
+        position: absolute;
+        top: -1.25em;
+        color: white;
+        font-size: 1.85em;
+        letter-spacing: 0.01em;
+    }
+}
+
+.contact-link {
+	float: left;
+	position: absolute;
+	transition: transform .3s;
+	cursor: pointer;
+    
+    width: 0;
+    height: 0;
+    border-left: 6em solid transparent;
+    border-right: 6em solid transparent;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+    
+    &.top-left,
+    &.top-right,
+    &.bottom {
+        border-top: 10em solid red;
+    
+        -webkit-clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+        clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+    } 
+    
+    &.center {
+        border-bottom: 10em solid red;
+    
+        -webkit-clip-path: polygon(0% 100%, 100% 100%, 50% 0%);
+        clip-path: polygon(0% 100%, 100% 100%, 50% 0%);	
+    }
+
+    img {
+        position: absolute;
+    }
+
+    &.top-left {
+        border-top-color: #3b5998;
+        left: 0;
+        top: 0;
+
+        img {
+            top: -10em;
+            left: -4em;
+            width: 6.666em;
+            height: 6.666em;
+        }
+    }
+    
+    &.center {
+        border-bottom-color: #00abf1;
+        left: 6.666em;
+        top: 0;
+
+        img {
+            top: 3.666em;
+            left: -3.333em;
+            width: 6.666em;
+            height: 6.666em;
+        }
+    }
+    
+    &.top-right {
+        left: 13.333em;
+        top: 0;
+
+        img {
+            top: -10em;
+            left: -3.5em;
+            width: 7em;
+            height: 7em;
+        }
+    }
+
+    &.bottom {
+        border-top-color: #3ccf38;
+        left: 6.666em;
+        top: 10.666em;
+
+        img {
+            left: -3em;
+            top: -9.5em;
+            width: 6em;
+        }    
+    }
+}
+
+@-moz-document url-prefix() {
+	.contact-link.top-left,
+	.contact-link.top-right,
+	.contact-link.bottom {
+		clip-path: url(#upsidedown-triangle);
+	}	
+}
+
+@-moz-document url-prefix() {
+	.contact-link.center {
+		clip-path: url(#contact-triangle);
+	}	
+}
+
+.contact.info, 
+.contact-form {
+	max-width: 600px;
+	margin: 1em auto;
+}
+
+.contact-form * {
+	box-sizing: border-box;
+	transition: .3s all;
+}
+
+.contact-form {
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        font-family: initial;
+        font-size: 1.15em;
+        width: 100%;
+        box-shadow: inset 0 1px 2px #ddd, 0 1px 0 #fff;
+        border: 1px solid #ccc;
+        background: #fff;
+        margin: 0 auto 5px;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    
+    input[type="text"]:hover,
+    input[type="email"]:hover,
+    textarea:hover,
+    button[type="submit"]:hover {
+        box-shadow: inset 1px 1px 1px black, 1px 1px 1px black;
+        transform: scale(1.01);
+        outline: none;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus,
+    button[type="submit"]:focus {
+        box-shadow: inset 2px 2px 1px black, 2px 2px 1px black;
+        transform: scale(1.02);
+        outline: none;
+    }
+
+    button[type="submit"] {
+        cursor: pointer;
+        width: 100%;
+        border: none;
+        background: #991d57;
+        background-image: linear-gradient(to top, #142640 0%, #192f50 52%);
+        color: #fff;
+        font-size: 1.15em;    
+        margin: .5em 0;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    
+    label {
+        cursor: pointer;
+        display: inline-block;
+        color: white;
+        font-size: 1.4em;
+        font-weight: bolder;
+        margin: .6em 0 .3em;
+    }
+    
+    &-response {
+        font-size: 1.8em;
+        text-align: center;
+    }
+    
+    .required-text {
+        font-size: .65em;
+        opacity: .75;
+    }    
+}
