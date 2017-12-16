@@ -10,8 +10,8 @@ var gulp = require('gulp'),
 	uglify = require('gulp-uglify'),
 	merge = require('merge-stream'),
 	order = require('gulp-order'),
-	minifyCSS = require('gulp-minify-css'),
-	minifyHTML = require('gulp-minify-html'),
+	minifyCSS = require('gulp-clean-css'),
+	minifyHTML = require('gulp-htmlmin'),
 	concat = require('gulp-concat'),
 	imagemin = require('gulp-imagemin'),
 	autoprefixer = require('gulp-autoprefixer'),
@@ -88,12 +88,12 @@ gulp.task('styles', function() {
 
 	cssStream =	gulp.src(cssSources, {base: './components/'})
 		.pipe(autoprefixer('last 5 versions', 'ie 9'))
-		.pipe(gulpif(env === 'production', minifyCSS({keepBreaks: false})))
+		.pipe(gulpif(env === 'production', minifyCSS({compatibility: 'ie9'})))
 
 	sassStream = gulp.src(scssSources, {base: './components/'})
 		.pipe(sass().on('error', sass.logError))
 		.pipe(autoprefixer('last 5 versions', 'ie 9'))
-		.pipe(gulpif(env === 'production', minifyCSS({keepBreaks: false})))
+		.pipe(gulpif(env === 'production', minifyCSS({compatibility: 'ie9'})))
 	
 	return merge(sassStream, cssStream)
 		.pipe(concat('style.css'))
@@ -103,7 +103,7 @@ gulp.task('styles', function() {
 
 gulp.task('html', function() {
 	gulp.src(htmlSources, {base: './components/'})
-		.pipe(gulpif(env === 'production', minifyHTML()))
+		.pipe(gulpif(env === 'production', minifyHTML({collapseWhitespace: true})))
 		.pipe(gulp.dest(outputDir))
 		.pipe(connect.reload());
 });
