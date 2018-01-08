@@ -23,11 +23,11 @@
 
 .slide1-1 {
 	background: url(../images/top-circle-logo.png) center no-repeat;
-	background-size: 65vw;
+	background-size: 35vw;
 	z-index: 11;
 
     @media screen and (max-width: 1000px) {
-        background-size: 120vmin;
+        background-size: 60vmin;
     }
 }
 
@@ -46,14 +46,17 @@
     }
 
     &-birds {
-        z-index: 10;
+		left: -5vw !important;
+		top: .5vh !important;
+		width: 110vw !important;		
+		z-index: 10;
     }
 }
 
 .slide1-3 {
 	bottom: 0% !important;
 	left: -5% !important;
-	width: 110% !important;
+	width: 105vw !important;
 	z-index: 20;
     overflow: visible !important;
 
@@ -86,35 +89,46 @@
 	width: 1.5vw;
 	position: absolute;
 	bottom: 45vh;
-	left: 15vw;
+	left: 0;
 }
 
 .bird2 {
 	width: 1vw;
 	position: absolute;
 	bottom: 55vh;
-	right: 55vw;
+	left: 0;
 }
 
 .bird3 {
 	width: 1.2vw;
 	position: absolute;
 	bottom: 65vh;
-	left: 25vw;
+	left: 0;
 }
 
-@media screen and (max-width: 1000px) {
+.bird4 {
+	width: 1.3vw;
+	position: absolute;
+	bottom: 65vh;
+	left: 0;
+}
+
+@media screen and (max-width: 600px) {
 	.bird1 {
-		width: 2.4vw;
+		width: 3.4vw;
 	}
 
 	.bird2 {
-		width: 2.1vw;
+		width: 4.1vw;
 	}
 
 	.bird3 {
-		width: 2.3vw;
+		width: 3.3vw;
 	}
+
+	.bird4 {
+		width: 2.9vw;
+	}	
 }
 
 .more-arrow {

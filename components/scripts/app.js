@@ -26,14 +26,14 @@ import Parallax from 'parallax-js/dist/parallax.min.js';
 	// ---------- Once all images and resources have loaded... ----------
 	window.onload = function() {
 		var loading = $(".loading-text"),
-			continueText = $(".continue-text");
+			continueText = $(".continue-text-block");
 		$("body").removeClass("no-js");
 		TweenLite.to(loading, .3, {opacity: 0});
 		loading.css("display", "none");
-		continueText.css("display", "inline-block");
+		continueText.css("display", "block");
 		TweenLite.to(continueText, .3, {opacity: 1});
 		var loadingScreenTimeoout = setTimeout(hideLoadingScreen, 8000);
-		$(".continue-text.txt, .continue-text.eng").on( "click", () => {
+		$(".continue-text, .continue-text.eng").on( "click", () => {
 			hideLoadingScreen();
 			clearTimeout(loadingScreenTimeoout);
 		});
@@ -171,6 +171,7 @@ import Parallax from 'parallax-js/dist/parallax.min.js';
 		var bird1 = $("#bird1");
 		var bird2 = $("#bird2");
 		var bird3 = $("#bird3");
+		var bird4 = $("#bird4");
 		
 		// Set these to window width/height divided by 100 to make flight path values into percentages of window
 		var birdXScalar = $(window).width() / 100;
@@ -179,40 +180,30 @@ import Parallax from 'parallax-js/dist/parallax.min.js';
 		// Define curves for flight path
 		var birdFlightpath = {
 			soar : {
-				curviness: 1.25,
+				curviness: 1.15,
 				autoRotate: true,
 				values: [
 						{x: birdXScalar * 0,	y: birdYScalar * 0},
-						{x: birdXScalar * 1,	y: birdYScalar * 0},
-						{x: birdXScalar * 4,	y: birdYScalar * 2},
-						{x: birdXScalar * 8,	y: birdYScalar * 3},
-						{x: birdXScalar * 12,	y: birdYScalar * 3},
-						{x: birdXScalar * 16,	y: birdYScalar * 3},
-						{x: birdXScalar * 20,	y: birdYScalar * 5},
-						{x: birdXScalar * 25,	y: birdYScalar * 9},
-						{x: birdXScalar * 30,	y: birdYScalar * 12},
-						{x: birdXScalar * 35,	y: birdYScalar * 9},
-						{x: birdXScalar * 40,	y: birdYScalar * 5},
-						{x: birdXScalar * 43,	y: birdYScalar * 3}
+						{x: birdXScalar * 10,	y: birdYScalar * 2},
+						{x: birdXScalar * 32,	y: birdYScalar * 4},
+						{x: birdXScalar * 56,	y: birdYScalar * 5},
+						{x: birdXScalar * 75,	y: birdYScalar * 9},
+						{x: birdXScalar * 90,	y: birdYScalar * 12},
+						{x: birdXScalar * 115,	y: birdYScalar * 5}
 					]
 			},
 			return : {
-				curviness: 1.25,
+				curviness: 1.15,
 				autoRotate: true,
 				values: [
-						{x: birdXScalar * 39,	y: birdYScalar * 4},
-						{x: birdXScalar * 35,	y: birdYScalar * 5},
-						{x: birdXScalar * 32,	y: birdYScalar * 4},
-						{x: birdXScalar * 29,	y: birdYScalar * 3},
-						{x: birdXScalar * 26,	y: birdYScalar * 2},
-						{x: birdXScalar * 23,	y: birdYScalar * 1},
-						{x: birdXScalar * 20,	y: birdYScalar * 0},
-						{x: birdXScalar * 17,	y: birdYScalar * -1},
-						{x: birdXScalar * 12,	y: birdYScalar * -2},
-						{x: birdXScalar * 8,	y: birdYScalar * -3},
-						{x: birdXScalar * 5,	y: birdYScalar * -3},
-						{x: birdXScalar * 2,	y: birdYScalar * -1},
-						{x: birdXScalar * 0,	y: birdYScalar * 0}
+						{x: birdXScalar * 105,	y: birdYScalar * 4},
+						{x: birdXScalar * 70,	y: birdYScalar * 1},
+						{x: birdXScalar * 50,	y: birdYScalar * 2},
+						{x: birdXScalar * 30,	y: birdYScalar * -1},
+						{x: birdXScalar * 10,	y: birdYScalar * -5},
+						{x: birdXScalar * -10,	y: birdYScalar * -7},
+						{x: birdXScalar * -5,	y: birdYScalar * -4},
+						{x: birdXScalar * 0,	y: birdYScalar * -1}
 
 					]
 			}
@@ -221,29 +212,36 @@ import Parallax from 'parallax-js/dist/parallax.min.js';
 		// Flight for first bird, repeat forever
 		var bird1Flight = new TimelineMax({repeat:-1})
 			// Soar to the right for 25 seconds, also shrink to add depth
-			.add(TweenLite.to(bird1, 25, {css:{bezier:birdFlightpath.soar, scale: .6}, ease:Power1.easeInOut}))
+			.add(TweenLite.to(bird1, 45, {css:{bezier:birdFlightpath.soar, scale: .6}, ease:Power1.easeInOut}))
 			// flip around to fly back
 			.add(TweenLite.to(bird1, .01, {rotationX: 180}))
 			// Return over the course of 30 seconds and return to original height for repeat
-			.add(TweenLite.to(bird1, 30, {css:{bezier:birdFlightpath.return, scale: 1}, ease:Power1.easeInOut}))
+			.add(TweenLite.to(bird1, 50, {css:{bezier:birdFlightpath.return, scale: 1}, ease:Power1.easeInOut}))
 			// flip back around
 			.add(TweenLite.to(bird1, .01, {rotationX: 0}));
 		// start 3 seconds into animation (birds are staggered at different points in their animations)			
-		bird1Flight.play(3);
+		bird1Flight.play(10);
 
 		var bird2Flight = new TimelineMax({repeat:-1})
-			.add(TweenLite.to(bird2, 30, {css:{bezier:birdFlightpath.soar, scale: 1.3}, ease:Power1.easeInOut}))
+			.add(TweenLite.to(bird2, 45, {css:{bezier:birdFlightpath.soar, scale: 1.3}, ease:Power1.easeInOut}))
 			.add(TweenLite.to(bird2, .01, {rotationX: 180}))
-			.add(TweenLite.to(bird2, 35, {css:{bezier:birdFlightpath.return, scale: 1}, ease:Power1.easeInOut}))
+			.add(TweenLite.to(bird2, 50, {css:{bezier:birdFlightpath.return, scale: 1}, ease:Power1.easeInOut}))
 			.add(TweenLite.to(bird2, .01, {rotationX: 0}));
-		bird2Flight.play(35);
+		bird2Flight.play(55);
 
 		var bird3Flight = new TimelineMax({repeat:-1})
-			.add(TweenLite.to(bird3, 22, {css:{bezier:birdFlightpath.soar, scale: 1.1}, ease:Power1.easeInOut}))
+			.add(TweenLite.to(bird3, 50, {css:{bezier:birdFlightpath.soar, scale: 1.1}, ease:Power1.easeInOut}))
 			.add(TweenLite.to(bird3, .01, {rotationX: 180}))
-			.add(TweenLite.to(bird3, 29, {css:{bezier:birdFlightpath.return, scale: 1}, ease:Power1.easeInOut}))
+			.add(TweenLite.to(bird3, 45, {css:{bezier:birdFlightpath.return, scale: 1}, ease:Power1.easeInOut}))
 			.add(TweenLite.to(bird3, .01, {rotationX: 0}));
-		bird3Flight.play(37);		
+		bird3Flight.play(25);
+
+		var bird4Flight = new TimelineMax({repeat:-1})
+			.add(TweenLite.to(bird4, 40, {css:{bezier:birdFlightpath.soar, scale: 1.2}, ease:Power1.easeInOut}))
+			.add(TweenLite.to(bird4, .01, {rotationX: 180}))
+			.add(TweenLite.to(bird4, 40, {css:{bezier:birdFlightpath.return, scale: 1}, ease:Power1.easeInOut}))
+			.add(TweenLite.to(bird4, .01, {rotationX: 0}));
+		bird4Flight.play(65);			
 	}	
 
 	// ---------- Setup profile page events ----------

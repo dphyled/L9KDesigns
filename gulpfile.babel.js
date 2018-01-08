@@ -31,8 +31,8 @@ var env,
 	outputDir,
 	sassStyle;
 
-env = process.env.NODE_ENV || 'development';
-// env = process.env.NODE_ENV || 'production';
+//env = process.env.NODE_ENV || 'development';
+env = process.env.NODE_ENV || 'production';
 
 if (env==='development') {
 	outputDir = 'builds/development/';
@@ -144,9 +144,13 @@ gulp.task('clean:prod', function () {
 
 gulp.task('clean:dev', function () {
 	console.log('Deleting all development build files.')
-	return del('builds/production/**/*');
+	return del('builds/development/**/*');
+});
+
+gulp.task('setEnv:prod', function() {
+	env = 'production';
 });
 
 gulp.task('default', ['html', 'php', 'scripts', 'styles', 'images', 'connect', 'watch']);			// in terminal----  just "gulp"
-gulp.task('build', ['html', 'php', 'scripts', 'styles']);
+gulp.task('build', ['html', 'php', 'scripts', 'styles', 'images']);
 gulp.task('server', ['connect', 'watch']);

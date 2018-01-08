@@ -11,12 +11,27 @@
 
 	<link rel="canonical" href="https://www.l9kdesigns.com">
 
-	<link rel="stylesheet" type="text/css" href="styles/style.css?20171103854" media="all" />
+	<link rel="stylesheet" type="text/css" href="styles/style.css?20180108630" media="all" />
 	<link href="https://fonts.googleapis.com/css?family=Jura:300" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Oswald:200,300" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
 
-	<script type="text/javascript" src="scripts/script.js?20171103855" defer></script>
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="L9K Designs || A Web/Graphic Design Company in Tokyo"/>
+	<meta property="og:image" content="https://www.l9kdesigns.com/images/top-circle-logo.jpg"/>
+	<meta property="og:description" content="L9K is a web/graphic design company located in Tokyo. We provide website development, branding/logo design, and many other services."/>
+	<meta property="og:url" content="https://www.l9kdesigns.com" />
+	<meta property="og:site_name" content="L9K Designs"/>
+	<meta property="og:locale" content="en_US">
+
+	<meta name="twitter:card" content="L9K Designs: Web/graphic design company located in Tokyo.">
+	<meta name="twitter:site" content="@l9kdesigns">
+	<meta name="twitter:url" content="https://www.l9kdesigns.com">
+	<meta name="twitter:title" content="L9K Designs">
+	<meta name="twitter:description" content="L9K is a web/graphic design company located in Tokyo. We provide website development, branding/logo design, and many other services.">
+	<meta name="twitter:image" content="https://www.l9kdesigns.com/images/top-circle-logo.jpg">
+
+	<script type="text/javascript" src="scripts/script.js?20180108630" defer></script>
 	
 	<!--[if lt IE 9]>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -34,12 +49,19 @@
 			font-family: 'Libre Baskerville', serif;
 		}
 
+		@keyframes splash-fade-in {
+			from { opacity: 0; }
+			to { opacity: 1; }
+		}
+		
 		.welcome-block {
 			display: inline-block;
 			position: absolute;
 			top: 25vh;
 			left: 0;
 			right: 0;
+
+			animation: splash-fade-in 1.5s linear;
 		}
 
 		.welcome-block::before {
@@ -54,7 +76,9 @@
 			color: #1d1d1d;
 		}
 
-		.welcome-block, .welcome-block .welcome, .welcome-block .welcome-message {
+		.welcome-block, 
+		.welcome-block .welcome, 
+		.welcome-block .welcome-message {
 			display: inline-block;
 			text-align: center;
 			letter-spacing: .2em;
@@ -94,48 +118,47 @@
 		}
 
 		.loading-text, 
-		.continue-text {
+		.continue-text-block {
 			position: absolute;
 			font-size: 2em;
+
+			animation: splash-fade-in 2s linear;			
 		}
 
 		.loading-text {
 			font-family: 'Jura', sans-serif;
 			animation: loading 5s linear infinite;
 			width: 100vw;
-			bottom: 2.5em;
+			bottom: 8vh;
 			text-align: center;
 		}
 
-		.continue-text {
+		.continue-text-block {
 			display: none;
+			width: 100vw;
+			text-align: center;
 			opacity: 0;
 			letter-spacing: .2em;
 			line-height: 1.5;
-			left: 50vw;
-			bottom: 4em;
+			bottom: 8vh;
 			cursor: pointer;
-			transform: scale(1);
-
-			transition: .3s all;
 		}
 
-		.continue-text.txt,
-		.continue-text.eng,
-		.continue-text.jpn {
+		.continue-text {
+			display: inline-block;
 			position: relative;
 			left: 0;
 			bottom: 0;
 			font-size: 1em;
 			margin: 0 .3em;
+			transform: scale(1);
+
+			transition: .3s all;			
 		}
 
 		.continue-text-languages {
-			display: inline-block;
-			transform: scale(1);
-			
-			transition: .3s all;	
-		}
+			display: inline-block;			
+		}		
 
 		.continue-text.eng {
 			color: #02587e;
@@ -151,10 +174,13 @@
 			margin-right: .5em;
 		}
 
-		.continue-text span:hover,
-		.continue-text div:hover,
-		.continue-text-languages {
+		.continue-text:hover {
 			transform: scale(1.05);
+		}
+
+		.continue-text.eng:hover,
+		.continue-text.jpn:hover {
+			transform: scale(1.1);
 		}
 
 		@media screen and (max-width: 800px) {
@@ -183,7 +209,7 @@
 				padding: 0 .5em;		
 			}
 
-			.loading-text, .continue-text {
+			.loading-text, .continue-text-block {
 				font-size: 1.3em;
 				left: 0;
 				right: 0;
@@ -240,9 +266,9 @@
 			<span class="welcome-message">L<span>9</span>K is a web/graphic design company</span>
 		</div>
 		<div class="loading-text">LOADING</div>
-		<div class="continue-text">
-			<span class="continue-text txt"><svg class="continue-triangle" viewBox="0 0 100 100"><polygon points="0,0 100,50 0,100" style="fill:black;stroke:white;stroke-width:5;" /></svg>Continue to Site</span>
-			<div class="continue-text-languages">(<div class="continue-text eng">ENG</div>|<div class="continue-text jpn">JPN</div>)</div>
+		<div class="continue-text-block">
+			<span class="continue-text"><svg class="continue-triangle" viewBox="0 0 100 100"><polygon points="0,0 100,50 0,100" style="fill:black;stroke:white;stroke-width:5;" /></svg>Continue to Site</span>
+			<span class="continue-text-languages">(<span class="continue-text eng">ENG</span>|<span class="continue-text jpn">JPN</span>)</span>
 		</div>
 
 		<span class="no-javascript-message">This page relies heavily on JavaScript. Please visit our <a href="https://www.L9KDesigns.com/blog">BLOG</a> for info about L9K Designs without all the crazy stuff on this page.</span>
@@ -295,6 +321,7 @@
 					<img id="bird1" src="images/bird.svg" alt="A bird!" class="bird1">
 					<img id="bird2" src="images/bird.svg" alt="Another bird!" class="bird2">
 					<img id="bird3" src="images/bird.svg" alt="So many birds!" class="bird3">
+					<img id="bird4" src="images/bird.svg" alt="Hitchcock!" class="bird4">
 				</li>
 				<li class="layer slide1-3" data-depth="0.12"><img src="images/top-smoke.png" alt="Smoke in foreground"></li><!-- smoke -->
 				<li class="layer slide1-4" data-depth="0.00"></li><!-- sky -->
@@ -451,6 +478,7 @@
 		},
 		"description": "L9K Designs is a web/graphic design company located in Tokyo.",
 		"name": "L9K Designs",
+		"image": "https://www.l9kdesigns.com/images/top-circle-logo.jpg",
 		"telephone": "090-5769-2874",
 		"email": "contact@l9kdesigns.com"
 		},

@@ -1,0 +1,57 @@
+/* Target IE10 and 11 */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	.profile-image:after { 
+		background: rgba(0,0,0,0); 
+	}
+
+	.continue-triangle {
+		top: 2em;
+	}
+
+	.modal {
+		position: fixed;
+	}
+
+	.modal .close-x {
+		top: -15em;
+	}
+
+	.contact-link img {
+		width: 3em !important;
+		height: 3em !important;
+		margin: 2em 0 0 2em;
+	}
+
+	.contact-options::before {
+		font-size: .73em;
+	}	
+}
+
+/* Target iPads because I heard the fixed wallpapers are screwed up... need to find an iPad to test with, argh */
+@media only screen and (device-width: 768px) and (orientation:portrait) {
+	.slide1-4,
+	.slide3,
+	.slide5 {
+		background-attachment:scroll;
+	}
+}
+
+@media only screen and (device-width: 1024px) and (orientation:landscape) {
+	.slide1-4,
+	.slide3,
+	.slide5 {
+		background-attachment:scroll;
+	}
+}
+
+@supports not (clip-path: polygon(0% 0%, 100% 0%, 50% 100%)) {
+	.profile-image:after {
+		opacity: 0 !important;
+	}
+	
+	.contact-link img {
+		width: 7em !important;
+		height: auto !important;
+		margin: 2em 0 0 0;
+	}
+}

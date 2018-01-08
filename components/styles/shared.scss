@@ -1,3 +1,34 @@
+/*  ---------------HTML ELEMENTS, Shhhh---------------  */
+html, body {
+	font-size: 15px;
+	font-family: 'Jura', sans-serif;
+	margin: 0;
+}
+
+body.no-scroll {
+	overflow: hidden !important;
+}
+
+h1 {
+	margin: 1em 0 0;
+	font-size: 2.5em;
+	text-align: center;
+}
+
+/*  ---------------NO JavaScript---------------  */
+.no-js #fullpage {
+	opacity: 1 !important;
+}
+
+.no-js .slide1 .layer {
+	height: 100vh;
+	width: 100vw;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+
 /*  --------------- SOCIAL MEDIA ICONS---------------  */
 .social-icon {
 	opacity: .5;
@@ -50,6 +81,18 @@
 }
 
 /*  ---------------OTHER ELEMENTS---------------  */
+.info {
+	position: relative;
+	margin: 1em 0 0;
+	text-align: justify;
+	text-justify: distribute;
+	
+	@media screen and (max-width: 600px) {
+		margin: 1.5em .5em 2em;
+		text-align: initial;
+	}
+}
+
 #fp-nav ul li .fp-tooltip {
 	color: black;
 	font-size: 1.3em;
@@ -63,13 +106,15 @@
 	width: auto;
 }
 
-/* When Work or contact are active, make tooltip and dots white because backgrounds are dark */
+/* When Work, Blog, or Contact are active, make tooltip and dots white because backgrounds are dark */
 .fp-viewing-work #fp-nav div.fp-tooltip, 
+.fp-viewing-blog #fp-nav div.fp-tooltip, 
 .fp-viewing-contact #fp-nav div.fp-tooltip {
 	color: white !important;
 }
 
 .fp-viewing-work #fp-nav a span, 
+.fp-viewing-blog #fp-nav a span, 
 .fp-viewing-contact #fp-nav a span {
 	background: white !important;
 }
