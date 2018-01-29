@@ -33,14 +33,14 @@ import Parallax from 'parallax-js/dist/parallax.min.js';
 		continueText.css("display", "block");
 		TweenLite.to(continueText, .3, {opacity: 1});
 		var loadingScreenTimeoout = setTimeout(hideLoadingScreen, 8000);
-		$(".continue-text, .continue-text.eng").on( "click", () => {
-			hideLoadingScreen();
+		$(".continue-text-message, .continue-text.eng").on( "click", () => {
 			clearTimeout(loadingScreenTimeoout);
+			hideLoadingScreen();
 		});
 		$(".continue-text.jpn").on( "click", () => {
 			setLanguageToJapanese();
-			hideLoadingScreen();
 			clearTimeout(loadingScreenTimeoout);
+			hideLoadingScreen();
 		});
 	}
 
@@ -348,8 +348,8 @@ import Parallax from 'parallax-js/dist/parallax.min.js';
 			// Serialize form data
 			var formData = $(form).serialize();
 
-			console.log(formData);
-			console.log($(form).attr('action'));
+			// console.log(formData);
+			// console.log($(form).attr('action'));
 
 			// Send data to contact.php for processing
 			$.ajax({
@@ -390,7 +390,7 @@ import Parallax from 'parallax-js/dist/parallax.min.js';
 			dataType: "xml"
 		})
 		.done( function(response) {
-			console.log(response);
+			// console.log(response);
 			var container = $("#blog-feed-container");
 			var postCount = 5;
 
@@ -413,7 +413,7 @@ import Parallax from 'parallax-js/dist/parallax.min.js';
 			$(".blog-content p:last-child()").remove();
 		})
 		.fail( function(data) {
-			console.log(data);
+			// console.log(data);
 			$("#blog-feed-container").html("Sorry! Couldn't load the blog feed.");
 		});
 	}
