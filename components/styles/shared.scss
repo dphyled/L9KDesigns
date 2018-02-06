@@ -1,0 +1,120 @@
+/*  ---------------HTML ELEMENTS, Shhhh---------------  */
+html, body {
+	font-size: 15px;
+	font-family: 'Jura', sans-serif;
+	margin: 0;
+}
+
+body.no-scroll {
+	overflow: hidden !important;
+}
+
+h1 {
+	margin: 1em 0 0;
+	font-size: 2.5em;
+	text-align: center;
+}
+
+/*  ---------------NO JavaScript---------------  */
+.no-js #fullpage {
+	opacity: 1 !important;
+}
+
+.no-js .slide1 .layer {
+	height: 100vh;
+	width: 100vw;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+
+/*  --------------- SOCIAL MEDIA ICONS---------------  */
+.social-icon {
+	opacity: .5;
+	transition: .3s all;
+    
+    &:hover {
+        opacity: 1;
+        transform: scale(1.12);
+    }
+}
+
+/*  ---------------PAGE SLIDES/SECTIONS---------------  */
+
+#fullpage {
+	opacity: 0;
+	overflow: hidden;
+}
+
+.page-slide {
+	min-height: 100vh;
+}
+
+/* When main menu is showing, add padding to all slides except first */
+@media screen and (min-width: 600px) {
+	.page-slide:not(.slide-1) {
+		padding-top: 3.25em;
+	}
+}
+
+.dark-border {
+	width: 100vw;
+	height: 100vh;
+	background: url(../images/top-border.png) center no-repeat;
+	background-size: 100vw 100vh;
+	z-index: 100;
+	position: fixed;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+}
+
+.in-slide-container {
+	width: 80vw;
+	max-width: 800px;
+	margin: 0 auto;
+    
+    @media screen and (max-width: 800px) {
+        width: 92vw;
+    }
+}
+
+/*  ---------------OTHER ELEMENTS---------------  */
+.info {
+	position: relative;
+	margin: 1em 0 0;
+	text-align: justify;
+	text-justify: distribute;
+	
+	@media screen and (max-width: 600px) {
+		margin: 1.5em .5em 2em;
+		text-align: initial;
+	}
+}
+
+#fp-nav ul li .fp-tooltip {
+	color: black;
+	font-size: 1.3em;
+	font-weight: bolder;
+	font-family: 'Jura', sans-serif;
+	top: -0.3em;
+}
+
+#fp-nav ul li .active + .fp-tooltip {
+	opacity: 1;
+	width: auto;
+}
+
+/* When Work, Blog, or Contact are active, make tooltip and dots white because backgrounds are dark */
+.fp-viewing-work #fp-nav div.fp-tooltip, 
+.fp-viewing-blog #fp-nav div.fp-tooltip, 
+.fp-viewing-contact #fp-nav div.fp-tooltip {
+	color: white !important;
+}
+
+.fp-viewing-work #fp-nav a span, 
+.fp-viewing-blog #fp-nav a span, 
+.fp-viewing-contact #fp-nav a span {
+	background: white !important;
+}

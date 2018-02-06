@@ -1,0 +1,79 @@
+/*  ---------------SLIDE4 -- BLOG---------------  */
+.slide4 {
+	background-color: black;    
+	color: white;
+	font-family: 'Libre Baskerville', serif;
+    
+    .in-slide-container {
+        max-width: 800px;
+    }
+    
+    a {
+        color: #5f1111 !important;
+    }
+}
+
+h1.blog {
+	margin-bottom: .5em;
+}
+
+.link-main-blog {
+	font-size: 1.5em;
+	text-align: center;
+	line-height: 1.5;
+}
+
+.blog-feed-container {
+	background: white;
+	color: black;
+	height: 50vh;
+	margin: 2em 0;
+	padding: 1em;
+	border-radius: .5em;
+	overflow-y: scroll;
+}
+
+.blog {
+    &-post {
+        padding: 1.5em 0 1.2em;
+        border-bottom: 1px solid black;
+    }
+
+    &-title {
+        font-size: 1.1em;
+        margin-bottom: .75em;
+        line-height: 1.75em;
+        
+        a {
+            font-size: 1.5em;
+            margin-right: .5em;
+        }
+    }
+    
+    &-date {
+        display: inline-block;
+    }
+    
+    &-content {
+        font-size: 1.25em;
+        line-height: 1.4em;
+    }
+}
+
+@media screen and (max-width: 600px) {
+	.link-main-blog {
+		font-size: 1.2em;
+	}
+
+	.link-main-blog a {
+		font-size: 1.5em;
+	}
+
+	.blog-title {
+		font-size: .9em;
+	}
+
+	.blog-content {
+		font-size: 1.1em;
+	}
+}

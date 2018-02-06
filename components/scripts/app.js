@@ -1,10 +1,13 @@
-var jQuery = require('jquery');
+import $ from 'jquery';
+import 'fullpage.js';
+import { TweenLite, TimelineMax } from 'gsap';
+import ScrollMagic from 'scrollmagic';
+import 'scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js';
+import Parallax from 'parallax-js/dist/parallax.min.js';
 
-// Bind $ to jQuery
-(function($){
-
+(function(){
 	// ---------- Once DOM has loaded... ----------
-	$(document).ready(function() {
+	$(document).ready(() => {
 		initializeFullPageJS();
 		lockScrolling();
 		initializeParallaxJS();
@@ -22,37 +25,37 @@ var jQuery = require('jquery');
 	
 	// ---------- Once all images and resources have loaded... ----------
 	window.onload = function() {
+		var loading = $(".loading-text"),
+			continueText = $(".continue-text-block");
 		$("body").removeClass("no-js");
-		loading = $(".loading-text");
-		continueText = $(".continue-text");
-		TweenMax.to(loading, .3, {opacity: 0});
+		TweenLite.to(loading, .3, {opacity: 0});
 		loading.css("display", "none");
-		continueText.css("display", "inline-block");
-		TweenMax.to(continueText, .3, {opacity: 1});
+		continueText.css("display", "block");
+		TweenLite.to(continueText, .3, {opacity: 1});
 		var loadingScreenTimeoout = setTimeout(hideLoadingScreen, 8000);
-		$(".continue-text.txt, .continue-text.eng").on( "click", function() {
-			hideLoadingScreen();
+		$(".continue-text-message, .continue-text.eng").on( "click", () => {
 			clearTimeout(loadingScreenTimeoout);
+			hideLoadingScreen();
 		});
-		$(".continue-text.jpn").on( "click", function() {
+		$(".continue-text.jpn").on( "click", () => {
 			setLanguageToJapanese();
-			hideLoadingScreen();
 			clearTimeout(loadingScreenTimeoout);
+			hideLoadingScreen();
 		});
 	}
 
 	function hideLoadingScreen() {
 		// ---------- Hide the splash screen overlay ----------
-		splash = $('#splash-container');
-		TweenMax.to(splash, .3, {opacity: 0});
+		var splash = $('#splash-container');
+		TweenLite.to(splash, .3, {opacity: 0});
 		$(splash).css("pointer-events", "none");
 
 		// ---------- Initial Page load fade in ----------
-		TweenMax.to($("#fullpage"), .3, {opacity: 1, delay: .1});
-		TweenMax.from(".logo", .5, {opacity: 0, scale: 0, ease:Bounce.easeOut, delay: .5});
-		TweenMax.from($(".slide1 div:not(#slide1-1), .header"), 2.5, {opacity: 0, delay: .3});
-		TweenMax.to($(".main-menu-item"), 1.0, {opacity:1, delay: 1.25});
-		TweenMax.to($(".logo"), .5, {transition: ".5s all", delay: 1.25});
+		TweenLite.to($("#fullpage"), .3, {opacity: 1, delay: .1});
+		TweenLite.from(".logo", .5, {opacity: 0, scale: 0, ease:Bounce.easeOut, delay: .5});
+		TweenLite.from($(".slide1 div:not(#slide1-1), .header"), 2.5, {opacity: 0, delay: .3});
+		TweenLite.to($(".main-menu-item"), 1.0, {opacity:1, delay: 1.25});
+		TweenLite.to($(".logo"), .5, {transition: ".5s all", delay: 1.25});
 
 		// ---------- Allow scrolling ----------
 		unlockScrolling();
@@ -132,7 +135,7 @@ var jQuery = require('jquery');
 			// Otherwise allow scrolling.
 			if($(this).hasClass("active")) {
 				$("body").addClass("no-scroll");
-				//TweenMax.staggerFrom(".mobile-menu-item", .25, {left:"100vw", opacity:.4, delay:.15, ease:Power4.easeOut, force3D:true}, 0.05);
+				//TweenLite.staggerFrom(".mobile-menu-item", .25, {left:"100vw", opacity:.4, delay:.15, ease:Power4.easeOut, force3D:true}, 0.05);
 			} else {
 				$("body").removeClass("no-scroll");
 			}
@@ -168,6 +171,7 @@ var jQuery = require('jquery');
 		var bird1 = $("#bird1");
 		var bird2 = $("#bird2");
 		var bird3 = $("#bird3");
+		var bird4 = $("#bird4");
 		
 		// Set these to window width/height divided by 100 to make flight path values into percentages of window
 		var birdXScalar = $(window).width() / 100;
@@ -176,40 +180,30 @@ var jQuery = require('jquery');
 		// Define curves for flight path
 		var birdFlightpath = {
 			soar : {
-				curviness: 1.25,
+				curviness: 1.15,
 				autoRotate: true,
 				values: [
 						{x: birdXScalar * 0,	y: birdYScalar * 0},
-						{x: birdXScalar * 1,	y: birdYScalar * 0},
-						{x: birdXScalar * 4,	y: birdYScalar * 2},
-						{x: birdXScalar * 8,	y: birdYScalar * 3},
-						{x: birdXScalar * 12,	y: birdYScalar * 3},
-						{x: birdXScalar * 16,	y: birdYScalar * 3},
-						{x: birdXScalar * 20,	y: birdYScalar * 5},
-						{x: birdXScalar * 25,	y: birdYScalar * 9},
-						{x: birdXScalar * 30,	y: birdYScalar * 12},
-						{x: birdXScalar * 35,	y: birdYScalar * 9},
-						{x: birdXScalar * 40,	y: birdYScalar * 5},
-						{x: birdXScalar * 43,	y: birdYScalar * 3}
+						{x: birdXScalar * 10,	y: birdYScalar * 2},
+						{x: birdXScalar * 32,	y: birdYScalar * 4},
+						{x: birdXScalar * 56,	y: birdYScalar * 5},
+						{x: birdXScalar * 75,	y: birdYScalar * 9},
+						{x: birdXScalar * 90,	y: birdYScalar * 12},
+						{x: birdXScalar * 115,	y: birdYScalar * 5}
 					]
 			},
 			return : {
-				curviness: 1.25,
+				curviness: 1.15,
 				autoRotate: true,
 				values: [
-						{x: birdXScalar * 39,	y: birdYScalar * 4},
-						{x: birdXScalar * 35,	y: birdYScalar * 5},
-						{x: birdXScalar * 32,	y: birdYScalar * 4},
-						{x: birdXScalar * 29,	y: birdYScalar * 3},
-						{x: birdXScalar * 26,	y: birdYScalar * 2},
-						{x: birdXScalar * 23,	y: birdYScalar * 1},
-						{x: birdXScalar * 20,	y: birdYScalar * 0},
-						{x: birdXScalar * 17,	y: birdYScalar * -1},
-						{x: birdXScalar * 12,	y: birdYScalar * -2},
-						{x: birdXScalar * 8,	y: birdYScalar * -3},
-						{x: birdXScalar * 5,	y: birdYScalar * -3},
-						{x: birdXScalar * 2,	y: birdYScalar * -1},
-						{x: birdXScalar * 0,	y: birdYScalar * 0}
+						{x: birdXScalar * 105,	y: birdYScalar * 4},
+						{x: birdXScalar * 70,	y: birdYScalar * 1},
+						{x: birdXScalar * 50,	y: birdYScalar * 2},
+						{x: birdXScalar * 30,	y: birdYScalar * -1},
+						{x: birdXScalar * 10,	y: birdYScalar * -5},
+						{x: birdXScalar * -10,	y: birdYScalar * -7},
+						{x: birdXScalar * -5,	y: birdYScalar * -4},
+						{x: birdXScalar * 0,	y: birdYScalar * -1}
 
 					]
 			}
@@ -218,29 +212,36 @@ var jQuery = require('jquery');
 		// Flight for first bird, repeat forever
 		var bird1Flight = new TimelineMax({repeat:-1})
 			// Soar to the right for 25 seconds, also shrink to add depth
-			.add(TweenMax.to(bird1, 25, {css:{bezier:birdFlightpath.soar, scale: .6}, ease:Power1.easeInOut}))
+			.add(TweenLite.to(bird1, 45, {css:{bezier:birdFlightpath.soar, scale: .6}, ease:Power1.easeInOut}))
 			// flip around to fly back
-			.add(TweenMax.to(bird1, .01, {rotationX: 180}))
+			.add(TweenLite.to(bird1, .01, {rotationX: 180}))
 			// Return over the course of 30 seconds and return to original height for repeat
-			.add(TweenMax.to(bird1, 30, {css:{bezier:birdFlightpath.return, scale: 1}, ease:Power1.easeInOut}))
+			.add(TweenLite.to(bird1, 50, {css:{bezier:birdFlightpath.return, scale: 1}, ease:Power1.easeInOut}))
 			// flip back around
-			.add(TweenMax.to(bird1, .01, {rotationX: 0}));
+			.add(TweenLite.to(bird1, .01, {rotationX: 0}));
 		// start 3 seconds into animation (birds are staggered at different points in their animations)			
-		bird1Flight.play(3);
+		bird1Flight.play(10);
 
 		var bird2Flight = new TimelineMax({repeat:-1})
-			.add(TweenMax.to(bird2, 30, {css:{bezier:birdFlightpath.soar, scale: 1.3}, ease:Power1.easeInOut}))
-			.add(TweenMax.to(bird2, .01, {rotationX: 180}))
-			.add(TweenMax.to(bird2, 35, {css:{bezier:birdFlightpath.return, scale: 1}, ease:Power1.easeInOut}))
-			.add(TweenMax.to(bird2, .01, {rotationX: 0}));
-		bird2Flight.play(35);
+			.add(TweenLite.to(bird2, 45, {css:{bezier:birdFlightpath.soar, scale: 1.3}, ease:Power1.easeInOut}))
+			.add(TweenLite.to(bird2, .01, {rotationX: 180}))
+			.add(TweenLite.to(bird2, 50, {css:{bezier:birdFlightpath.return, scale: 1}, ease:Power1.easeInOut}))
+			.add(TweenLite.to(bird2, .01, {rotationX: 0}));
+		bird2Flight.play(55);
 
 		var bird3Flight = new TimelineMax({repeat:-1})
-			.add(TweenMax.to(bird3, 22, {css:{bezier:birdFlightpath.soar, scale: 1.1}, ease:Power1.easeInOut}))
-			.add(TweenMax.to(bird3, .01, {rotationX: 180}))
-			.add(TweenMax.to(bird3, 29, {css:{bezier:birdFlightpath.return, scale: 1}, ease:Power1.easeInOut}))
-			.add(TweenMax.to(bird3, .01, {rotationX: 0}));
-		bird3Flight.play(37);		
+			.add(TweenLite.to(bird3, 50, {css:{bezier:birdFlightpath.soar, scale: 1.1}, ease:Power1.easeInOut}))
+			.add(TweenLite.to(bird3, .01, {rotationX: 180}))
+			.add(TweenLite.to(bird3, 45, {css:{bezier:birdFlightpath.return, scale: 1}, ease:Power1.easeInOut}))
+			.add(TweenLite.to(bird3, .01, {rotationX: 0}));
+		bird3Flight.play(25);
+
+		var bird4Flight = new TimelineMax({repeat:-1})
+			.add(TweenLite.to(bird4, 40, {css:{bezier:birdFlightpath.soar, scale: 1.2}, ease:Power1.easeInOut}))
+			.add(TweenLite.to(bird4, .01, {rotationX: 180}))
+			.add(TweenLite.to(bird4, 40, {css:{bezier:birdFlightpath.return, scale: 1}, ease:Power1.easeInOut}))
+			.add(TweenLite.to(bird4, .01, {rotationX: 0}));
+		bird4Flight.play(65);			
 	}	
 
 	// ---------- Setup profile page events ----------
@@ -347,8 +348,8 @@ var jQuery = require('jquery');
 			// Serialize form data
 			var formData = $(form).serialize();
 
-			console.log(formData);
-			console.log($(form).attr('action'));
+			// console.log(formData);
+			// console.log($(form).attr('action'));
 
 			// Send data to contact.php for processing
 			$.ajax({
@@ -389,7 +390,7 @@ var jQuery = require('jquery');
 			dataType: "xml"
 		})
 		.done( function(response) {
-			console.log(response);
+			// console.log(response);
 			var container = $("#blog-feed-container");
 			var postCount = 5;
 
@@ -412,7 +413,7 @@ var jQuery = require('jquery');
 			$(".blog-content p:last-child()").remove();
 		})
 		.fail( function(data) {
-			console.log(data);
+			// console.log(data);
 			$("#blog-feed-container").html("Sorry! Couldn't load the blog feed.");
 		});
 	}
@@ -445,17 +446,17 @@ var jQuery = require('jquery');
 	// Make menu items and logo bigger, and hide the black filler 
 	// that helps the transition/fade seem smoother than fading the gradient
 	function expandMainMenu() {
-		TweenMax.to($(".main-menu-item"), .5, {height: "4em", lineHeight: "4em", fontSize: "2em"});
-		TweenMax.to($("#main-menu-logo"), .5, {height: "6em"});
-		TweenMax.to($(".header-filler"), .8, {opacity: 0});
+		TweenLite.to($(".main-menu-item"), .5, {height: "4em", lineHeight: "4em", fontSize: "2em"});
+		TweenLite.to($("#main-menu-logo"), .5, {height: "6em"});
+		TweenLite.to($(".header-filler"), .8, {opacity: 0});
 	}
 
 	// Make menu items and logo smaller, and show the black filler 
 	// that helps the transition/fade seem smoother than fading the gradient
 	function shrinkMainMenu() {
-		TweenMax.to($(".main-menu-item"), .5, {height: "3.25em", lineHeight: "3.25em", fontSize: "1.6em"});
-		TweenMax.to($("#main-menu-logo"), .5, {height: "5.5em"});
-		TweenMax.to($(".header-filler"), .8, {opacity: 1});	    
+		TweenLite.to($(".main-menu-item"), .5, {height: "3.25em", lineHeight: "3.25em", fontSize: "1.6em"});
+		TweenLite.to($("#main-menu-logo"), .5, {height: "5.5em"});
+		TweenLite.to($(".header-filler"), .8, {opacity: 1});	    
 	}
 
 	function loadModalContent(url) {
@@ -524,4 +525,4 @@ var jQuery = require('jquery');
 			$("#modal-inner").load( "ajax/profile-kleriya.html" );
 		})
 	}	
-})(jQuery);
+})();

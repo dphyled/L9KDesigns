@@ -1,0 +1,190 @@
+/*  ---------------MOBILE MENU---------------  */
+.mobile-menu {
+	display: none;
+	opacity: .3;
+	pointer-events: none;
+	position: fixed;
+	top: 0;
+	right: -100%;
+	z-index: 10000;
+	width: 60vw;
+	height: 100vh;
+	border: 0;
+	font-family: 'Jura', sans-serif;	
+	background-color: #171819;
+    transition: .4s all;
+    
+    @media screen and (max-width: 600px) {
+        display: block;
+    }    
+    
+    &.active {
+        right: 0;
+        opacity: 1;
+        pointer-events: initial;
+        border-left: 1px solid black;
+    }
+    
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    &-item {
+        position: relative;
+        box-sizing: border-box;
+        height: 0;
+        /*height: 11vh;*/
+        top: 0;
+        transform: translateX(100%);
+        line-height: 11vh;
+        font-size: 6vmin;
+        text-align: right;
+        font-weight: 100;
+        padding-right: 6vw;
+        letter-spacing: .25em;
+        cursor: pointer !important;
+        color: #dadada;
+        text-transform: uppercase;
+    
+        transition: .65s all, .2s letter-spacing;
+        
+        &.close {
+            border-top: 2px solid #7a7a7a;
+        }
+        
+        &:hover {
+            letter-spacing: .3em;
+        }
+        
+        &.close svg {
+            width: 1.1em;
+            position: relative;
+            top: .23em;
+            left: -.3em;
+        }
+        
+        &.close g {
+            fill: #dadada !important;
+        }
+        
+        & a {
+            display: inline-block;
+            width: 100%;
+            color: #dadada !important;
+            text-decoration: none !important;
+        }
+
+        .social-icon {
+            width: 1.75em;
+            margin: .2em;
+        }
+        
+        .social-icon:nth-of-type(1) {
+            margin-top: 1em;
+        }
+    }
+
+    &.active .mobile-menu-item {
+        height: 11vh;
+        top: auto;
+        transform: translateX(0);
+    }
+    
+    &-trigger {
+        display: none;
+        position: fixed;
+        top: 1em;
+        right: 3vw;
+        z-index: 9999;
+        width: 4em;
+        height: 4em;
+        cursor: pointer;
+        background-color: rgba(0,0,0,.35);
+        border-radius: 50%;
+    
+        transition: .5s all;
+
+        @media screen and (max-width: 600px) {
+            display: block;
+        }        
+    }
+    
+}
+
+/* Burger Icon */
+.burger-icon {
+	width: 65%;
+	position: relative;
+	top: 1em;
+	margin: 0 auto;
+	transform: rotate(0deg);
+	transition: .5s ease-in-out;
+	cursor: pointer;
+    
+    span, 
+    span::before, 
+    span::after {
+        display: block;
+        position: absolute;
+        height: .2em;
+        width: 100%;
+        background: black;
+        opacity: 1;
+        left: 0;
+        transform: rotate(0deg);
+        transition: .4s ease-in-out;
+    }
+    
+    span:nth-child(1) {
+        top: 0;
+    }
+    
+    span:nth-child(2),
+    span:nth-child(3) {
+        top: .85em;
+    }
+    
+    span:nth-child(4) {
+        top: 1.7em;
+    }
+}
+
+.mobile-menu-trigger.active {
+	right: 75vw;
+	background-color: rgba(0,0,0,.7);
+	transition: .5s all;
+
+    .burger-icon span {
+        background: gray;
+    } 
+    
+    .burger-icon span:nth-child(1) {
+        top: 1em;
+        width: 0%;
+        left: 50%;
+    }
+    
+    .burger-icon span:nth-child(2) {
+        transform: rotate(45deg);
+    }
+    
+    .burger-icon span:nth-child(3) {
+        transform: rotate(-45deg);
+    }
+    
+    .burger-icon span:nth-child(4) {
+        top: 18px;
+        width: 0%;
+        left: 50%;
+    }
+}
+
+// Make the burger lines light gray on 
+// these slides with dark backgrounds
+.fp-viewing-work .burger-icon span,
+.fp-viewing-blog .burger-icon span,
+.fp-viewing-contact .burger-icon span {
+	background: gray;
+}

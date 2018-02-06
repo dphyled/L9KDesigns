@@ -20,24 +20,35 @@
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-preset-env": "^1.5.1",
+    "babelify": "^8.0.0",
     "del": "^3.0.0",
     "gifsicle": "^3.0.4",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^7.0.0",
     "gulp-browserify": "^0.5.1",
+    "gulp-clean-css": "^3.9.0",
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.0.0",
-    "gulp-connect-php": "0.0.8",
+    "gulp-htmlmin": "^3.0.0",
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^3.4.0",
-    "gulp-minify-css": "^1.2.4",
-    "gulp-minify-html": "^1.0.6",
+    "gulp-order": "^1.1.1",
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.7",
     "jpegtran-bin": "^3.2.0",
-    "jquery": "^3.1.1",
+    "merge-stream": "^1.0.1",
     "optipng-bin": "^4.0.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "fullpage.js": "^2.9.5",
+    "gaze": "^1.1.2",
+    "glob-watcher": "^4.0.0",
+    "gsap": "^1.20.3",
+    "jquery": "^3.2.1",
+    "parallax-js": "^3.1.0",
+    "scrollmagic": "^2.0.5",
+    "vinyl-fs": "^3.0.0"
+  }
 }

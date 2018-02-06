@@ -1,0 +1,115 @@
+.modal {
+	position: fixed;
+	box-sizing: border-box;
+	overflow-y: auto;
+	overflow-x: hidden;
+	top: 11.5vh;
+	top: calc(80px + 1vh);
+	width: 98vw;
+	height: calc(98vh - 80px);
+	left: 1vw;
+
+	font-family: 'Libre Baskerville', serif;
+	letter-spacing: .15em;
+	font-size: 1.3em;
+	line-height: 2.5em;
+
+	margin: 0 auto;
+	background-color: rgba( 0, 0, 0, .95 );
+	border: .4em solid black;
+	border-radius: 1em;
+
+	z-index: 100001;
+	opacity: 0;
+	pointer-events: none;
+
+	transition: .3s all;
+    
+    &.active {
+        opacity: 1;
+        pointer-events: initial;
+    }
+    
+    .close-x {
+        width: 4vw;
+        max-width: 3.5em;
+        position: fixed;
+        top: 7em;
+        right: 3vw;
+        transition: .3s all;
+        z-index: 1000000;
+        cursor: pointer;
+    
+        animation: close-x-animation 4s linear infinite;	
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    h2 {
+        line-height: 1.5em;
+    }
+}
+
+@keyframes close-x-animation {
+	0% { 
+		transform: rotate(0deg) scale(1);
+	}
+	90% { 
+		transform: rotate(0deg) scale(1);
+	}
+	93% { 
+		transform: rotate(0deg) scale(1.1);
+	}
+	95% { 
+		transform: rotate(0deg) scale(1);
+	}
+	97% { 
+		transform: rotate(0deg) scale(1.1);
+	}			
+	100% { 
+		transform: rotate(180deg) scale(1);
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.modal .close-x {
+		width: 7vw;
+	}
+}
+
+@media screen and (max-width: 800px) {
+	.modal {
+		font-size: 1.15em;
+		line-height: 2em;
+	}
+
+	.modal .close-x {
+		width: 11vw;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.modal {
+		top: 1vh;
+		height: 98vh;
+		font-size: 1.1em;
+		line-height: 1.85em;
+	}
+
+	.modal .close-x {
+		top: 3vh;
+	}	
+}
+
+.modal-inner {
+	position: absolute;
+	width: 90%;
+	max-width: 1000px;
+	margin: 4.5em auto;
+	left: 0;
+	right: 0;
+
+	color: white;
+}
