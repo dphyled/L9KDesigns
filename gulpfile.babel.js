@@ -101,40 +101,45 @@ gulp.task('styles', function() {
 		.pipe(connect.reload());
 });
 
-gulp.task('html', function() {
+gulp.task('html', function(done) {
 	gulp.src(htmlSources, {base: './components/'})
 		.pipe(gulpif(env === 'production', minifyHTML({collapseWhitespace: true})))
 		.pipe(gulp.dest(outputDir))
 		.pipe(connect.reload());
+		done();
 });
 
-gulp.task('php', function() {
+gulp.task('php', function(done) {
 	gulp.src(phpSources, {base: './components/'})
 		.pipe(gulp.dest(outputDir))
 		.pipe(connect.reload());
+		done();
 });
 
-gulp.task('images', function() {
+gulp.task('images', function(done) {
     gulp.src(imageSources, {base: './components/'})
         .pipe(imagemin())
         .pipe(gulp.dest(outputDir))
         .pipe(connect.reload());
+        done();
 });
 
-gulp.task('watch', function() {					// in terminal "gulp watch"
-	gulp.watch(jsSources, ['scripts']);
-	gulp.watch(cssSources, ['styles']);
-	gulp.watch(scssSources, ['styles']);
-	gulp.watch(htmlSources, ['html']);
-	gulp.watch(phpSources, ['php']);
-	gulp.watch(imageSources, ['images']);
+gulp.task('watch', function(done) {					// in terminal "gulp watch"
+	gulp.watch(jsSources, gulp.series('scripts'));
+	gulp.watch(cssSources, gulp.series('styles'));
+	gulp.watch(scssSources, gulp.series('styles'));
+	gulp.watch(htmlSources, gulp.series('html'));
+	gulp.watch(phpSources, gulp.series('php'));
+	gulp.watch(imageSources, gulp.series('images'));
+	done();
 });
 
-gulp.task('connect', function() {
+gulp.task('connect', function(done) {
 	connect.server({
 		root: outputDir,
 		livereload: true
 	});
+	done();
 });
 
 gulp.task('clean:prod', function () {
@@ -151,6 +156,6 @@ gulp.task('setEnv:prod', function() {
 	env = 'production';
 });
 
-gulp.task('default', ['html', 'php', 'scripts', 'styles', 'images', 'connect', 'watch']);			// in terminal----  just "gulp"
-gulp.task('build', ['html', 'php', 'scripts', 'styles', 'images']);
-gulp.task('server', ['connect', 'watch']);
+gulp.task('default', gulp.series('html', 'php', 'scripts', 'styles', 'images', 'connect', 'watch'));			// in terminal----  just "gulp"
+gulp.task('build', gulp.series('html', 'php', 'scripts', 'styles', 'images'));
+gulp.task('server', gulp.series('connect', 'watch'));

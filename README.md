@@ -6,6 +6,7 @@ But there is still a lot TODO. Working on Accessibility and Optimization next.
 * npm install
 * gulp
 * browse to localhost:8080
+* (was broken and realized it was an issue between my Node v>10 with Gulp v<4... updated, but should be at least Node v10+, I think)
 
 ## This site uses:
 * fullPage.js
