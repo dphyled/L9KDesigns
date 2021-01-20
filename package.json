@@ -46,7 +46,7 @@
     "fullpage.js": "^2.9.5",
     "gaze": "^1.1.2",
     "glob-watcher": "^4.0.0",
-    "gsap": "^1.20.3",
+    "gsap": "^3.6.0",
     "jquery": "^3.5.1",
     "parallax-js": "^3.1.0",
     "scrollmagic": "^2.0.5",
