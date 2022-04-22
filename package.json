@@ -43,7 +43,7 @@
     "optipng-bin": "^4.0.0"
   },
   "dependencies": {
-    "fullpage.js": "^2.9.5",
+    "fullpage.js": "^4.0.5",
     "gaze": "^1.1.2",
     "glob-watcher": "^4.0.0",
     "gsap": "^1.20.3",
